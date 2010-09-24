@@ -14,7 +14,10 @@ Dir["extensions/*.rb"].each do |extension_file|
   require File.join("extensions", File.basename(extension_file))
 end
 
-set :cache_enabled, Nesta::Config.cache
+configure :production do
+  set :cache_enabled, false
+  # set :cache_enabled, Nesta::Config.cache
+end
 
 helpers do
   def set_from_config(*variables)
