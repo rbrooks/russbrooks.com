@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'rubygems'
 require 'sinatra'
 require 'builder'
@@ -9,6 +11,8 @@ require './lib/config'
 require './lib/models'
 require './lib/path'
 require './lib/overrides'
+
+enable :run
 
 Dir["extensions/*.rb"].each do |extension_file|
   require File.join('./extensions', File.basename(extension_file))
