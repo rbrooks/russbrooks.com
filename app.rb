@@ -4,11 +4,11 @@ require 'builder'
 require 'haml'
 require 'sass'
 
-require "lib/cache"
-require "lib/config"
-require "lib/models"
-require "lib/path"
-require "lib/overrides"
+require './lib/cache'
+require './lib/config'
+require './lib/models'
+require './lib/path'
+require './lib/overrides'
 
 Dir["extensions/*.rb"].each do |extension_file|
   require File.join("extensions", File.basename(extension_file))
