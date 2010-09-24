@@ -11,7 +11,7 @@ require './lib/path'
 require './lib/overrides'
 
 Dir["extensions/*.rb"].each do |extension_file|
-  require File.join("extensions", File.basename(extension_file))
+  require File.join('./extensions', File.basename(extension_file))
 end
 
 configure :production do
