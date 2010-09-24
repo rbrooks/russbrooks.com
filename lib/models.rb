@@ -132,7 +132,7 @@ class Page < FileModel
       menu = Nesta::Config.content_path("menu.txt")
       pages = []
       if File.exist?(menu)
-        File.open(menu).each { |line| pages << Page.load(line.chomp) }
+        File.open(menu, 'r:UTF-8')).each { |line| pages << Page.load(line.chomp) }
       end
       pages
     end
