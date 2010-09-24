@@ -10,6 +10,10 @@ require "lib/models"
 require "lib/path"
 require "lib/overrides"
 
+Dir["extensions/*.rb"].each do |extension_file|
+  require File.join("extensions", File.basename(extension_file))
+end
+
 set :cache_enabled, Nesta::Config.cache
 
 helpers do

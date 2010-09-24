@@ -1,0 +1,106 @@
+# Bio
+
+<table border="0" cellspacing="1" cellpadding="4" id="bio_table">
+<tr>
+    <td class="row">
+        Name:</td>
+    <td class="row">
+        Russell Howard Brooks</td>
+</tr>
+<tr>
+    <td class="altrow">
+        Date of Birth:</td>
+    <td class="altrow">
+        Wednesday, July 15, 1970</td>
+</tr>
+<tr>
+    <td class="row">
+        Age:</td>
+    <td class="row">
+        <script type="text/javascript">
+            document.write(age);
+        </script></td>
+</tr>
+<tr>
+    <td class="altrow">
+        Turning <script type="text/javascript">
+            document.write(age2);
+        </script> in:</td>
+    <td class="altrow" id="nextBirthday"></td>
+</tr>
+<tr>
+    <td class="row" nowrap="nowrap">
+        Been alive for:</td>
+    <td class="row" id="beenAlive"></td>
+</tr>
+<tr>
+    <td class="altrow" valign="top">
+        Career:</td>
+    <td class="altrow">
+        Web Apocalypse Survivor, Software Architect, Senior Designer,
+        Project Manager, Former Professional Musician and Resort Manager</td>
+</tr>
+<tr>
+    <td class="row" valign="top">
+        Hobbies:</td>
+    <td class="row">
+        Fast motorcycles, skiing, music (performing and appreciating), guitar, bass,
+        <a href="http://www.stick.com/">Chapman Stick</a>,
+        piano, synthesizers, scuba diving, aviation, racquetball, skating [ice &#38;
+        in-line], photography, videography, &#38; computers [duh]</td>
+</tr>
+<tr>
+    <td class="altrow" valign="top" nowrap="nowrap">
+        Other Interests:</td>
+    <td class="altrow">
+        High-end audio, astronomy, art, science fiction, shooting</td>
+</tr>
+<tr>
+    <td class="row">
+        Fears:</td>
+    <td class="row">
+        tOmatOes</td>
+</tr>
+<tr>
+    <td class="altrow" valign="top">
+        Loves:</td>
+    <td class="altrow">
+        <a href="http://www.nesba.com/">Track Days</a> on my <a href="http://en.wikipedia.org/wiki/Honda_CBR1000RR"><span class="caps">CBR</span>-1000RR</a> and <a href="http://en.wikipedia.org/wiki/Ducati_1098">Ducati 1098</a>, motorcycle racing, Apple products, skiing in the Rockies, Sierras, and British Columbia, <a href="http://www.lightwave3d.com/">LightWave</a>, <a href="http://www.luxology.com/">modo</a></td>
+</tr>
+<tr>
+    <td class="row">
+        Needs:</td>
+    <td class="row">
+        sushi, periodic adrenaline fixes</td>
+</tr>
+</table>
+
+## Bio
+
+**Note to self:** Write a compelling and engaging bio that rivals that last snore fest you threw together in thirty minutes, and try your best to remain above the 6th-grade writing level. Tell them about **you**, Russ, rather than dating yourself with tedious late-teen tales of playing bass five nights a week in heavy metal and alternative bands. Tell them something they care about, something enthralling, like what keeps you up at night, what you fear, what you love, and why you really hate tomatoes.
+
+I am drawn to the eccentricities of life—anything unique and different, anything off-kilter, anything creative, anything a little [left of cool](http://www.flecktones.com/). Most wouldn&#8217;t recognize much in my eclectic medley of six-hundred-some-odd CD&#8217;s and lossless iTunes library. When the unenlightened hear a selection, they are almost astonished by the fact that, given a genuine listen and the right expensive audio equipment, a vast world of fulfilling and moving music actually exists outside of pop radio and boy-bop.
+
+Music, art, and technologically-advanced machines seem to have prevailed as the dominant, collateral interests accompanying me through life&#8217;s remarkable journey. The less-than-dominant interests, but no less important, would be photography, aviation, snow skiing, scuba diving, and an insatiable desire to try to complete Albert Einstein&#8217;s great work by folding spacetime with my Honda CBR-1000 RR. Not quite there yet, but I will be. Mark my words.
+
+I have Pong, Atari 2600, and the [Radio Shack TRS-80](http://oldcomputers.net/trs80i.html), circa 1977, to hold responsible for the incurable computer sickness. First exposed at age seven by my father, King Tinkerer, consummate mechano-hobbyist, and perpetuator of the Brooks PC bug, I was pecking in computer games, one stoke at a time, in the age-old, aptly named language of &#8219;BASIC&#8220;. Today, the keyless entry to my Acura has more computing power then the ancient and endeared TRaSh-80. How far we have come.
+
+I remember being consumed with making the gigantic, single-color, off-white pixels of a TRS>-80 computer move across the screen. I wanted so badly to write a program to animate a walking stick figure, but the most the TRS-80&#8217;s sloth-like processing abilities could muster was a vague matrix of rectangles slowly and painfully dismantling and recreating themselves as they hobbled across the minuscule monitor. I craved more resolution—smaller and faster dots, and more of them—so this little man could walk on screen! Twenty-six years later, my pixel passion remains ceaseless. The latest versions of advanced graphics applications such as LightWave, Maya, Photoshop, and Flash can never be late enough. There will one day be a scientific name for the medical condition that causes the afflicted to uncontrollably feel they must purchase the latest version of all computer software the day it is released. I am so afflicted.
+
+Dad always had computers around. Through the remainder of the 70&#8217;s into the 80&#8217;s, wave after wave of computing power whisked its way through our household, as Dad strove to make a living developing software and/or selling and servicing these finicky machines. In the days when most of the neighborhood twelve-year-olds in Sparta, New Jersey were hard at work outshining their high scores on inadequate imitations of Donkey Kong and Pac Man on [Intellivision](http://www.intellivisionlives.com/) and [Colecovision](http://www.colecovision.com/), and merely having a computer in your home was met with astonished reactions from company, the Brooks Family had a full client/server network in their basement! While most kids where soaking in The A-Team&#8217;s second season, I was thrilled to spend cathode-ray-lit evenings with a Turbo Pascal textbook in my lap, only breaking to put another coat of paint on the model fighter jet in the workshop, and of course, a little <abbr title="Bicycle Motocross">BMX</abbr> and skateboard daredeviling. Let us not forget skiing at Vernon Valley / Great Gorge three or four times a week, even nights after school. Dad was a ski instructor his whole life (and I was for one winter), so season passes always came free, and we did **a lot** of skiing! For about five years in the mid-70&#8217;s, we lived (literally) next door to the ski resort – but I digress. The ski stories would fill another several blog posts, and this bio is about the roots of an Internet career.
+
+The earliest memory of computers talking to each other was in 1981, when my father purchased a Hayes Smartmodem 300 to the tune of about $600. To put things in perspective, the Smartmodem ran at 300 bits per second, which equates to 0.3 kilobits per second, 186 times slower than yesteryear&#8217;s 56K modems, 5,000 times slower than a modern $50 cable modem. Some quick math will tell you that 300 bps allows you to transfer a scorching 37 characters per second. What does one do with this miraculous device from the year 1981? Connect your computer to the only other person in your town who also has a computer and a Hayes Smartmodem 300... Radio Shack Guy! I recall spending weeks getting the serial cable wiring correct before the modem would even talk to the computer, let alone Radio Shack Guy. Mind you, we had to wire and crimp our own serial cables back then—&#8219;plug and play&#8220; being a concept as foreign as [M-Theory](http://www.damtp.cam.ac.uk/user/gr/public/qg_ss.html). After weeks of configuration nightmares, voodoo diagnostics, a dozen failed serial cables, there it was on the screen, on a warm summer Saturday, while Dad clapped in his own unique &#8219;loud clap&#8220;, monochromatic messages slowly typing themselves across the monitor, in real time, from Radio Shack Guy across town. We stared in absolute amazement, marveling at this wondrous technology, taking turns typing waggish one-liners, to and fro, for the remainder of the day. The Smartmodem saw an additional session with Radio Shack Guy before it retired itself to a dusty shelf in the basement office. I consider it $600 well spent, planting the faintest spark of computer telecommunication curiosity within an eleven-year-old.
+
+I caught gentle wind of this &#8219;Internet Thing&#8220; in 1993 from a friend at Ohio State University who described to me, on more than one phone conversation, the finer points of hypertext transfer, Gopher, Usenet newsgroups, file transfer, and relay chat. This sounded rather clever at the time, but seemed impossibly distant for the likes of the 33 MHz 80486 home-built gaming machine propped on my dresser, with a pokey 14.4 modem dangling from the back. The gentle wind turned gale force two years later when the advertisement read, &#8219;The World Wide Web coming soon!&#8220; at the top of my American Online welcome screen. Frantically, I spread the word like Paul Revere, &#8217;The Web is coming! The Web is coming!&#8220;, only to be met by bewildered looks from non-believers and the clueless who didn&#8217;t so much share in my elation. Quickly learning that AOL was not &#8219;the real Internet&#8220;, I canceled that subscription and signed with a local ISP. [I am ashamed to admit that I was an AOL customer, even if for less than the 30-day trial.] That winter, during the downtime of my resort management career, I decided to commit my life to this spellbinding eighth wonder. I thought, &#8219;Finally! The world has caught up to me—graphics to satisfy the right hemisphere and programming to nurture the left.&#8220; I couldn&#8217;t ask for a more perfect fit in a career pursuit. The first mousestrokes began from the spare bedroom of my condo on the bay in Wildwood, New Jersey. What emerged in the Spring was we now call a &#8219;corporate web presence&#8220; for the beach-front resort I was actively managing, the Aqua Beach Resort. Many graphics for the site I hand sketched with colored pencil, scanned, and touched up with Corel PhotoPaint.
+
+Word traveled around the shore town quickly, and other business owners began to take notice of the &#8219;first ever&#8220; local web site. &#8219;www.aquabeach.com&#8220; proudly adorned our brochures, letterheads, and business cards, which felt so ultimately cool and groundbreaking. Compliments from customers and other business owners rolled in, along with requests for web design work.
+
+On a Jersey vacation island, when you work in a resort, you have three months off in the winter while the population goes from 250,000 to 6,000 precisely on Labor Day at noon every year. As the beaches empty, the clouds go gray, the boardwalk and amusement piers shut down, and the hundreds of traffic lights enter blinker mode, to keeps one&#8217;s sanity, you either go on vacation to the Bahamas [or, in my case, Colorado and the Poconos to ski], learn to play the Didgeridoo, or you cultivate your skills in designing web graphics, authoring <abbr title="Hypertext Markup Language">HTML</abbr>, creating cascading stylesheets, and programming in Visual Basic. These long, largely snowless winters are when the bulk of the real work took place.
+
+In 1997, with gracious encouragement from my boss and longtime friend at the Aqua Beach Resort, with a handful of good clients from Cape May to Atlantic City and some closer to Philadelphia, I took web design and development full time, flying without a net, doing the home office thing, also repairing and installing Windows NT networks on the side in between flying lessons. My web design company, Atlantic Image, was thriving locally, but I needed more room to grow. I felt the pull to the big city, and an opportunity fell my way with a happenstance crossing with an old friend from the teenage days working and carousing on the boardwalk in 1988. Who knew that ten years later, I&#8217;d be selling my condo and moving to his apartment in a Philadelphia burb, as he moved out and into a new house with his girlfriend? It was a perfect Pennsylvania launch pad for me: a two-bedroom place [one for the office] with a garage underneath for the Interceptor [earlier dabblings in sport motorcycles].
+
+In December of 1999, another happenstance call from a long lost friend landed me at NetReach, a large Philadelphia <abbr title="Internet Service Provider">ISP</abbr> and web solutions firm. I sold my client base to NetReach and started a Senior Web Designer position just in time for the company Christmas party. Thus began a legendary, four-year roller coaster ride of the Internet boom that you only read about, but that&#8217;s another story. I am currently working as a Senior Software Engineer / Project Manager, with clients under my belt such as the [Philadelphia Eagles](http://www.philadelphiaeagles.com/), [Widener University](http://www.widener.edu/), [TastyKake](http://www.tastykake.com/), [Togo&#8217;s](http://www.togos.com/), and the [National Constitution Center](http://www.constitutioncenter.org/), I continue to refine my graphic design, programming, and management skills, while bettering the web, one site at a time…
+
+...I suppose thanks to a TRS-80 and a Hayes Smartmodem 300?
+
+![Russ](/images/sig_russ.gif)

@@ -1,0 +1,148 @@
+date: 19 Dec 2008 22:00pm
+categories: Linux
+read more: More&#8230;
+summary: How to create a recurring nightly backup with native Linux tools.
+
+# Redundant Backup Solution Using Shell Script, Rsync, and Cron
+
+The first script backs up two websites and their PostgreSQL databases to a single gZip archive on an external hard drive.  It also maintains a backup history of 10 days.  The second script mirrors the one drive to the other using Rsync.  Lastly, we schedule these jobs to occur every night &#8211; backup first, drive-sync second.
+
+This script is tested on Ubuntu 8.04+.  You may have to adjust it for other Linux distributions.  It assumes you have two external USB drives.  You may have to change the drive ID's accordingly.
+
+You will also need to change the paths, URLs, and names at the top of the script to match your environment.  Add elements to the arrays to backup more sites.  The number of elements must match across all arrays.  The script assumes that you have a database with each site you are backing up.  In this example, it happens to be a PostgreSQL database.
+
+## Backup Script
+
+Log in as Root.
+
+Create the file, `/usr/bin/backup-sites.sh`, using any text editor.
+
+<highlight lang="bash">
+nano /usr/bin/backup-sites.sh
+</highlight>
+
+Place this Shell Script in it, adjusting variables accordingly:
+
+<highlight lang="bash">
+#!/bin/bash
+# Script to back up all websites and their DBs to external drive.
+# Author: Russ Brooks (www.russbrooks.com)
+# set -e
+if [[ $EUID -ne 0 ]]; then
+   echo 'This script must be run as Root.' 1>&2
+   exit 1
+fi
+sites=( /var/www/website1 /var/www/website2 )
+urls=( whatever.com example.org )
+names=( whatever example )
+mount_dir='/media/disk'
+destination_dir="$mount_dir/Backup/Web-Sites"
+function delete_old_history {
+  name="$1"
+  find "$destination_dir" -name "$name-*.backup.tgz" \
+    | sort | head -n -10 | xargs --no-run-if-empty rm -f
+}
+date=`date --iso`
+datetime=`date +'%x %X'`
+echo "**** BACKUP STARTED, $datetime"
+echo 'Mounting external drive.'
+mkdir $mount_dir
+mount -o nosuid,nodev,uhelper=hal /dev/sdb1 $mount_dir
+for (( i = 0 ; i &lt; ${#sites[@]} ; i++ )); do
+  datetime=`date +'%x %X'`
+  echo "${names[$i]} - BACKUP STARTED, $datetime"
+  echo 'Deleting old backup file.'
+  delete_old_history ${names[$i]}
+  echo 'Creating SQL dump.'
+  pg_dump -U postgres -f $destination_dir/db_${names[$i]}-$date.sql ${names[$i]}
+  echo 'Creating backup archive file of SQL dump and all site assets.'
+  tar czf $destination_dir/${names[$i]}-$date.backup.tgz \
+    $destination_dir/db_${names[$i]}-$date.sql \
+    ${sites[$i]}
+  echo 'Removing SQL dump.'
+  rm $destination_dir/db_${names[$i]}-$date.sql
+  datetime=`date +'%x %X'`
+  echo "${names[$i]} - BACKUP COMPLETE, $datetime"
+done
+datetime=`date +'%x %X'`
+echo "**** BACKUP COMPLETE, $datetime"
+echo ''
+echo 'Emailing Logs to Administrator'
+cat /var/log/daily.log | mail -s "Backup Log" admin@whatever.com
+echo ''
+</highlight>
+
+If you do not have email capabilities set up on your server, please see my article on [Allowing Email To Be Sent From Mail and Sendmail](/setup-postfix-to-allow-email-to-be-sent-from-mail-and-sendmail)
+
+### Permissions
+
+<highlight lang="bash">
+chmod 755 /usr/bin/backup-sites.sh
+</highlight>
+
+## Sync Drives
+
+Ensure you have Rsync installed.  You may have to get it from the package manager.
+
+Create a `sync-ext-drives.sh` file in the same directory:
+
+<highlight lang="bash">
+#!/bin/bash
+# Sync external drives.
+# by: Russ Brooks [me@russbrooks.com]
+export PATH=/usr/local/bin:/usr/bin:/bin
+drive_source='/dev/sdb1'
+drive_source_mount='/media/disk'
+drive_destination='/dev/sdc1'
+drive_destination_mount='/media/disk-1'
+datetime=`date +'%x %X'`
+echo "**** External Drive Sync Started at $datetime ****"
+echo 'Making directories.'
+# These fail gracefully if directories exist.
+mkdir $drive_source_mount
+mkdir $drive_destination_mount
+echo "Mounting drive, $drive_source."
+mount -o nosuid,nodev,uhelper=hal $drive_source $drive_source_mount
+echo "Mounting drive, $drive_destination."
+mount -o nosuid,nodev,uhelper=hal $drive_destination $drive_destination_mount
+echo "Copying drive, $drive_source, to drive, $drive_destination."
+rsync -ax --exclude fstab --delete $drive_source_mount $drive_destination_mount
+datetime=`date +'%x %X'`
+echo "**** External Drive Sync Finished at $datetime ****"
+echo ''
+</highlight>
+  
+### Permissions
+
+<highlight lang="bash">
+chmod 755 /usr/bin/sync-ext-drives.sh
+</highlight>
+
+## Scheduling and Logging
+
+Ensure you are Root and schedule these two process to happen every night.
+
+<highlight lang="bash">
+crontab -e
+</highlight>
+
+Append these lines to the crontab file and quit/save:
+
+<highlight lang="bash">
+0 2 * * * /usr/bin/backup-sites.sh > /var/log/daily.log
+0 3 * * * /usr/bin/sync-ext-drives.sh >> /var/log/daily.log
+</highlight>
+  
+Restart Cron:
+
+<highlight lang="bash">
+/etc/init.d/cron restart
+</highlight>
+
+Create the blank log file, if it isn't there already:
+
+<highlight lang="bash">
+touch /var/log/daily.log
+</highlight>
+
+The output of both scripts will be logged to that `daily.log` file overwriting the log each night (so we don't get log bloat).  If you want the log to grow indefinitely, change the first `<` in the Cron job to a `<<`.  That will cause the output to append to the log each night.

@@ -1,0 +1,6 @@
+%img{ :src => "/images/title_subscribe.gif", :width => "59", :height => "9", :alt => "Subscribe", :title => "Subscribe", :class => "sidebar_subhead" }
+
+- title ||= "Atom feed"
+%ul.menu
+  %li
+    %a{ :href => "/articles.xml", :title => title }= title

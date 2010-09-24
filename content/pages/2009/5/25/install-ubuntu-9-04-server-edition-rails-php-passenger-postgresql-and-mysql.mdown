@@ -1,0 +1,448 @@
+date: 25 May 2009 21:32pm
+categories: Linux
+read more: More&#8230;
+summary: What follows are my notes while installing **[Ubuntu](http://www.ubuntu.com/)** 9.04 Server Edition and the full Rails/PHP/SQL stack: Rails, Passenger, PHP, PostgreSQL, and MySQL.  Hopefully it will be of some value to the community.
+
+# Install Ubuntu 9.04 Server Edition, Rails, PHP, Passenger, PostgreSQL, and MySQL
+	
+## Requirements
+
+My primary goals this time around were:
+
+1. **[Ubuntu 9.04](http://www.ubuntu.com/)** Server Edition. No GUI! Faster and even more stable.
+2. **[Apache](http://httpd.apache.org) only** 
+  * **No [nginx](http://wiki.nginx.org/)** – Nothing against this web server. nginx has served me flawlessly for the last 3 years and it is blazing fast [much faster than Apache]. Frankly, I’m sad to see it go. But, If you are running Rails along side PHP sites, it sometimes makes sense to funnel everything through one web server technology [now that Passenger has made that easy].
+  * **No [Mongrel](http://mongrel.rubyforge.org/)** – Nothing against this web server either. Mongrel too has served me well. Again, funneling everything through Apache is less to manage.
+3. **[Phusion Passenger](http://phusion.nl/)**
+4. **PHP and Rails sites running in tandem** over the same HTTP port. I previously had to use different ports with nginx and Apache running together.
+
+## Packages Selected Upon Install
+
+* **LAMP**
+* **PostgreSQL**
+* **Mail Server** – “Satellite Server” because I’m only using it to send email via my ISP’s mail server.
+* **OpenSSH Server**
+
+## Change Root PW
+
+<highlight lang="bash">
+$ sudo passwd root
+</highlight>
+
+Enter your password first.  Then you are asked for new Root PW.
+
+## Network
+
+Since this will be a web server among other things, the first order of business is to disable DHCP and instead use a static IP.
+
+Edit `/etc/network/interfaces`:
+
+<highlight lang="bash">
+su -
+nano /etc/network/interfaces
+</highlight>
+
+This particular server is connected to my LAN via 1Gb Ethernet, so the network interface ID is &#8220;eth0&#8221; (Ethernet device 0).  Look for the &#8220;eth0&#8221; section, and make it look as follows, replacing IP address with ones appropriate to your setup.
+
+<highlight lang="bash">
+# The primary network interface
+auto eth0
+iface eth0 inet static
+address 192.168.1.2
+netmask 255.255.255.0
+network 192.168.0.0
+broadcast 192.168.1.255
+gateway 192.168.1.1
+</highlight>
+
+Restart Network Services:
+
+<highlight lang="bash">
+/etc/init.d/networking restart
+</highlight>
+
+### DNS
+
+Primary and Secondary DNS addresses should pass through from your router.  Ping www.google.com to see if an IP comes back.  If not, then set up DNS manually by editing resolv.conf:
+
+<highlight lang="bash">
+nano /etc/resolv.conf
+</highlight>
+
+Change the IP address in the following line to match your ISP&#8217;s DNS.
+
+<highlight lang="bash">
+nameserver xxx.xxx.xxx.xxx
+</highlight>
+
+You may have to restart networking again:
+
+<highlight lang="bash">
+/etc/init.d/networking restart
+</highlight>
+
+## Automount External Disks
+
+I have two external USB drives connected to the machine.  Let&#8217;s get those automating on boot.
+
+View all drives, mounted or not:
+
+<highlight lang="bash">
+fdisk -l
+</highlight>
+
+Shows enough info (capacities, etc.) that you will be able to infer which Device ID each drive has.  In my case, my two external drives are sdb1 and sdc1.
+
+View drive UUIDs:
+
+<highlight lang="bash">
+ls /dev/disk/by-uuid -alh
+</highlight>
+
+You should be able to tell between the output of those two commands what UUIDs belong with which drives.  Simply match up the device IDs.  For example, the device ID of my two drives is sdb1 and sdc1.
+
+Create the directories for the mount points:
+
+<highlight lang="bash">
+mkdir /media/disk
+mkdir /media/disk-1
+</highlight>
+
+Edit File-Systems Table:
+
+<highlight lang="bash">
+nano /etc/fstab
+</highlight>
+
+Add these lines, changing UUIDs, mount points, and file systems accordingly for your environment.  My external drives are formatted with the Linux &#8220;Ext3&#8221; file system.  Yours may be different.
+
+<highlight lang="bash">
+# 500GB Seagate External
+UUID=53c6099b-9c35-4da2-975f-7436c42ff381 /media/disk   ext3  relatime,errors=remount-ro 0  1
+# 200GB Seagate External
+UUID=ccf0a125-b693-4610-9f4f-417bc8a6f653 /media/disk-1 ext3  relatime,errors=remount-ro 0  1
+</highlight>
+
+Reboot:
+
+<highlight lang="bash">
+reboot
+</highlight>
+
+Here&#8217;s a tip if you encounter mount or fsck errors on boot.  My fstab lines were initially incorrect, so when I rebooted, I experienced a file-system-check error.  I rebooted a few times, changing my fstab lines each time, but could not get it to go away.  Finally, a simple fsck after booting did the trick.
+
+<highlight lang="bash">
+fsck
+</highlight>
+
+## Database
+
+I want my websites back online ASAP, so we need to get the DB operational and data dumps imported.
+
+### PostgreSQL
+
+#### Open TCP/IP Connections
+
+Like a good database should, PostgreSQL comes in a very locked-down state security-wise.  It is up to you to increase its surface area just enough to operate it effectively, from only the machines that need to access it, and no more.  I connect to PostgreSQL from other machines on the network, so let&#8217;s make PostgreSQL listen on more than just localhost.
+
+<highlight lang="bash">
+nano /etc/postgresql/8.3/main/postgresql.conf
+</highlight>
+
+Ctrl-W to do a find for &#8220;listen_&#8221;, and change this line to:
+
+<highlight lang="bash">
+listen_addresses = '*'
+</highlight>
+
+#### Change Password of PostgreS User
+
+<highlight lang="bash">
+sudo -u postgres psql template1
+</highlight>
+
+Also following proper security practices, PostgreS runs as the less-privileged &#8220;postgres&#8221; user.  The above is a good example of the Switch-User Do [sudo] command being used to perform an operation as a user other than Root.  The `-u postgres` parameter is telling Linux to, for the life of this next command, use the Postgres user rather than Root.   So, the entire command above is saying, &#8220;Execute the `psql template1` command as the user &#8216;postgres&#8217;.&#8221;  `psql template1` launches the PostgreS command-line app [psql] and logs into the &#8216;template1&#8217; database.  When switching from Root to a user of lesser privilege, you will not be authenticated.
+
+We must do a sudo at this stage rather than simply passing username using the &#8220;psql -U postgres&#8221; method because by default Ident Authentication is the active authentication method for local connections.  Ident Authentication auto-passes your Linux credentials to PostgreS.  Think of it as &#8220;Windows Authentication&#8221; in a SQL Server environment.  This isn&#8217;t necessarily desirable in a web scenario because most web apps are configured to use local SQL users [with an MD5-encrypted password handshake].  We are going to change authentication method to MD5 in a sec.
+
+Enter this SQL code to change the password of the postgres user:
+
+<highlight lang="sql">
+ALTER USER postgres WITH ENCRYPTED password 'your_password';
+</highlight>
+
+Enter \q to exit.
+
+#### Host-Based Authentication
+
+Edit PostgreS&#8217; Host-Based Authentication file:
+
+<highlight lang="bash">
+nano /etc/postgresql/8.3/main/pg_hba.conf
+</highlight>
+
+Hit Esc-/ to go to the bottom of the file.
+
+Comment out the first line that start with &#8220;local&#8221;.  Then, replace &#8220;host all&#8221; line under IPv4 as follows, changing IP address accordingly for your network:
+
+<highlight lang="bash">
+# TYPE  DATABASE    USER        CIDR-ADDRESS          METHOD
+# Database administrative login by UNIX sockets
+# local   all         postgres                          ident sameuser
+# "local" is for Unix domain socket connections only
+local   all         all                               md5 
+# IPv4 local connections:
+host    all         all         192.168.1.0/24        md5
+# IPv6 local connections:
+host    all         all         ::1/128               md5
+</highlight>
+
+Notice that I&#8217;ve moved the column header line [TYPE DATABASE USER] above all of the other lines  For some reason, the PostgreS developers had the first &#8220;local&#8221; line above the header row.
+
+What we have done above is similar to what is called &#8220;SQL Authentication&#8221; in the Microsoft world, IOW, all users stored locally in the SQL database.  We&#8217;re not using IPv6, so forget that line for now.  The line beginning with &#8220;local&#8221; is saying, &#8220;All SQL users have access to every database and must authenticate by supplying a password [which is encrypted with the MD5 hash algorithm].&#8221;
+
+The first line beginning with &#8220;host&#8221; is saying, &#8220;All remote users must have an IP address of 192.168.1.x and must authenticate by supplying a password [encrypted with MD5] for a local SQL user.&#8221;
+
+#### Restart DB Services
+
+<highlight lang="bash">
+/etc/init.d/postgresql-8.3 restart
+</highlight>
+
+#### Test
+
+Test external connections using [pgAdmin III](http://www.pgadmin.org/) or another PostgreSQL management tool.
+
+#### Install Instrumentation
+
+pgAdmin III will nag you about Instrumentation not being installed.  It&#8217;s already on your machine, so installing it is simply:
+
+<highlight lang="bash">
+psql -U postgres -d postgres &lt; /usr/share/postgresql/8.3/contrib/adminpack.sql
+</highlight>
+
+#### Restore Backups
+
+<highlight lang="bash">
+psql -f backup.sql -U postgres your_db
+</highlight>
+
+### MySQL
+
+I don&#8217;t use MySQL if I can help it, but inevitably you run into scenarios where a client&#8217;s ISP has nothing but MySQL.  I have no choice but to keep it around.
+
+<highlight lang="bash">
+nano /etc/mysql/my.cnf
+</highlight>
+
+Comment out:
+
+<highlight lang="bash">
+# bind-address           = 127.0.0.1
+</highlight>
+
+Restart:
+
+<highlight lang="bash">
+/etc/init.d/mysql restart
+</highlight>
+
+Verify:
+
+<highlight lang="bash">
+netstat -tap | grep mysql
+</highlight>
+
+Output should be similar to:
+
+<highlight lang="bash">
+tcp    0    0 *:mysql     *:*    LISTEN  19743/mysqld
+</highlight>
+
+You were asked for a MySQL root password upon Ubuntu install.  You should now be able to connect to the DB using that user account.
+
+#### Restore Backups
+
+Import any backup dumps:
+
+<highlight lang="bash">
+mysql -p database_name &lt; db_backup-2009-05-23.sql
+</highlight>
+
+## Web Application Services
+
+Update packages:
+
+<highlight lang="bash">
+apt-get update
+apt-get upgrade
+</highlight>
+
+### Ruby on Rails / Phusion Passenger
+
+There is a Passenger Aptitude package called &#8220;libapache2-mod-passenger&#8221;, but every time I installed it, it removed the PHP, PostgreSQL, and MySQL Apache modules.  The Passenger Gem, on the other hand, was successful, and I am running PHP and Rails in tandem on Apache.  I believe the process went like this:
+
+<highlight lang="bash">
+apt-get install build-essential
+apt-get install libpq-dev
+apt-get install ruby irb rdoc ruby1.8-dev libopenssl-ruby imagemagick
+apt-get install rubygems
+gem install rails
+gem install passenger
+gem install postgres
+gem install tzinfo
+</highlight>
+
+For my blog to work, I had to install slightly older versions of a couple of gems&#8230;
+
+<highlight lang="bash">
+gem install -v=2.2.2 rails
+gem install -v=1.9.0 liquid
+</highlight>
+
+...then ensure the RAILS_GEM_VERSION was set to 2.2.2 in config/environments.rb:
+
+<highlight lang="ruby">
+RAILS_GEM_VERSION = '2.2.2' unless defined? RAILS_GEM_VERSION
+</highlight>
+
+Follow the install process&#8217;s instructions and create a passenger.load file.
+
+<highlight lang="bash">
+nano /etc/apache2/mods-enabled/passenger.load
+</highlight>
+
+My file looks as follows.  Yours may be different.  Change it accordingly, ensuring that the paths are valid.
+
+<highlight lang="bash">
+LoadModule passenger_module /var/lib/gems/1.8/gems/passenger-2.2.2/ext/apache2/mod_passenger.so
+PassengerRoot /var/lib/gems/1.8/gems/passenger-2.2.2
+PassengerRuby /usr/bin/ruby1.8
+RailsEnv production
+</highlight>
+
+### PHP
+
+<highlight lang="bash">
+apt-get install php5 libapache2-mod-php5 apache2-prefork-dev libapr1-dev php5-gd php5-pgsql php5-mysql
+</highlight>
+
+## Virtual Hosts
+
+<highlight lang="bash">
+cd /etc/apache2
+nano ports.conf
+</highlight>
+
+Verizon blocks Port 80, so I have to serve my websites over alternate ports.  So ports.conf contains these lines, replacing the Port 80 lines that are there.
+
+<highlight lang="bash">
+NameVirtualHost *:8000
+Listen 8000
+</highlight>
+
+Edit Virtual Hosts config files for sites.
+
+<highlight lang="bash">
+cd /etc/apache2/sites-available
+nano www2.russbrooks.com
+</highlight>
+
+This is the contents of the above file for my Rails sites:
+
+<highlight lang="xml">
+&lt;VirtualHost *:8000&gt;
+  ServerName www2.russbrooks.com
+  DocumentRoot /var/www/rb.com/www/public
+  CustomLog /var/www/rb.com/log/access_log common
+  ErrorLog /var/www/rb.com/log/error_log
+&lt;/VirtualHost&gt;
+</highlight>
+
+This is a config file for a PHP site:
+
+<highlight lang="xml">
+&lt;VirtualHost *:8000&gt;
+  ServerName example.russbrooks.com
+  DocumentRoot /var/www/example/www
+  CustomLog /var/www/example/log/access_log common
+  ErrorLog /var/www/example/log/error_log
+    &lt;Directory "/var/www/example/www"&gt;
+      Order allow,deny
+      Allow from all
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</highlight>
+
+Create symlink and restart Apache:
+
+<highlight lang="bash">
+cd ../sites-enabled
+ln -s ../sites-available/www2.russbrooks.com 001-www2.russbrooks.com
+apache2ctl restart
+</highlight>
+
+## Permissions
+
+Change ownership of your web apps to the www-data user and group, and change their permissions accordingly:
+
+<highlight lang="bash">
+chown -R www-data:www-data /var/www
+chmod -R 755 /var/www
+</highlight>
+
+## Dynamic DNS Client
+
+I use a Dynamic DNS service, [DynDNS](http://www.dyndns.com), that updates my DNS records every time my ISP [Verizon] changes my IP.  There is a package for the client app:
+
+<highlight lang="bash">
+apt-get install ddclient
+nano /etc/ddclient.conf
+</highlight>
+
+My conf file looks like this:
+
+<highlight lang="bash">
+ssl=yes
+use=web, web=checkip.dyndns.com/, web-skip='IP Address'
+
+## Dynamic
+# members.dyndns.org is the default if omitted.
+# server=members.dyndns.org,
+protocol=dyndns2,
+login=YourUN,
+password=YourPw
+subdomain.nowhere.org
+
+## Custom
+custom=yes,
+protocol=dyndns2,
+login=YourUN,
+password=YourPw
+a.russbrooks.com,bunch.russbrooks.com,of.russbrooks.com,subdomains.russbrooks.com
+</highlight>
+
+Restart DDClient:
+
+<highlight lang="bash">
+/etc/init.d/ddclient restart
+</highlight>
+
+## Ultraviolet
+
+My syntax-highlighting Gem for my blog:
+
+<highlight lang="bash">
+apt-get install libonig-dev
+gem install ultraviolet
+</highlight>
+
+## Security
+
+Please see my article on <a href="/2009/5/25/linux-security-public-key-authentication">Linux Security: Public Key Authentication</a>.
+
+## No Samba?
+
+That&#8217;s right.  No Samba.  It&#8217;s buggy.  I, and a number of associates, have lost data during large file transfers because of it.  Newer versions may be fine; I&#8217;m not exactly sure.  But, I&#8217;ve heard, read, and experienced too many horror stories, and still experience horror stories at work daily where we are still entrenched in it.  I use SSH for everything &#8211; remote control and file transfer.  <a href="http://www.panic.com/transmit/">Transmit</a> is a great tool in that regard.  It allows you to mount remote FTP and SFTP sites as if they are local folders (and much faster than ExpanDrive).
+		
+

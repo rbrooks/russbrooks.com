@@ -1,0 +1,17 @@
+%img{ :src => "/images/title_social.gif", :width => "41", :height => "9", :alt => "Social", :title => "Social", :class => "sidebar_subhead" }
+
+- url = @page.nil? ? base_url : url_for(@page)
+- heading = @page.nil? ? @heading : @page.heading
+%ul.menu
+  %li
+    %a{ :href => "http://delicious.com/post?url=#{url}&title=#{heading}", :title => "Bookmark on delicious.com" }
+      Delicious
+    %img{ :src => "/images/delicious.png", :align => 'absmiddle', :alt => "Bookmark on delicous.com", :style => "margin-left: 6px;" }
+  %li
+    %a{ :href => "http://digg.com/submit?phase=2&url=#{url}&title=#{heading}", :title => "Digg it!" }
+      Digg
+    %img{ :src => "/images/digg.png", :align => 'absmiddle', :alt => "Digg it!", :style => "margin-left: 6px;" }
+  %li
+    %a{ :href => "http://reddit.com/submit?url=#{url}&title=#{heading}", :title => "Reddit!" }
+      Reddit
+    %img{ :src => "/images/reddit.gif", :align => 'absmiddle', :alt => "Reddit!", :style => "margin-left: 6px;" }

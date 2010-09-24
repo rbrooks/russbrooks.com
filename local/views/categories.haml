@@ -1,0 +1,7 @@
+%img{ :src => "/images/title_categories.gif", :width => "68", :height => "9", :alt => "Categories", :title => "Categories", :class => "sidebar_subhead" }
+
+- if ! @menu_items.empty?
+  %ul.menu
+    - @menu_items.each do |page|
+      %li
+        %a{ :href => page.abspath, :title => page.heading }= page.heading

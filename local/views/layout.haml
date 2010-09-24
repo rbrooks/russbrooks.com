@@ -1,0 +1,45 @@
+!!!
+%html{ :lang => "en", "xml:lang" => "en", :xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %meta{ "http-equiv" => "content-type", "content" => "text/html; charset=utf-8" }
+    - if @description
+      %meta{ "name" => "description", "content" => @description }
+    - if @keywords
+      %meta{ "name" => "keywords", "content" => @keywords }
+    %title= @title
+    %link{ :href => "/stylesheets/main.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
+    - if local_stylesheet?
+      %link{ :href => "/css/local.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
+    %link{ :href => "/articles.xml", :rel => "alternate", :type => "application/atom+xml" }
+    %script{ :type => 'text/javascript', :src  => '/javascripts/lifespan.js' }
+    / :javascript
+    /   var disqus_iframe_css = 'http://www2.russbrooks.com:8000/stylesheets/main.css';
+    = haml :analytics, :layout => false
+  %body{ :class => @body_class }
+    #wrap
+      #nav
+        %a{ :href => "/", :class => :home, :id => @page.nil? ? :current : '' } &nbsp;
+        %a{ :href => "http://gallery.russbrooks.com:8000", :class => :photographs } &nbsp;
+        %a{ :href => "/links", :class => :links, :id => (@page && @page.heading == 'Links') ? :current : '' } &nbsp;
+        %a{ :href => "/bio", :class => :bio, :id => (@page && @page.heading == 'Bio') ? :current : '' } &nbsp;
+        %a{ :href => "/colophon", :class => :colophon, :id => (@page && @page.heading == 'Colophon') ? :current : '' } &nbsp;
+
+      #banner
+        %img{ :src => "/images/banner.jpg", :width => "816", :height => "186", :alt => "Autumn Sycamore, by: Russell Brooks", :title => "Autumn Sycamore, by: Russell Brooks" }
+
+      %img{ :src => "/images/div_shadow_line.gif", :width => "904", :height => "33", :alt => "", :style => "float: left;" }
+
+      #content
+
+        #content_left
+          = yield
+
+        %img{ :src => "/images/div_archives.gif", :alt => "Archives", :style => "float: left;" }
+
+        = haml :sidebar, :layout => false
+
+      #footer
+        %p
+          powered by:
+          %a{ :href => "http://effectif.com/nesta" } nesta<br />
+          designed by: Russell Brooks

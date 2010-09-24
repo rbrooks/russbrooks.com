@@ -1,0 +1,92 @@
+# Colophon
+
+This section describes how this site was made, the tools used, and the technologies behind it.
+
+## Design
+
+### Graphic
+
+This site was hand-crafted using the finest raster-graphics application in the world, Adobe Photoshop.
+
+### Color
+
+![Color Scheme](/images/swatch_color_scheme.gif "Color Scheme")
+
+Warm and cozy – nothing jarring and boisterous. I knew I wanted earth tones this time because Mother Nature is often the best art-school professor and, frankly, my last site was a kitschy Christmas lawn ornament, built a decade ago, prior to seven years of professional design experience. During a Doo-Wop–themed design for Harley-Davidson, I happened upon and fell in love with this bistre, powder blue, saffron combination. It hearkens back to 40’s and 50’s-era design, for which, I have a new-found admiration. I desaturated it to relax it and shifted the colors somewhat to bring an ever so small amount of green into the browns—slightly olive if you stare long enough, emulating the primary wall color in my home [which those ever-so-clever, paint-naming folks tagged, “Khaki Shadow”].
+
+### Markup and Stylesheets
+
+Hypertext is hand-authored to the <abbr title="Extensible Hypertext Markup Language">XHTML</abbr> 1.0 standard. Cascading Style Sheets were also hand-authored and contain a combination of 1.0, 2.0, and 3.0 properties.
+
+### Photography
+
+All photography throughout the site is mine.
+
+### Typography
+
+* **Body Font** – Trebuchet – 1.6em leading
+* **Headings** – Georgia, Small-Caps. I was using a fascinating technique called, [Flash Satay](http://www.alistapart.com/articles/flashsatay/), to display headings in my logo font, Minister, but performance suffered too much with a lot of headings on the page.
+* **Logo** – A gorgeous Adobe typeface called &#8219;Minister&#8220; that I finally found after hours of scouring the Adobe Font Folio, OpenType Edition. I wanted classy but subtly informal. The small caps, Melior x-height, and the below-the-baseline stem on the &#8219;R&#8220; are all characteristics of my own handwriting. Minister&#8217;s oblique stresses and concave serifs keep it playful and less stuffy. Perfect.
+* **Nav Bar** – Futura Bold – A timeless classic!
+* **Sidebar Headings** – Futura Heavy
+* **Type on Photos** – Bickham Script – Ligatures, swash, and ornaments active
+
+## Programming Language
+
+### Ruby
+
+[Ruby](http://www.ruby-lang.org/) is the most elegant and powerful language I've ever worked with.  It's that simple.  I came up through Basic, Visual Basic, VB Script, JavaScript, C# for 7 years, PHP for 5 years, and various others.  I an now fortunate enough to code Ruby full-time professionally.
+
+## Framework
+
+### Rails
+
+At some point several years ago, the [Rails](http://rubyonrails.org/) framework caught my fascination while I was a C# and PHP programmer.  I committed myself to learning it.  I rewrote my site on Rails to learn the technology.  I bought every known Rails textbook, built an Ubuntu Linux server, and immersed myself in this innovative web-development framework.  This site was built on Rails for upwards of three years, but I decided recently hat Rails was overkill for my meager blog, and a new, lighter, and faster Ruby framework caught my eye.
+
+### Sinatra
+
+This blog is currently founded upon [Sinatra](http://www.sinatrarb.com/).  Sinatra is a game-changing, very lightweight Ruby framework that makes scripting up web pages a sinch.
+
+## Development Tools
+
+### Coda
+
+[Coda](http://www.panic.com/coda/) is my current Mac <abbr title="Integrated Development Environment">IDE</abbr> of choice at home and at work. Coda has grown into quite a piece of software, with excellent Subversion integration, Auto-Complete, one-click deployment features, a plethora of supported languages, and it is a Mac-native Cocoa app so integration with the OS is tight.
+
+### TextMate
+
+[TextMate](http://macromates.com/) TextMate is simply a magical editor. Even lighter than Coda, so it is good to keep around for quick edits to files outside my Coda projects. The &#8220;Edit in TextMate&#8221; browser integration is indispensable.
+
+## Revision Control System
+
+### Subversion
+
+All source code is held in [Subversion](http://subversion.tigris.org/) running on Ubuntu Server Edition.
+
+## Database
+
+### PostgreSQL
+
+![PostgreSQL](/images/logo_PostgreSQL.gif "PostgreSQL")
+
+Having built countless apps on SQL Server, explored SQLite, built a number of web solutions on MySQL, and used [PostgreSQL](http://www.postgresql.org) extensively for six years, in my opinion PostgreS is the only choice in open-source SQL databases.  It is extremely fast, unfathomably stable, standards-compliant, flexible, and supports a wide array of procedural languages.  I used to say that MySQL comes a little more &#8220;packaged&#8221;, but this is not true any more with the advent of things like [EnterpriseDB](http://www.enterprisedb.com).  I won&#8217;t get into the benefits here because that can be found online, but trust me, having worked with both for years, PostgreS is far superior to MySQL.  There is no comparison.
+
+## Operating System
+
+### Ubuntu Server Edition
+
+The site has been running on [Ubuntu](http://www.ubuntu.com/) for a number of years without a glitch or crash.  I&#8217;m running Ubuntu 10.04 Server Edition -- GUIless, fast, and stable.  Linux really does "just run".  As a defected Windows guy, I haven't looked back.
+
+Just a quick word of caution, from experience.  My early dabblings in Ruby on Rails, years ago, were on Windows XP, against my better judgment. Experience has repeatedly indicated to me that software runs better in its native environment. At some point, I hit a few obstacles on Windows XP that would not have existed on Linux. Without getting into details here, let’s just say that I did successfully get Rails running on Windows, but things were far more seamless [less troublesome] on the Linux side, as expected. Plus, everything performs better, from development tools to frameworks to web servers to database technologies. Do yourself a favor. Run software in its native environment.
+
+## Web Server
+
+### Apache and Phusion Passenger
+
+For two years I was using an [nginx](http://nginx.net/) reverse proxy and a cluster of [Mongrel](http://github.com/fauna/mongrel) instances behind it. This setup was very fast and ran flawlessly.
+
+I&#8217;m now running Apache and [Phusion Passenger](http://phusion.nl) so that I can host PHP and Rails sites in tandem while minimizing maintenance. Funneling everything through Apache is less to manage, but Apache is far more resource intensive than nginx. I&#8217;ve noticed that the site feels slower than it did with Nginx / Mongrel, and I believe this is only in the area of cached content. Like my Nginx reverse proxy, Passenger serves cached assets directly from the drive circumventing Ruby and Rails. But nothing served up static assets faster than Nginx. Secondly, I have a problem where every so often while actively browsing one of the sites on this box, the web server pauses for a period of 10 to 15 seconds. It’s as if something is being restarted in the background. I’ve seen this referred to as &#8220;Passenger Choke&#8221;. I will miss nginx, but I suppose it&#8217;s a small price to pay for lower cost of maintenance.
+
+## Hosting
+
+This site is hosted at home over a residential, Verizon FiOS, 20Mb, fiber connection. I’m using Verizon’s questionable ActionTec router. I’m using [DynDns.org](http://www.dyndns.com) as my dynamic DNS provider.
