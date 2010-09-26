@@ -1,11 +1,13 @@
 source :gemcutter
 
 gem "builder", "2.1.2"
-gem "haml", "3.0.13"
+#gem "haml", "3.0.13"
+gem "haml", "3.0.18"
 gem "maruku", "0.6.0"
 gem "RedCloth", "4.2.3"
 gem "sinatra", "1.0"
-gem "nokogiri", "1.4.2"
+#gem "nokogiri", "1.4.2"
+gem "nokogiri", "1.4.3.1"
 
 group :development do
   gem "shotgun"
