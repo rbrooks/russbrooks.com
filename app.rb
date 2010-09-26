@@ -14,7 +14,7 @@ require './lib/overrides'
 
 enable :run
 
-Dir["extensions/*.rb"].each do |extension_file|
+Dir["./extensions/*.rb"].each do |extension_file|
   require File.join('./extensions', File.basename(extension_file))
 end
 
