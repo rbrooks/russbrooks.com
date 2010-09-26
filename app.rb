@@ -5,17 +5,17 @@ require 'sinatra'
 require 'builder'
 require 'haml'
 require 'sass'
-
-require './lib/cache'
-require './lib/config'
-require './lib/models'
-require './lib/path'
-require './lib/overrides'
+$:.unshift(File.expand_path(File.dirname(__FILE__)))
+require 'lib/cache'
+require 'lib/config'
+require 'lib/models'
+require 'lib/path'
+require 'lib/overrides'
 
 enable :run
 
-Dir["./extensions/*.rb"].each do |extension_file|
-  require File.join('./extensions', File.basename(extension_file))
+Dir["extensions/*.rb"].each do |extension_file|
+  require File.join('extensions', File.basename(extension_file))
 end
 
 configure :production do

@@ -1,17 +1,19 @@
 module Nesta
   module Overrides
     def self.load_local_app
-      require File.join(Nesta::Path.local, "./app")
-    rescue LoadError
+      p 'foo'
+
+#      require File.join(Nesta::Path.local, "app")
+    #rescue LoadError
     end
     
     def self.local_view_path
-      File.join(Nesta::Path.local, "./views")
+      File.join(Nesta::Path.local, "views")
     end
     
     def self.load_theme_app
       if Nesta::Config.theme
-        require File.join(Nesta::Path.themes, Nesta::Config.theme, "./app")
+        require File.join(Nesta::Path.themes, Nesta::Config.theme, "app")
       end
     rescue LoadError
     end
@@ -20,7 +22,7 @@ module Nesta
       if Nesta::Config.theme.nil?
         nil
       else
-        File.join(Nesta::Path.themes, Nesta::Config.theme, "./views")
+        File.join(Nesta::Path.themes, Nesta::Config.theme, "views")
       end
     end
 
