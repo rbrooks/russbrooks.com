@@ -10,7 +10,7 @@ usage()
 Usage: $(basename $0) (install <url>|enable <name>|create <name>)
 
 COMMANDS
-    
+
     install <url>   Installs a theme from a Git repository
     enable <name>   Selects the specified theme in config.yml
                     (the theme should already be installed)

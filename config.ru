@@ -1,5 +1,11 @@
-require 'rubygems'
-require 'sinatra'
-require './app'
+$:.unshift File.expand_path(File.dirname(__FILE__) + '/lib')
 
-run Sinatra::Application
+require 'rubygems'
+require 'bundler'
+
+Bundler.setup
+
+require './application'
+
+use Nesta::Application
+run Sinatra::Base

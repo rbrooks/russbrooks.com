@@ -1,13 +1,14 @@
 # Title and subheading for your site. Used on the home page and in page
 # titles.
 #
-title: "Russell H. Brooks"
+title: "Russell H. Brooks - Russ Brooks"
 subtitle: "Circuitous Sinuosity"
 
 # If you want to set the descrition or keywords meta tags on your site's
 # home page, do it here.
-description: "Russell Brooks - Superbikes, Skiing, and Web Engineering in Ruby"
-keywords: "ruby, rails, superbikes, web design, web development, russ brooks"
+#
+# description: "Set this to something that describes your home page"
+# keywords: "enter 3 or 4, comma separated, keywords"
 
 # You should really specify your content's author when generating an
 # Atom feed. Specify at least one of name, uri or email, and Nesta will
@@ -40,6 +41,24 @@ disqus_short_name: russbrooks
 #     deploying Nesta to Heroku.
 #
 cache: false
+# We use Sinatra Cache now. No need for Nesta's home-grown one. [RHB]
+
+# max_age
+#     These settings determine the max-age value for the Cache-Control
+#     header sent back with the response. Please see RFC 2616, particularly
+#     section 13: http://www.ietf.org/rfc/rfc2616.txt for details of the
+#     Cache-Control header. For an overview of HTTP caching, please see "Things
+#     Caches Do" by Ryan Tomayko: http://tomayko.com/writings/things-caches-do
+#
+#     It may be useful to omit or override these values in a test environment.
+#
+
+max_age:
+  index: 3600
+  feed: 3600
+  sitemap: 3600
+  asset: 2592000
+  page: 600
 
 # content
 #     The root directory where nesta will look for your article files.
@@ -65,12 +84,8 @@ content: content
 # recommended regardless of how you're deploying (if you have a GA account!).
 #
 # Don't forget to uncomment the "production:" line too...
-development:
-  cache: false
-  content: content
 
 production:
-  cache: false
-  content: content
+  # cache: false
+  # content: content
   google_analytics_code: "UA-1695100-1"
-

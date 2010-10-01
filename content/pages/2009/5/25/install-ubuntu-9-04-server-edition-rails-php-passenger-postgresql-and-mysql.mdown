@@ -3,7 +3,7 @@ categories: Linux
 read more: More&#8230;
 summary: What follows are my notes while installing **[Ubuntu](http://www.ubuntu.com/)** 9.04 Server Edition and the full Rails/PHP/SQL stack: Rails, Passenger, PHP, PostgreSQL, and MySQL.  Hopefully it will be of some value to the community.
 
-# Install Ubuntu 9.04 Server Edition, Rails, PHP, Passenger, PostgreSQL, and MySQL
+# Install Ubuntu Server Edition, Rails, PHP, Passenger, PostgreSQL, and MySQL
 	
 ## Requirements
 
@@ -20,7 +20,7 @@ My primary goals this time around were:
 
 * **LAMP**
 * **PostgreSQL**
-* **Mail Server** – “Satellite Server” because I’m only using it to send email via my ISP’s mail server.
+* **Mail Server** – Selected the “Satellite Server” option, because I’m only using it to send email via my ISP’s mail server.
 * **OpenSSH Server**
 
 ## Change Root PW

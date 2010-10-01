@@ -1,30 +1,30 @@
+ENV['RACK_ENV'] = 'test'
+
 require "rubygems"
 require "spec"
-require "spec/interop/test"
 require "rack/test"
 require "rspec_hpricot_matchers"
-require "sinatra"
 
-Test::Unit::TestCase.send :include, Rack::Test::Methods
+require File.join(File.dirname(__FILE__), *%w[support config_spec_helpers])
+require File.join(File.dirname(__FILE__), *%w[support model_factory])
+require File.join(File.dirname(__FILE__), "..", "application")
 
-Spec::Runner.configure do |config|
-  config.include(RspecHpricotMatchers)
+Nesta::Application.class_eval do
+  set :reload_templates, true
 end
-
-set :views => File.join(File.dirname(__FILE__), "..", "views"),
-    :public => File.join(File.dirname(__FILE__), "..", "public")
-
-set :environment, :test
-set :reload_templates, true
-
-require File.join(File.dirname(__FILE__), "..", "app")
 
 module RequestSpecHelper
   def app
-    Sinatra::Application
+    Nesta::Application
   end
-  
+
   def body
     last_response.body
   end
+end
+
+Spec::Runner.configure do |config|
+  config.include(Rack::Test::Methods)
+  config.include(RspecHpricotMatchers)
+  config.include(RequestSpecHelper)
 end

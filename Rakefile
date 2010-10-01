@@ -1,29 +1,21 @@
 require "rubygems"
-require "sinatra"
 require "spec/rake/spectask"
+
+$:.unshift './lib'
+require "./application"
 begin
   require "vlad"
   Vlad.load(:scm => :git, :app => nil, :web => nil)
 rescue LoadError
 end
 
-require File.join(File.dirname(__FILE__), *%w[spec model_factory])
-require File.join(File.dirname(__FILE__), *%w[lib models])
-require File.join(File.dirname(__FILE__), *%w[lib config])
-
 desc "Run all specs in spec directory"
-Spec::Rake::SpecTask.new(:spec) do |t|
-  t.spec_files = FileList["spec/*_spec.rb"]
-end
-
-class Factory
-  include ModelFactory
-end
+Spec::Rake::SpecTask.new(:spec)
 
 namespace :heroku do
   desc "Set Heroku config vars from config.yml"
   task :config do
-    Sinatra::Application.environment = ENV["RACK_ENV"] || "production"
+    Nesta::Application.environment = ENV["RACK_ENV"] || "production"
     settings = {}
     Nesta::Config.settings.map do |variable|
       value = Nesta::Config.send(variable)
@@ -40,20 +32,25 @@ namespace :heroku do
   end
 end
 
+require './spec/support/model_factory'
+class Factory
+  include ModelFactory
+end
+
 namespace :setup do
   desc "Create the content directory"
   task :content_dir do
     FileUtils.mkdir_p(Nesta::Config.content_path)
   end
-  
+
   desc "Create some sample pages"
   task :sample_content => :content_dir do
     factory = Factory.new
-    
+
     File.open(Nesta::Config.content_path("menu.txt"), "w") do |file|
       file.puts("fruit")
     end
-    
+
     factory.create_category(
       :heading => "Fruit",
       :path => "fruit",
@@ -86,7 +83,7 @@ EOF
         :content => "#{fruit} are good because... blah blah.\n\n#{location}"
       )
     end
-    
+
     summary = <<-EOF
 You can edit this article by opening `#{File.join(Nesta::Config.page_path, 'example.mdown')}` in your text editor. Make some changes, then save the file and reload this web page to preview your changes.
     EOF
