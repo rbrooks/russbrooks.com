@@ -45,7 +45,7 @@ module Nesta
       end
 
       def set_common_variables
-        @menu_items = Page.menu_items
+        @menu_items = Page.menu_items.compact
         @site_title = Nesta::Config.title
         set_from_config(:title, :subtitle, :google_analytics_code)
         @heading = @title
@@ -157,8 +157,10 @@ module Nesta
       @heading = @title
       @title = "#{@title} - #{@subtitle}"
       @articles = Page.find_articles[0..7]
-      @body_class = "home"
-      cache :proxy => 'public', :max_age => 'index'
+      @body_class = 'home'
+      @banner_img = '/images/banner.jpg'
+      @banner_title = 'Russell Brooks'
+      # cache :proxy => 'public', :max_age => 'index'
       haml(:index)
     end
 
@@ -188,12 +190,12 @@ module Nesta
 
     get "*" do
       set_common_variables
-      parts = params[:splat].map { |p| p.sub(/\/$/, "") }
+      parts = params[:splat].map { |p| p.sub(/\/$/, '') }
       @page = Page.find_by_path(File.join(parts))
       raise Sinatra::NotFound if @page.nil?
       set_title(@page)
-      set_from_page(:description, :keywords)
-      cache :proxy => 'public', :max_age => 'page', :etag => @page.etag
+      set_from_page(:description, :keywords, :banner_img, :banner_title)
+      # cache :proxy => 'public', :max_age => 'page', :etag => @page.etag
       haml(:page)
     end
   end

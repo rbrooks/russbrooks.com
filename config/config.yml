@@ -1,14 +1,7 @@
-# Title and subheading for your site. Used on the home page and in page
-# titles.
-#
-title: "Russell H. Brooks - Russ Brooks"
-subtitle: "Circuitous Sinuosity"
-
-# If you want to set the descrition or keywords meta tags on your site's
-# home page, do it here.
-#
-# description: "Set this to something that describes your home page"
-# keywords: "enter 3 or 4, comma separated, keywords"
+title: Russell Brooks
+subtitle: Circuitous Sinuosity
+description: Ruby Programming, Web Development, Web Design, Photography, and Superbikes by Russ Brooks
+keywords: russ brooks, ruby, rails, sinatra, linux, mac, motorcycles, superbikes, photography, wed design, web development
 
 # You should really specify your content's author when generating an
 # Atom feed. Specify at least one of name, uri or email, and Nesta will
@@ -85,7 +78,10 @@ content: content
 #
 # Don't forget to uncomment the "production:" line too...
 
+# development:
+#   cache: false
+
 production:
   # cache: false
   # content: content
-  google_analytics_code: "UA-1695100-1"
+  google_analytics_code: UA-1695100-1

@@ -17,8 +17,8 @@ class FileModel
   def self.find_all
     file_pattern = File.join(model_path, "**", "*.{#{FORMATS.join(',')}}")
     Dir.glob(file_pattern).map do |path|
-      relative = path.sub("#{model_path}/", "")
-      load(relative.sub(/\.(#{FORMATS.join('|')})/, ""))
+      relative = path.sub("#{model_path}/", '')
+      load(relative.sub(/\.(#{FORMATS.join('|')})/, ''))
     end
   end
 
@@ -43,21 +43,21 @@ class FileModel
 
   def initialize(filename)
     @filename = filename
-    @format = filename.split(".").last.to_sym
+    @format = filename.split('.').last.to_sym
     parse_file
     @mtime = File.mtime(filename)
   end
 
   def permalink
-    File.basename(@filename, ".*")
+    File.basename(@filename, '.*')
   end
 
   def path
-    abspath.sub(/^\//, "")
+    abspath.sub(/^\//, '')
   end
 
   def abspath
-    prefix = File.dirname(@filename).sub(Nesta::Config.page_path, "")
+    prefix = File.dirname(@filename).sub(Nesta::Config.page_path, '')
     File.join(prefix, permalink)
   end
 
@@ -77,11 +77,11 @@ class FileModel
   end
 
   def description
-    metadata("description")
+    metadata('description')
   end
 
   def keywords
-    metadata("keywords")
+    metadata('keywords')
   end
 
   private
@@ -129,7 +129,7 @@ class Page < FileModel
     end
 
     def menu_items
-      menu = Nesta::Config.content_path("menu.txt")
+      menu = Nesta::Config.content_path('menu.txt')
       pages = []
       if File.exist?(menu)
         File.open(menu).each { |line| pages << Page.load(line.chomp) }
@@ -158,29 +158,37 @@ class Page < FileModel
   end
 
   def date(format = nil)
-    @date ||= if metadata("date")
+    @date ||= if metadata('date')
       if format == :xmlschema
-        Time.parse(metadata("date")).xmlschema
+        Time.parse(metadata('date')).xmlschema
       else
-        DateTime.parse(metadata("date"))
+        DateTime.parse(metadata('date'))
       end
     end
   end
 
+  def banner_img
+    metadata('banner') ? '/images/' + metadata('banner') : '/images/banner.jpg'
+  end
+
+  def banner_title
+    metadata('banner title') || 'Russell H. Brooks'
+  end
+
   def atom_id
-    metadata("atom id")
+    metadata('atom id')
   end
 
   def read_more
-    metadata("read more") || "Continue reading"
+    metadata('read more') || 'Continue reading'
   end
 
   def etag
-    @etag = metadata("etag") || Digest::SHA1.hexdigest(body)
+    @etag = metadata('etag') || Digest::SHA1.hexdigest(body)
   end
 
   def summary
-    if summary_text = metadata("summary")
+    if summary_text = metadata('summary')
       summary_text.gsub!('\n', "\n")
       case @format
       when :textile
@@ -206,8 +214,8 @@ class Page < FileModel
   end
 
   def categories
-    categories = metadata("categories")
-    paths = categories.nil? ? [] : categories.split(",").map { |p| p.strip }
+    categories = metadata('categories')
+    paths = categories.nil? ? [] : categories.split(',').map { |p| p.strip }
     valid_paths(paths).map { |p| Page.find_by_path(p) }.sort do |x, y|
       x.heading.downcase <=> y.heading.downcase
     end

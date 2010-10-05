@@ -1,10 +1,3 @@
-/ .breadcrumb
-/   %a{ :href => "/" } Home
-/   &gt;
-/   - if @page.parent
-/     %a{ :href => @page.parent.abspath }= @page.parent.heading
-/     &gt;
-/   = @page.heading
 - if @page.date
   .date= format_date(@page.date)
 ~ @page.to_html

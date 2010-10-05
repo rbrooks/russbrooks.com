@@ -11,27 +11,27 @@ a:visited {
 a:hover {
 	color: #e2d396;
 }
-a.home { background: url(../images/nav_home.gif) no-repeat; width: 73px; height: 30px; }
+a.home { background: url(/images/nav_home.gif) no-repeat; width: 73px; height: 30px; }
 a.home:hover { background-position: 0px -30px; }
 
-a.photographs { background: url(../images/nav_photographs.gif) no-repeat; width: 133px; height: 30px; }
+a.photographs { background: url(/images/nav_photographs.gif) no-repeat; width: 133px; height: 30px; }
 a.photographs:hover { background-position: 0px -30px; }
 
-a.portfolio { background: url(../images/nav_portfolio.gif) no-repeat; width: 104px; height: 30px; }
+a.portfolio { background: url(/images/nav_portfolio.gif) no-repeat; width: 104px; height: 30px; }
 a.portfolio:hover { background-position: 0px -30px; }
 
-a.links { background: url(../images/nav_links.gif) no-repeat; width: 70px; height: 30px; }
+a.links { background: url(/images/nav_links.gif) no-repeat; width: 70px; height: 30px; }
 a.links:hover { background-position: 0px -30px; }
 
-a.bio { background: url(../images/nav_bio.gif) no-repeat; width: 54px; height: 30px; }
+a.bio { background: url(/images/nav_bio.gif) no-repeat; width: 54px; height: 30px; }
 a.bio:hover { background-position: 0px -30px; }
 
-a.colophon { background: url(../images/nav_colophon.gif) no-repeat; width: 104px; height: 30px; }
+a.colophon { background: url(/images/nav_colophon.gif) no-repeat; width: 104px; height: 30px; }
 a.colophon:hover { background-position: 0px -30px; }
-
-a.users { background: url(../images/nav_users.gif) no-repeat; width: 70px; height: 30px; }
+/*
+a.users { background: url(/images/nav_users.gif) no-repeat; width: 70px; height: 30px; }
 a.users:hover { background-position: 0px -30px; }
-
+*/
 a#current { background-position: 0px -60px; }
 
 abbr, acronym {
@@ -205,7 +205,7 @@ p {
 	margin-bottom: .75em;
 }
 ul li {
-	list-style-image: url(../images/bullet.gif);
+	list-style-image: url(/images/bullet.gif);
 }
 table.figures {
 	border-spacing: 1px;
@@ -244,7 +244,7 @@ img#break {
 	float: left;
 }
 #content {
-	background: url(../images/bg_content.gif) repeat-y;
+	background: url(/images/bg_content.gif) repeat-y;
 	color: #d2c48b;
 	clear: both;
 	font: normal 9pt "Trebuchet MS", Verdana, "Lucida Grande", sans-serif;
@@ -274,7 +274,7 @@ img#break {
 	width: 506px;
 }
 #feature {
-	background: #4f4a34 url(../images/feature_whd_bg.jpg) no-repeat bottom left;
+	background: #4f4a34 url(/images/feature_whd_bg.jpg) no-repeat bottom left;
 	color: #b4a877;
 	float: left;
 	font: normal 10pt "Trebuchet MS", Verdana, "Lucida Grande", sans-serif;
@@ -285,7 +285,7 @@ img#break {
 	float: left;
 }
 #footer {
-	background: #302a1e url(../images/footer.gif) no-repeat; 
+	background: #302a1e url(/images/footer.gif) no-repeat; 
 	clear: both;
 	color: #b4a877;
 	font: normal 8pt "Trebuchet MS", Verdana, "Lucida Grande", sans-serif;
@@ -304,7 +304,8 @@ img#break {
 #nav {
 	margin: 0 auto;
 	height: 30px;
-	width: 543px;
+/*  width: 543px;*/
+  width: 440px;
 	z-index: 0;
 }
 #nav a {
@@ -367,7 +368,7 @@ img#randompic {
 	padding: 1px;
 }
 #slider {
-	background: url(../images/nav_location.gif) no-repeat bottom center;
+	background: url(/images/nav_location.gif) no-repeat bottom center;
 	position: absolute;
 	width: 21px;
 	height: 7px;
@@ -383,7 +384,7 @@ img#randompic {
 	margin-left: 0px;
 }
 #wrap {
-	background: #302a1e url(../images/masthead.jpg) no-repeat; 
+	background: #302a1e url(/images/masthead.jpg) no-repeat; 
 	border-left: 1px solid #594e37;
 	border-right: 1px solid #0c0a08;
 	margin: 0 auto;
@@ -426,13 +427,13 @@ html>body p.feature {
 	padding-left: 20px;
 }
 .postedby {
-	background: url(../images/icon_user.gif) center left no-repeat;
+	background: url(/images/icon_user.gif) center left no-repeat;
 }
 .filedto {
-	background: url(../images/icon_folder.gif) center left no-repeat;
+	background: url(/images/icon_folder.gif) center left no-repeat;
 }
 .commentslink {
-	background: url(../images/icon_comments.gif) center left no-repeat;
+	background: url(/images/icon_comments.gif) center left no-repeat;
 }
 /*
 #sidebar ul {

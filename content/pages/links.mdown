@@ -1,3 +1,6 @@
+banner: banner_sunset.jpg
+banner title: Pennsylvania Sunset, by Russell Brooks
+
 # Links
 
 ## Art
