@@ -10,9 +10,9 @@ require './lib/nesta/models'
 require './lib/nesta/overrides'
 require './lib/nesta/path'
 
-Dir['extensions/*.rb'].each do |extension_file|
-  require File.join('./extensions', File.basename(extension_file))
-end
+# Dir['extensions/*.rb'].each do |extension_file|
+#   require File.join('./extensions', File.basename(extension_file))
+# end
 
 module Nesta
   class Application < Sinatra::Base
