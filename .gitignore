@@ -7,3 +7,4 @@ config/deploy.rb
 db/*.db
 public/cache
 .DS_Store
+Gemfile.lock
