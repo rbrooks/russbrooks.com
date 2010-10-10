@@ -12,7 +12,6 @@ GEM
     maruku (0.6.0)
       syntax (>= 1.0.0)
     nokogiri (1.4.3.1)
-    plist (3.0.1)
     rack (1.2.1)
     rack-codehighlighter (0.4.7)
       nokogiri (>= 1.4.1)
@@ -33,13 +32,14 @@ GEM
       sinatra-outputbuffer (>= 0.1.0)
     sinatra-outputbuffer (0.1.0)
       sinatra (>= 1.0.a)
+    spox-plist (3.0.1)
+    spox-textpow (0.10.3)
+      spox-plist
+    spox-ultraviolet (0.10.5)
+      spox-textpow
     syntax (1.0.0)
     test-unit (1.2.3)
       hoe (>= 1.5.1)
-    textpow19 (0.11.0)
-      plist (>= 3.0.1)
-    ultraviolet (0.11.0)
-      textpow19 (>= 0.11.0)
 
 PLATFORMS
   ruby
@@ -58,6 +58,5 @@ DEPENDENCIES
   shotgun
   sinatra (= 1.0)
   sinatra-cache (= 0.3.4)
+  spox-ultraviolet
   test-unit (= 1.2.3)
-  textpow19 (= 0.11.0)
-  ultraviolet (= 0.11.0)
