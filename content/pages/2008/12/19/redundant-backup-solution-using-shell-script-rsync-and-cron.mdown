@@ -17,19 +17,19 @@ Log in as Root.
 
 Create the file, `/usr/bin/backup-sites.sh`, using any text editor.
 
-<highlight lang="bash">
+<pre>:::shell-unix-generic
 nano /usr/bin/backup-sites.sh
-</highlight>
+</pre>
 
 Place this Shell Script in it, adjusting variables accordingly:
 
-<highlight lang="bash">
+<pre>:::shell-unix-generic
 #!/bin/bash
 # Script to back up all websites and their DBs to external drive.
-# Author: Russ Brooks (www.russbrooks.com)
+# Author: Russell Brooks (www.russbrooks.com)
 # set -e
 if [[ $EUID -ne 0 ]]; then
-   echo 'This script must be run as Root.' 1>&2
+   echo 'This script must be run as Root.' 1&gt;&amp;2
    exit 1
 fi
 sites=( /var/www/website1 /var/www/website2 )
@@ -70,15 +70,15 @@ echo ''
 echo 'Emailing Logs to Administrator'
 cat /var/log/daily.log | mail -s "Backup Log" admin@whatever.com
 echo ''
-</highlight>
+</pre>
 
 If you do not have email capabilities set up on your server, please see my article on [Allowing Email To Be Sent From Mail and Sendmail](/setup-postfix-to-allow-email-to-be-sent-from-mail-and-sendmail)
 
 ### Permissions
 
-<highlight lang="bash">
+<pre>:::shell-unix-generic
 chmod 755 /usr/bin/backup-sites.sh
-</highlight>
+</pre>
 
 ## Sync Drives
 
@@ -86,10 +86,10 @@ Ensure you have Rsync installed.  You may have to get it from the package manage
 
 Create a `sync-ext-drives.sh` file in the same directory:
 
-<highlight lang="bash">
+<pre>:::shell-unix-generic
 #!/bin/bash
 # Sync external drives.
-# by: Russ Brooks [me@russbrooks.com]
+# by: Russell Brooks (www.russbrooks.com)
 export PATH=/usr/local/bin:/usr/bin:/bin
 drive_source='/dev/sdb1'
 drive_source_mount='/media/disk'
@@ -110,39 +110,39 @@ rsync -ax --exclude fstab --delete $drive_source_mount $drive_destination_mount
 datetime=`date +'%x %X'`
 echo "**** External Drive Sync Finished at $datetime ****"
 echo ''
-</highlight>
+</pre>
   
 ### Permissions
 
-<highlight lang="bash">
+<pre>:::shell-unix-generic
 chmod 755 /usr/bin/sync-ext-drives.sh
-</highlight>
+</pre>
 
 ## Scheduling and Logging
 
 Ensure you are Root and schedule these two process to happen every night.
 
-<highlight lang="bash">
+<pre>:::shell-unix-generic
 crontab -e
-</highlight>
+</pre>
 
 Append these lines to the crontab file and quit/save:
 
-<highlight lang="bash">
-0 2 * * * /usr/bin/backup-sites.sh > /var/log/daily.log
-0 3 * * * /usr/bin/sync-ext-drives.sh >> /var/log/daily.log
-</highlight>
+<pre>:::shell-unix-generic
+0 2 * * * /usr/bin/backup-sites.sh &gt; /var/log/daily.log
+0 3 * * * /usr/bin/sync-ext-drives.sh &gt;&gt; /var/log/daily.log
+</pre>
   
 Restart Cron:
 
-<highlight lang="bash">
+<pre>:::shell-unix-generic
 /etc/init.d/cron restart
-</highlight>
+</pre>
 
 Create the blank log file, if it isn't there already:
 
-<highlight lang="bash">
+<pre>:::shell-unix-generic
 touch /var/log/daily.log
-</highlight>
+</pre>
 
 The output of both scripts will be logged to that `daily.log` file overwriting the log each night (so we don't get log bloat).  If you want the log to grow indefinitely, change the first `<` in the Cron job to a `<<`.  That will cause the output to append to the log each night.
