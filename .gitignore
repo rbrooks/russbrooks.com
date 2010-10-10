@@ -1,10 +1,10 @@
 ._*
 .bundle
 .rvmrc
+.DS_Store
 config/config.yml
 config/deploy.rb
 #content
+Gemfile.lock
 db/*.db
 public/cache
-.DS_Store
-Gemfile.lock
