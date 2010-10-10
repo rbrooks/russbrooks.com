@@ -72,7 +72,7 @@ cat /var/log/daily.log | mail -s "Backup Log" admin@whatever.com
 echo ''
 </pre>
 
-If you do not have email capabilities set up on your server, please see my article on [Allowing Email To Be Sent From Mail and Sendmail](/setup-postfix-to-allow-email-to-be-sent-from-mail-and-sendmail)
+If you do not have email capabilities set up on your server, please see my article on [Allowing Email To Be Sent From Mail and Sendmail](/2008/12/24/setup-postfix-to-allow-email-to-be-sent-from-mail-and-sendmail)
 
 ### Permissions
 

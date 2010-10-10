@@ -1,0 +1,107 @@
+date: 25 May 2009 19:15pm
+categories: Linux
+read more: More&#8230;
+summary: How to tighten security and use passwordless logins on a Linux box using Public-Key Authentication. This article was tested on Ubuntu 9.04 Server Edition. It should be similar on most Linux dists and UNIX variants.
+
+# Linux Security: Public-Key Authentication
+
+We are going to do three primary things:
+
+* **Enable Public-Key Authentication**
+* **Disable Password Authentication**
+* **Disable Root Logins**
+
+This is far more secure and highly recommended, especially on boxes that are exposed to the Internet.  With this model in place, there is no way someone can compromise your server via a brute-force attack (automated username and password guessing).  In addition, there is no way anyone can access your server via SSH without your Private Key (which you will keep private and guard with your cat&#8217;s life).
+
+From this point on, your login process will be to log in as yourself, then gain Root from there on an as-needed basis.  This adds another layer of security.
+
+## Sudoers
+
+The user account Ubuntu had you set up during the install process is in the Admin group, and the Admin group by default in Ubuntu is in the Sudoers list.  IOW, you already have the ability to become Root after logging in under your regular user account.  We don&#8217;t need to do anything to the Sudoers list.  To be safe, though, let&#8217;s verify that your login is in the Admin group anyway:
+
+<pre>:::shell-unix-generic
+id your_username
+</pre>
+
+Verify that you see (admin) in the group list that appears.
+
+## OpenSSH
+
+I chose &#8220;OpenSSH Server&#8221; during the Ubuntu install, so SSH is already installed and active.
+
+## Create Public/Private Key Pair
+
+From your client \*nix machine (OS X in my case), create a .ssh folder under your home folder:
+
+<pre>:::shell-unix-generic
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+cd ~/.ssh
+</pre>
+
+Generate keys.
+
+<pre>:::shell-unix-generic
+ssh-keygen -t rsa
+</pre>
+
+Copy public key to the server.  Change &#8220;user&#8221; and &#8220;remotehost&#8221; accordingly.  **Note the colon (:) at the end of the line.**  It is important.  That means the destination for this file is your home directory:
+
+<pre>:::shell-unix-generic
+scp -p id_rsa.pub user@remotehost:
+</pre>
+
+SSH into your server and copy your Public Key to .ssh/authorized_keys file:
+
+<pre>:::shell-unix-generic
+ssh user@remotehost
+mkdir ~/.ssh
+chmod 700 ~/.ssh
+cat id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+mv id_rsa.pub ~/.ssh
+exit
+</pre>
+
+You should be back at your client Terminal session.  Try logging in with your key like so:
+
+<pre>:::shell-unix-generic
+ssh user@remotehost
+</pre>
+
+The first time, you will need to supply the password for your Private Key.  From that point on, you will get in without a password (but will be re-authenticated from time to time).
+
+## Activate Public Key Authentication and Disable Password-Based and Root Logins
+
+**Before you do this, ensure that you have direct Console access to your server.**  In case anything goes wrong, you&#8217;ll still be able to get in.
+
+<pre>:::shell-unix-generic
+nano /etc/ssh/sshd_config
+</pre>
+
+Ctrl-W to find the following lines.  They are not consecutive lines.  Change them all to &#8220;no&#8221; and uncomment them, if they aren&#8217;t already, by removing the leading # sign.
+
+<pre>:::ssh-config
+PermitRootLogin no
+PasswordAuthentication no
+UsePAM no
+</pre>
+
+Save and close.
+
+## Restart SSH
+
+<pre>:::shell-unix-generic
+/etc/init.d/ssh restart
+</pre>
+
+## Test
+
+From your client Terminal session, try logging in as Root.
+
+<pre>:::shell-unix-generic
+ssh root@remotehost
+</pre>
+
+You should be denied access.  Logging in as yourself should succeed.  Once in, verify that you can gain Root access (`su -`).
+	

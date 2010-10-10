@@ -7,9 +7,9 @@ gem 'RedCloth', '4.2.3'
 gem 'sinatra', '1.0'
 gem 'sinatra-cache', '0.3.4'
 gem 'nokogiri', '1.4.3.1'
-#gem 'textpow19', '0.11.0'
-#gem 'ultraviolet', '0.11.0' # Syntax Highlighter
 gem 'spox-ultraviolet'
+# "Spox" version is Ruby 1.9-tweaked.  Also auto-installs 'spox-textpow' which installs 'spox-plist'.
+# No need to specify those dependencies here.
 gem 'rack-codehighlighter'
 
 group :development do
