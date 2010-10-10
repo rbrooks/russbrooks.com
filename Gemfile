@@ -8,7 +8,8 @@ gem 'sinatra', '1.0'
 gem 'sinatra-cache', '0.3.4'
 gem 'nokogiri', '1.4.3.1'
 gem 'textpow19', '0.11.0'
-gem 'plist', '3.0.1'
+#gem 'plist', '3.0.1'
+gem 'plist' # No 3.0.1 at Heroku
 gem 'ultraviolet', '0.11.0' # Syntax Highlighter
 gem 'rack-codehighlighter'
 
