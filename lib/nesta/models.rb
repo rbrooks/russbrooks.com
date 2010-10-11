@@ -22,14 +22,14 @@ class FileModel
     end
   end
 
-  def self.needs_loading?(path, filename)
-    @@cache[path].nil? || File.mtime(filename) > @@cache[path].mtime
-  end
+  # def self.needs_loading?(path, filename)
+  #   @@cache[path].nil? || File.mtime(filename) > @@cache[path].mtime
+  # end
 
   def self.load(path)
     FORMATS.each do |format|
       filename = model_path("#{path}.#{format}")
-      if File.exist?(filename) && needs_loading?(path, filename)
+      if File.exist?(filename) # && needs_loading?(path, filename)
         @@cache[path] = self.new(filename)
         break
       end

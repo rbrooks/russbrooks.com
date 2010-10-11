@@ -19,7 +19,7 @@ module Nesta
     register Sinatra::Cache
 
     set :root, File.expand_path(File.dirname(__FILE__))
-    set :cache_enabled, Nesta::Config.cache
+#    set :cache_enabled, Nesta::Config.cache
 
     helpers do
       def set_from_config(*variables)
@@ -160,7 +160,7 @@ module Nesta
       @body_class = 'home'
       @banner_img = '/images/banner.jpg'
       @banner_title = 'Russell Brooks'
-      # cache :proxy => 'public', :max_age => 'index'
+      cache :proxy => 'public', :max_age => 'index'
       haml(:index)
     end
 
@@ -195,7 +195,7 @@ module Nesta
       raise Sinatra::NotFound if @page.nil?
       set_title(@page)
       set_from_page(:description, :keywords, :banner_img, :banner_title)
-      # cache :proxy => 'public', :max_age => 'page', :etag => @page.etag
+      cache :proxy => 'public', :max_age => 'page', :etag => @page.etag
       haml(:page)
     end
   end
