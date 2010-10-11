@@ -6,7 +6,7 @@ require "redcloth"
 
 class FileModel
   FORMATS = [:mdown, :haml, :textile]
-  @@cache = {}
+  @@cache = {} # Manual caching no longer used. Sintra-Cache is.
 
   attr_reader :filename, :mtime
 
@@ -34,7 +34,7 @@ class FileModel
         break
       end
     end
-    @@cache[path]
+    @@cache[path] # Manual caching no longer used. Sintra-Cache is.
   end
 
   def self.purge_cache
