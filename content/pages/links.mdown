@@ -18,7 +18,7 @@ banner title: Pennsylvania Sunset, by Russell Brooks
     <li><a href="http://www.lasperanza.com">Atelier La Speranza</a></li>
     <li><a href="http://www.travislouie.com">Travis Louie</a></li>
     <li><a href="http://www.chrismarspublishing.com">Chris Mars Publishing</a></li>
-    <li><a href="http://www.rmooresculptures.com">Richard Moore <span class="caps">III</span></a></li>
+    <li><a href="http://www.rmooresculptures.com">Richard Moore III</a></li>
     <li><a href="http://www.nevayburke.freeserve.co.uk">Heather Nevay</a></li>
     <li><a href="http://www.visionart-malerei.de">Martin-Georg Oscity</a></li>
     <li><a href="http://www.reinhardschmid.de">Reinhard Schmid</a></li>
@@ -33,78 +33,78 @@ banner title: Pennsylvania Sunset, by Russell Brooks
 
 ## Photography
 
-* [Craig Semetko](http://craigsemetko.com) &#8211; Craig loves candids and portraiture, and he does them extremely well.
-* [Digital Photography Review](http://www.dpreview.com) &#8211; The best digital-camera review site that exists
-* [Digital Photo Academy](http://www.digitalphotoacademy.com) &#8211; Comprehensive photography classes
+* [Craig Semetko](http://craigsemetko.com/) &#8211; Craig loves candids and portraiture, and he does them extremely well.
+* [Digital Photography Review](http://www.dpreview.com/) &#8211; The best digital-camera review site that exists
+* [Digital Photo Academy](http://www.digitalphotoacademy.com/) &#8211; Comprehensive photography classes
 * [The Digital Picture](http://www.the-digital-picture.com/) &#8211; In-depth camera and equipment reviews
-* [Jeremy Walker](http://www.jeremywalker.co.uk) &#8211; Fine photography from this British shutterbug.
+* [Jeremy Walker](http://www.jeremywalker.co.uk/) &#8211; Fine photography from this British shutterbug.
 * [MG Lizi](http://imagepro.photography.com/MariaGraziaLenzini) &#8211; Maria shares my fascination with Venetian masks. Great work.
-* [Photo.net](http://photo.net) &#8211; The online community of Photographers
-* [Pix Channel](http://www.pixchannel.com) &#8211; Pix Channel is an ongoing series of vignettes that explore the creative process of iconic photographers in their own words.
-* [realfake](http://www.real-fake.com) &#8211; Amazing site by world-renown Judy Rush, showcasing what can be done with retouching and compositing. The before-and-afters are utterly remarkable.
-* [Steve&#8217;s Digicams](http://www.steves-digicams.com) &#8211; Decent camera reviews
+* [Photo.net](http://photo.net/) &#8211; The online community of Photographers
+* [Pix Channel](http://www.pixchannel.com/) &#8211; Pix Channel is an ongoing series of vignettes that explore the creative process of iconic photographers in their own words.
+* [realfake](http://www.real-fake.com/) &#8211; Amazing site by world-renown Judy Rush, showcasing what can be done with retouching and compositing. The before-and-afters are utterly remarkable.
+* [Steve&#8217;s Digicams](http://www.steves-digicams.com/) &#8211; Decent camera reviews
 
 ## Programming & Web Development
 
 ### Ruby
 
-* [APIdock](http://apidock.com/) – The Ruby and Rails <abbr title="Application Programming Interface">API</abbr> docs done right.
-* [the { buckblogs :here }](http://weblog.jamisbuck.org/) – Blog of Jamis Buck, 37Signals employee and Ruby on Rails core team member
+* [APIdock](http://apidock.com/) &#8211; The Ruby and Rails <abbr title="Application Programming Interface">API</abbr> docs done right.
+* [the { buckblogs :here }](http://weblog.jamisbuck.org/) &#8211; Blog of Jamis Buck, 37Signals employee and Ruby on Rails core team member
 * [the changelog](http://thechangelog.com/) - Open Source moves fast. Keep up.
-* [has_many :through](http://blog.hasmanythrough.com/) – Josh Susser&#8217;s Ruby on Rails blog
+* [has_many :through](http://blog.hasmanythrough.com/) &#8211; Josh Susser&#8217;s Ruby on Rails blog
 * [Heroku](http://heroku.com/) - The best Ruby-web-app host going.
-* [Loud Thinking](http://www.loudthinking.com/) – Blog from the chap who wrote Rails, David Heinemeier Hansson
+* [Loud Thinking](http://www.loudthinking.com/) &#8211; Blog from the chap who wrote Rails, David Heinemeier Hansson
 * [New Relic](http://www.newrelic.com/) - Superior Rails app monitoring and analysis.
-* [Nuby on Rails](http://www.nubyonrails.com/) – Rails tips and tutorials
-* [O’Reilly Ruby](http://oreillynet.com/ruby/) – Ruby on Rails site from the great and powerful, O&#8217;Reilly
-* [Phusion](http://www.phusion.nl/) – Makers of &#8220;Passenger&#8221;, easy-deployment, all-in-one Rails web server (Apache or Nginx).
-* [Rack](http://rack.rubyforge.org/) – Light and fast bridge between any <abbr title="Hypertext Transfer Protocol">HTTP</abbr> web server and Ruby framework. Or, a super-simply way to serve Ruby **off** Rails.
-* [Rails Documentation](http://api.rubyonrails.com/) – Official Rails documentation
-* [Rails Forum](http://www.railsforum.com/) – Nicely done Rails forum
-* [Rails on IIS](http://mvolo.com/blogs/serverside/archive/2007/02/18/10-steps-to-get-Ruby-on-Rails-running-on-Windows-with-IIS-FastCGI.aspx) – Get rails running on <abbr title="Internet Information Services">IIS</abbr> (not recommended)
-* [Rails Kits](http://railskits.com/) – Pre-fabbed Rails solutions.
-* [The Rails Way](http://www.therailsway.com/) – Best practices in Rails application design
-* [Ramaze](http://ramaze.net/) – Highly modular Ruby framework.
-* [Riding Rails](http://weblog.rubyonrails.org/) – Blog at the official Ruby on Rails site
-* [Ruby](http://www.ruby-lang.org/) – Official Ruby language site
-* [Ruby Corner](http://www.rubycorner.com/) – Rails blogs aggregated
-* [Ruby Documentation](http://www.ruby-doc.org/) – Official Ruby documentation
-* [Ruby Forum](http://www.ruby-forum.com/) – Numerous Ruby and Rails forums
-* [Ruby Inside](http://www.rubyinside.com/) – Great stuff about the greatest programming language
-* [Ruby on Rails](http://www.rubyonrails.com/) – Official Rails site
-* [Ruby on Rails: Talk](http://groups.google.com/group/rubyonrails-talk/) – Official mailing list for the Ruby on Rails project
-* [Ruby on Rails: Core](http://groups.google.com/group/rubyonrails-core/) – Discussion list for Ruby on Rails core development
-* [The Ruby Show](http://5by5.tv/rubyshow) – Great podcast from two smart kids.
-* [Thoughtbot](http://thoughtbot.com/) – Hi-end, Ruby/Rails-based web-development.
-* [Sinatra](http://www.sinatrarb.com/) – Awesome, ultra-lightweight Ruby framework. For when you just need to script up some quick pages. Choose any <abbr title="Object Relational Mapping">ORM</abbr> layer.
+* [Nuby on Rails](http://www.nubyonrails.com/) &#8211; Rails tips and tutorials
+* [O’Reilly Ruby](http://oreillynet.com/ruby/) &#8211; Ruby on Rails site from the great and powerful, O&#8217;Reilly
+* [Phusion](http://www.phusion.nl/) &#8211; Makers of &#8220;Passenger&#8221;, easy-deployment, all-in-one Rails web server (Apache or Nginx).
+* [Rack](http://rack.rubyforge.org/) &#8211; Light and fast bridge between any <abbr title="Hypertext Transfer Protocol">HTTP</abbr> web server and Ruby framework. Or, a super-simply way to serve Ruby **off** Rails.
+* [Rails Documentation](http://api.rubyonrails.com/) &#8211; Official Rails documentation
+* [Rails Forum](http://www.railsforum.com/) &#8211; Nicely done Rails forum
+* [Rails on IIS](http://mvolo.com/blogs/serverside/archive/2007/02/18/10-steps-to-get-Ruby-on-Rails-running-on-Windows-with-IIS-FastCGI.aspx) &#8211; Get rails running on <abbr title="Internet Information Services">IIS</abbr> (not recommended)
+* [Rails Kits](http://railskits.com/) &#8211; Pre-fabbed Rails solutions.
+* [The Rails Way](http://www.therailsway.com/) &#8211; Best practices in Rails application design
+* [Ramaze](http://ramaze.net/) &#8211; Highly modular Ruby framework.
+* [Riding Rails](http://weblog.rubyonrails.org/) &#8211; Blog at the official Ruby on Rails site
+* [Ruby](http://www.ruby-lang.org/) &#8211; Official Ruby language site
+* [Ruby Corner](http://www.rubycorner.com/) &#8211; Rails blogs aggregated
+* [Ruby Documentation](http://www.ruby-doc.org/) &#8211; Official Ruby documentation
+* [Ruby Forum](http://www.ruby-forum.com/) &#8211; Numerous Ruby and Rails forums
+* [Ruby Inside](http://www.rubyinside.com/) &#8211; Great stuff about the greatest programming language
+* [Ruby on Rails](http://www.rubyonrails.com/) &#8211; Official Rails site
+* [Ruby on Rails: Talk](http://groups.google.com/group/rubyonrails-talk/) &#8211; Official mailing list for the Ruby on Rails project
+* [Ruby on Rails: Core](http://groups.google.com/group/rubyonrails-core/) &#8211; Discussion list for Ruby on Rails core development
+* [The Ruby Show](http://5by5.tv/rubyshow) &#8211; Great podcast from two smart kids.
+* [Thoughtbot](http://thoughtbot.com/) &#8211; Hi-end, Ruby/Rails-based web-development.
+* [Sinatra](http://www.sinatrarb.com/) &#8211; Awesome, ultra-lightweight Ruby framework. For when you just need to script up some quick pages. Choose any <abbr title="Object Relational Mapping">ORM</abbr> layer.
 
 ### PHP
 
 Yes, I coded PHP for four years.  PHP is a great web language... for beginners.
 
-* [CakePHP](http://cakephp.org/) – Rails-like <abbr title="Model View Controller">MVC</abbr> ORM framework for <abbr title="PHP Hypertext Preprocessor">PHP</abbr>
-* [CodeIgniter](http://codeigniter.com/) – A fast and popular PHP frameworks. Small footprint.
-* [DooPHP](http://doophp.com/) – Claims to be the fastest PHP framework.
-* [Kohana](http://kohanaphp.com/) – Yet another PHP MVC framework.
-* [Symfony](http://www.symfony-project.org/) – Another excellent and popular MVC ORM framework for PHP
-* [Yii](http://www.yiiframework.com/) – Pronounced &#8219;E&#8220;. Stands for &#8219;Yes, it is&#8220;. A light, fast MVC framework.
-* [Zend](http://www.zend.com/) – Superior development tools and a hefty-but-flexible framework
+* [CakePHP](http://cakephp.org/) &#8211; Rails-like <abbr title="Model View Controller">MVC</abbr> ORM framework for <abbr title="PHP Hypertext Preprocessor">PHP</abbr>
+* [CodeIgniter](http://codeigniter.com/) &#8211; A fast and popular PHP frameworks. Small footprint.
+* [DooPHP](http://doophp.com/) &#8211; Claims to be the fastest PHP framework.
+* [Kohana](http://kohanaphp.com/) &#8211; Yet another PHP MVC framework.
+* [Symfony](http://www.symfony-project.org/) &#8211; Another excellent and popular MVC ORM framework for PHP
+* [Yii](http://www.yiiframework.com/) &#8211; Pronounced &#8219;E&#8220;. Stands for &#8219;Yes, it is&#8220;. A light, fast MVC framework.
+* [Zend](http://www.zend.com/) &#8211; Superior development tools and a hefty-but-flexible framework
 
 ### Python
 
-* [B-List](http://www.b-list.org/) – Personal blog of James Bennett, Django release engineer, lead contributor, and author.
-* [Django](http://www.djangoproject.com/) – The web framework for perfectionists with deadlines.
-* [Juno](http://brianreily.com/project/juno/) – Ultralight, Sinatra-like framework for Python.
-* [Python](http://www.python.org/) – Powerful, fast, and versatile object-oriented dynamic programming language.
-* [SQLAlchemy](http://www.sqlalchemy.org/) – <span class="caps">SQL</span> toolkit and object-relational mapper for Python
+* [B-List](http://www.b-list.org/) &#8211; Personal blog of James Bennett, Django release engineer, lead contributor, and author.
+* [Django](http://www.djangoproject.com/) &#8211; The web framework for perfectionists with deadlines.
+* [Juno](http://brianreily.com/project/juno/) &#8211; Ultralight, Sinatra-like framework for Python.
+* [Python](http://www.python.org/) &#8211; Powerful, fast, and versatile object-oriented dynamic programming language.
+* [SQLAlchemy](http://www.sqlalchemy.org/) &#8211; <span class="caps">SQL</span> toolkit and object-relational mapper for Python
 
 ## Peeps
 
-* [Dan Pisarski](http://www.danpisarski.com/) – Dan’s thoughts on Digital Video, Software Development, and what not
-* [Michele Melcher](http://michelemelcher.com/) and [Her Blog](http://melcherillustration.blogspot.com/) – Illustrious Illustrator and Chickenista
-* [Paprika Card Designs](http://www.paprikacarddesigns.etsy.com) – My cousin, Madeline&#8217;s, magnificent hand-crafted greeting cards for sale.
-* [Primer, Inc.](http://www.primerinc.com/) – The greatest design studio in the world
-* [Ray Baranoski](http://www.baranoski.com/) – Coworkers for four years
+* [Dan Pisarski](http://www.danpisarski.com/) &#8211; Dan’s thoughts on Digital Video, Software Development, and what not
+* [Michele Melcher](http://michelemelcher.com/) and [Her Blog](http://melcherillustration.blogspot.com/) &#8211; Illustrious Illustrator and Chickenista
+* [Paprika Card Designs](http://www.paprikacarddesigns.etsy.com) &#8211; My cousin, Madeline&#8217;s, magnificent hand-crafted greeting cards for sale.
+* [Primer, Inc.](http://www.primerinc.com/) &#8211; The greatest design studio in the world
+* [Ray Baranoski](http://www.baranoski.com/) &#8211; Coworkers for four years
 * [Marc Supsic](http://www.marcsupsic.com/)
-* [Russell Underwood](http://www.russellunderwood.com/) – Russ&#8217;s work is beyond amazing.
-* [Adam Wallacavage](http://www.adamwallacavage.com/) – Adam&#8217;s hand-sculpted chandeliers [and photography] are like nothing you&#8217;ve ever seen.
+* [Russell Underwood](http://www.russellunderwood.com/) &#8211; Russ&#8217;s work is beyond amazing.
+* [Adam Wallacavage](http://www.adamwallacavage.com/) &#8211; Adam&#8217;s hand-sculpted chandeliers [and photography] are like nothing you&#8217;ve ever seen.

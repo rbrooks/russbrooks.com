@@ -41,7 +41,7 @@ module Nesta
       end
 
       def no_widow(text)
-        text.split[0...-1].join(" ") + "&nbsp;#{text.split[-1]}"
+        text.split[0...-1].join(' ') + "&nbsp;#{text.split[-1]}"
       end
 
       def set_common_variables
@@ -145,13 +145,13 @@ module Nesta
     Nesta::Overrides.load_theme_app
     Nesta::Overrides.load_local_app
 
-    get "/css/:sheet.css" do
-      content_type "text/css", :charset => "utf-8"
+    get '/css/:sheet.css' do
+      content_type 'text/css', :charset => 'utf-8'
       cache :proxy => 'public', :etag => params[:sheet]
       sass(params[:sheet].to_sym)
     end
 
-    get "/" do
+    get '/' do
       set_common_variables
       set_from_config(:title, :subtitle, :description, :keywords)
       @heading = @title
@@ -170,16 +170,16 @@ module Nesta
       send_file(file, :disposition => nil)
     end
 
-    get "/articles.xml" do
-      content_type :xml, :charset => "utf-8"
+    get '/articles.xml' do
+      content_type :xml, :charset => 'utf-8'
       set_from_config(:title, :subtitle, :author)
       @articles = Page.find_articles.select { |a| a.date }[0..9]
       cache :proxy => 'public', :max_age => 'feed'
       builder(:atom, :cache => false)
     end
 
-    get "/sitemap.xml" do
-      content_type :xml, :charset => "utf-8"
+    get '/sitemap.xml' do
+      content_type :xml, :charset => 'utf-8'
       @pages = Page.find_all
       @last = @pages.map { |page| page.last_modified }.inject do |latest, page|
         (page > latest) ? page : latest
@@ -188,7 +188,7 @@ module Nesta
       builder(:sitemap, :cache => false)
     end
 
-    get "*" do
+    get '*' do
       set_common_variables
       parts = params[:splat].map { |p| p.sub(/\/$/, '') }
       @page = Page.find_by_path(File.join(parts))

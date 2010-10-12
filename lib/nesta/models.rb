@@ -168,7 +168,8 @@ class Page < FileModel
   end
 
   def banner_img
-    metadata('banner') ? '/images/' + metadata('banner') : '/images/banner.jpg'
+    return '/images/banner.jpg'
+#    !metadata('banner').nil? ? '/images/' + metadata('banner') : '/images/banner.jpg'
   end
 
   def banner_title

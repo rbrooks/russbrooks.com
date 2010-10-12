@@ -1,4 +1,4 @@
-require "yaml"
+require 'yaml'
 
 module Nesta
   class Config
@@ -37,7 +37,7 @@ module Nesta
         variable = "NESTA_MAX_AGE__#{setting.upcase}"
         ENV[variable] && environment_config[setting] = ENV[variable]
       end
-      environment_config.empty? ? from_yaml("max_age") : environment_config
+      environment_config.empty? ? from_yaml('max_age') : environment_config
     end
 
     def self.content_path(basename = nil)
@@ -45,17 +45,17 @@ module Nesta
     end
 
     def self.page_path(basename = nil)
-      get_path(File.join(content_path, "pages"), basename)
+      get_path(File.join(content_path, 'pages'), basename)
     end
 
     def self.attachment_path(basename = nil)
-      get_path(File.join(content_path, "attachments"), basename)
+      get_path(File.join(content_path, 'attachments'), basename)
     end
 
     private
     def self.from_environment(setting)
       value = ENV["NESTA_#{setting.upcase}"]
-      overrides = { "true" => true, "false" => false }
+      overrides = { 'true' => true, 'false' => false }
       overrides.has_key?(value) ? overrides[value] : value
     end
 

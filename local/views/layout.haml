@@ -26,8 +26,9 @@
         %a{ :href => "/bio", :class => :bio, :id => (@page && @page.heading == 'Bio') ? :current : '' } &nbsp;
         %a{ :href => "/colophon", :class => :colophon, :id => (@page && @page.heading == 'Colophon') ? :current : '' } &nbsp;
 
-      #banner
-        %img{ :src => @banner_img, :width => "816", :height => "186", :alt => @banner_title, :title => @banner_title }
+      - if @banner_img
+        #banner
+          %img{ :src => @banner_img, :width => "816", :height => "186", :alt => @banner_title, :title => @banner_title }
 
       %img{ :src => "/images/div_shadow_line.gif", :width => "904", :height => "33", :alt => "", :style => "float: left;" }
 
