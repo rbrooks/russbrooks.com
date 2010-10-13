@@ -145,4 +145,4 @@ Create the blank log file, if it isn't there already:
 touch /var/log/daily.log
 </pre>
 
-The output of both scripts will be logged to that `daily.log` file overwriting the log each night (so we don't get log bloat).  If you want the log to grow indefinitely, change the first `<` in the Cron job to a `<<`.  That will cause the output to append to the log each night.
+The output of both scripts will be logged to that `daily.log` file overwriting the log each night (so we don't get log bloat).  If you want the log to grow indefinitely, change the first `>` in the Cron job to a `>>`.  That will cause the output to append to the log each night.

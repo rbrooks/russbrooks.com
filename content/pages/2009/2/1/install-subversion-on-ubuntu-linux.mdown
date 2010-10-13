@@ -1,0 +1,142 @@
+date: 2 Feb 2009 21:09pm
+categories: Linux
+read more: More&#8230;
+summary: The following article outlines how to install the [Subversion](http://subversion.tigris.org/) source-control system on [Ubuntu](http://www.ubuntu.com/) Linux and expose it over the SVN+SSH protocols.
+
+# Install Subversion on Ubuntu Linux
+
+If you plan to expose your <abbr title="Subversion">SVN</abbr> repository through your firewall, I would use only HTTPS or SVN+SSH (never straight HTTP or SVN).  I prefer SVN+SSH because there is no Apache or SSL setup required, so it is easier to get going (but a little less convenient because you can&#8217;t access your repository in a web browser).  Second, if you are a home-hoster like me, the SVN protocol serves up over a non-80 port, which is good because some ISP&#8217;s (\*cough\* Verizon) block port 80.
+
+These instructions assume <span class="caps">SSH</span> is already active on the server.
+
+Tested on Kubuntu 8.04.  <abbr title="Your Mileage May Vary">YMMV</abbr>.
+
+## Install Subversion
+
+The usual:
+
+<pre>:::shell-unix-generic
+sudo apt-get install subversion
+</pre>
+
+## Permissions
+
+Add your local user and the anonymous web user (www-data) to a new group called &#8220;subversion&#8221;.  Change &#8220;rbrooks&#8221; below accordingly.
+
+<pre>:::shell-unix-generic
+sudo groupadd subversion
+sudo usermod -a -G subversion rbrooks
+sudo usermod -a -G subversion www-data
+</pre>
+
+I like to always verify that it succeeded.
+
+<pre>:::shell-unix-generic
+id rbrooks
+id www-data
+</pre>
+
+Verify that you see &#8220;(subversion)&#8221; in the above output.
+
+Create a place for your repositories and permission it.  Its location doesn&#8217;t necessarily need to be `/home/svn`.
+
+<pre>:::shell-unix-generic
+sudo mkdir /home/svn
+cd /home/svn
+sudo mkdir myproject
+sudo chown -R www-data:subversion myproject
+sudo chmod -R g+rws myproject
+</pre>
+
+## Create Repository
+
+Create a repository and permission it again in the same way we did above.
+
+<pre>:::shell-unix-generic
+sudo svnadmin create /home/svn/myproject
+sudo chmod -R g+rws /home/svn/myproject
+</pre>
+
+Some people opt to create a single repository, then make all of their projects subfolders of that.  I would recommend you create a separate repository for each project.  This way, projects are isolated so they can be permissioned differently if need be.  You may decide you need to allow Mikael from Sweden into your project at some point.  You may not want him to see all of your other projects (especially some of your questionable side projects).  Plus, if you are connecting the repository to a project-management system with an SVN repository browser (eg, [Trac](http://trac.edgewall.org/)), these systems often have a one-to-one relationship between their concept of &#8220;Project&#8221; and its SVN repository.
+
+## Access Control
+
+Edit SVN config file for the new repository:
+
+<pre>:::shell-unix-generic
+sudo nano /home/svn/myproject/conf/svnserve.conf
+</pre>
+
+Uncomment (remove the # from) the following line:
+
+<pre>:::shell-unix-generic
+password-db = passwd
+</pre>
+
+Ctrl-X to exit and save.
+
+Change the UN(Username) and PW(Password):
+
+<pre>:::shell-unix-generic
+sudo nano /home/svn/myproject/conf/passwd
+</pre>
+
+Uncomment one of the example lines under `[users]`, and change to your username and password:
+
+<pre>:::shell-unix-generic
+rbrooks = mypassword
+</pre>
+
+Exit and save.
+
+## Start SVN Server
+
+<pre>:::shell-unix-generic
+svnserve -d -r /home/svn
+</pre>
+
+Subversion daemon will start in the background and you will be returned to the command prompt. SVN begins listening on default port 3690.
+
+## Test
+
+Test from a client machine.  We&#8217;re going to create a directory in the repository, verify that it exists, then delete it.  Change path and username accordingly based on your setup.
+
+### Create Directory
+
+<pre>:::shell-unix-generic
+svn mkdir -m 'Created Test directory' --username rbrooks svn://hostname/myproject/test
+</pre>
+
+It will ask you for your password.  It will be what you placed into the `passwd` file earlier.  If the directory was created successfully, you should see `Committed revision 1`.  Username and password are cached from this point forward.  You don&#8217;t need to pass the `--username` param again.
+
+### >Verify
+
+Verify that the folder exists using SVN&#8217;s `ls` command:
+
+<pre>:::shell-unix-generic
+svn ls svn://hostname/myproject
+test/
+</pre>
+
+SVN should respond with `test/` as shown above.
+
+### SSH
+
+Test SVN over SSH:
+
+<pre>:::shell-unix-generic
+svn ls svn+ssh://hostname/home/svn/myproject
+test/
+</pre>
+
+**Important: You must use the full path (`/home/svn/myproject`) to access SVN repository using this access method.**
+
+### Delete Directory
+
+<pre>:::shell-unix-generic
+svn rm -m 'Deleted Test directory' svn+ssh://hostname/home/svn/myproject/test
+</pre>
+
+## Firewall
+
+If you want to expose your repository to the Internet, forward port 3690 to your SVN server.  Port forwarding and firewall configuration are beyond the scope of this article.
