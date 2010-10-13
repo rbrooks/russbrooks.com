@@ -19,7 +19,7 @@ I often witness developers using `echo()` to output variable values:
 
 <pre>:::php
 &lt;?php
-  echo('var: ' . $var . '<br />');
+  echo('var: ' . $var . '&lt;br /&gt;');
   echo("var: $var");
 ?&gt;
 </pre>
