@@ -1,0 +1,30 @@
+date: 20 May 2009 21:15pm
+categories: Mac
+read more: More&#8230;
+summary: Great speed tweak on OS X.  You'll thank me later.
+
+# Increase Speed of Animated Dialogs (Sheets) in OS X
+
+The <abbr title="OS Ten">OS X</abbr> user interface has modal dialog boxes that are displayed as an animated panel that emerges from the window’s title bar.  Apple calls these dialogs &#8220;Sheets&#8221;.  The most familiar sheet would be the &#8220;Save As&#8221; box.  In my day-to-day work, I found myself having to pause for a half-second while waiting for these Sheets to animate open and closed.  This lead me to find out how to speed up that animation.  It turns out, it is very simple.
+	
+Before we do this, look at an existing application in its default speed, so you can see the difference.  Open any Cocoa \[&#8220;Mac native&#8221;\] application, such as TextEdit or Safari, and press Command-S to make the Save dialog appear.  Note the animation speed.  Quit the app \[Command-Q\]
+
+Open Terminal and paste this command:
+
+<pre>:::shell-unix-generic
+defaults write NSGlobalDomain NSWindowResizeTime .1
+</pre>
+
+The command above doubles the speed of these dialogs. Relaunch your test app and press Command-S again to make the Save dialog appear.  You will notice a marked increase in sheet speed.
+
+The &#8221;.1&#8221; is the time in seconds these animated dialogs take to travel 150 pixels. I find that setting to be snappy enough that dialog boxes are no longer are hinderance. The lowest setting is .001.  That will make sheets appear instantaneously.
+
+If you don&#8217;t like it, return sheets to their default speed of .2:
+
+<pre>:::shell-unix-generic
+defaults write NSGlobalDomain NSWindowResizeTime .2
+</pre>
+
+This settings only affects Cocoa applications. For example, Adobe Creative Suite apps are not Cocoa-based.
+
+This setting is user-specific.  When you enter the command, make sure you are logged in to Terminal as yourself rather than Root or some other user.
