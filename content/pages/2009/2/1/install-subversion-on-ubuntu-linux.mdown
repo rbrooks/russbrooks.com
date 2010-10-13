@@ -109,7 +109,7 @@ svn mkdir -m 'Created Test directory' --username rbrooks svn://hostname/myprojec
 
 It will ask you for your password.  It will be what you placed into the `passwd` file earlier.  If the directory was created successfully, you should see `Committed revision 1`.  Username and password are cached from this point forward.  You don&#8217;t need to pass the `--username` param again.
 
-### >Verify
+### Verify
 
 Verify that the folder exists using SVN&#8217;s `ls` command:
 
@@ -129,7 +129,7 @@ svn ls svn+ssh://hostname/home/svn/myproject
 test/
 </pre>
 
-**Important: You must use the full path (`/home/svn/myproject`) to access SVN repository using this access method.**
+**Important:** You must use the full path (`/home/svn/myproject`) to access SVN repository using this access method.
 
 ### Delete Directory
 
