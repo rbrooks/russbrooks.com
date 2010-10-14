@@ -47,11 +47,13 @@ cache: false
 #
 
 max_age:
-  index: 3600
+#  index: 3600
+  index: 5
   feed: 3600
   sitemap: 3600
   asset: 2592000
-  page: 600
+#  page: 600
+  page: 5
 
 # content
 #     The root directory where nesta will look for your article files.
