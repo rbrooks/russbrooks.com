@@ -1,3 +1,4 @@
+comments: false
 banner: banner_flowershow_sepia.jpg
 banner title: Medieval Garden, by Russell Brooks
 

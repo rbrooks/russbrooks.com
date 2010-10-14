@@ -1,7 +1,7 @@
 title: Russell Brooks
 subtitle: Circuitous Sinuosity
 description: Ruby Programming, Web Development, Web Design, Photography, and Superbikes by Russ Brooks
-keywords: russ brooks, ruby, rails, sinatra, linux, mac, motorcycles, superbikes, photography, wed design, web development
+keywords: russ brooks, ruby, rails, sinatra, linux, mac, os x, motorcycles, superbikes, photography, wed design, web development
 
 # You should really specify your content's author when generating an
 # Atom feed. Specify at least one of name, uri or email, and Nesta will
@@ -82,6 +82,6 @@ content: content
 #   cache: false
 
 production:
-  # cache: false
+  cache: true
   # content: content
   google_analytics_code: UA-1695100-1

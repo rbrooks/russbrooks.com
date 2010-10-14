@@ -15,5 +15,5 @@
   %h2= "Articles on #{@page.heading}"
   = haml :summaries, :layout => false, :locals => { :pages => @page.articles, :heading => :h3 }
 
-- unless @page.heading == 'Bio' || @page.heading == 'Colophon' || @page.heading == 'Links'
+- if @page.comments
   = haml :comments, :layout => false

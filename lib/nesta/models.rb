@@ -168,12 +168,15 @@ class Page < FileModel
   end
 
   def banner_img
-    return '/images/banner.jpg'
-#    !metadata('banner').nil? ? '/images/' + metadata('banner') : '/images/banner.jpg'
+    !metadata('banner').nil? ? '/images/' + metadata('banner') : '/images/banner.jpg'
   end
 
   def banner_title
     metadata('banner title') || 'Russell H. Brooks'
+  end
+
+  def comments
+    metadata('comments') == 'true'
   end
 
   def atom_id

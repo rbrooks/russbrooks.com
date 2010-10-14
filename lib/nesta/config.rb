@@ -28,7 +28,7 @@ module Nesta
         variable = "NESTA_AUTHOR__#{setting.upcase}"
         ENV[variable] && environment_config[setting] = ENV[variable]
       end
-      environment_config.empty? ? from_yaml("author") : environment_config
+      environment_config.empty? ? from_yaml('author') : environment_config
     end
 
     def self.max_age

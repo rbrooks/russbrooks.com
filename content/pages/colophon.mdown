@@ -1,3 +1,4 @@
+comments: false
 banner: banner_nyc.jpg
 banner title: Rockefeller Center: Christmas 2005, by Russell Brooks
 
