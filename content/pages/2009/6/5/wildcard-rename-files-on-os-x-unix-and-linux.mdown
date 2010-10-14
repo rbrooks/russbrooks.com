@@ -1,0 +1,22 @@
+date: 5 Jun 2009 18:48pm
+categories: Linux
+read more: More&#8230;
+summary: In these examples, we are replacing the &#8220;abc_&#8221; prefix with a &#8220;def_&#8221; on a number of files.
+
+# Wildcard Rename Files on OS X, Unix, and Linux
+
+In these examples, we are replacing the &#8220;abc_&#8221; prefix with a &#8220;def_&#8221; on a number of files.
+
+Choose either method.  Whatever works on your OS.
+
+## Ruby
+
+<pre>:::shell-unix-generic
+ruby -e 'Dir.glob("abc_*") { |name| `cp #{name} #{name.sub(/abc_/, "def_")}`}'
+</pre>
+
+## Bash / Perl
+
+<pre>:::shell-unix-generic
+find . -type f -name 'abc_*' | perl -nle '$o=$_; s/abc/def/g; rename $o,$_;'
+</pre>
