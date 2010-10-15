@@ -155,15 +155,15 @@ Ctrl-W to do a find for &#8220;listen_&#8221;, and change this line to:
 listen_addresses = '*'
 </pre>
 
-#### Change Password of PostgreS User
+#### Change Password of Postgres User
 
 <pre>:::shell-unix-generic
 sudo -u postgres psql template1
 </pre>
 
-Also following proper security practices, PostgreS runs as the less-privileged &#8220;postgres&#8221; user.  The above is a good example of the Switch-User Do [sudo] command being used to perform an operation as a user other than Root.  The `-u postgres` parameter is telling Linux to, for the life of this next command, use the Postgres user rather than Root.   So, the entire command above is saying, &#8220;Execute the `psql template1` command as the user &#8216;postgres&#8217;.&#8221;  `psql template1` launches the PostgreS command-line app [psql] and logs into the &#8216;template1&#8217; database.  When switching from Root to a user of lesser privilege, you will not be authenticated.
+Also following proper security practices, Postgres runs as the less-privileged &#8220;postgres&#8221; user.  The above is a good example of the Switch-User Do [sudo] command being used to perform an operation as a user other than Root.  The `-u postgres` parameter is telling Linux to, for the life of this next command, use the Postgres user rather than Root.   So, the entire command above is saying, &#8220;Execute the `psql template1` command as the user &#8216;postgres&#8217;.&#8221;  `psql template1` launches the Postgres command-line app [psql] and logs into the &#8216;template1&#8217; database.  When switching from Root to a user of lesser privilege, you will not be authenticated.
 
-We must do a sudo at this stage rather than simply passing username using the &#8220;psql -U postgres&#8221; method because by default Ident Authentication is the active authentication method for local connections.  Ident Authentication auto-passes your Linux credentials to PostgreS.  Think of it as &#8220;Windows Authentication&#8221; in a SQL Server environment.  This isn&#8217;t necessarily desirable in a web scenario because most web apps are configured to use local SQL users [with an MD5-encrypted password handshake].  We are going to change authentication method to MD5 in a sec.
+We must do a sudo at this stage rather than simply passing username using the &#8220;psql -U postgres&#8221; method because by default Ident Authentication is the active authentication method for local connections.  Ident Authentication auto-passes your Linux credentials to Postgres.  Think of it as &#8220;Windows Authentication&#8221; in a SQL Server environment.  This isn&#8217;t necessarily desirable in a web scenario because most web apps are configured to use local SQL users [with an MD5-encrypted password handshake].  We are going to change authentication method to MD5 in a sec.
 
 Enter this SQL code to change the password of the postgres user:
 
@@ -175,7 +175,7 @@ Enter \q to exit.
 
 #### Host-Based Authentication
 
-Edit PostgreS&#8217; Host-Based Authentication file:
+Edit Postgres&#8217; Host-Based Authentication file:
 
 <pre>:::shell-unix-generic
 nano /etc/postgresql/8.3/main/pg_hba.conf
