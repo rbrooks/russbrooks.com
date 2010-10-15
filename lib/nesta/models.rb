@@ -206,13 +206,13 @@ class Page < FileModel
   def body
     @body ||= case @format
     when :mdown
-      body_text = markup.sub(/^#[^#].*$\r?\n(\r?\n)?/, "")
+      body_text = markup.sub(/^#[^#].*$\r?\n(\r?\n)?/, '')
       Maruku.new(body_text).to_html
     when :haml
-      body_text = markup.sub(/^\s*%h1\s+.*$\r?\n(\r?\n)?/, "")
+      body_text = markup.sub(/^\s*%h1\s+.*$\r?\n(\r?\n)?/, '')
       Haml::Engine.new(body_text).render
     when :textile
-      body_text = markup.sub(/^\s*h1\.\s+.*$\r?\n(\r?\n)?/, "")
+      body_text = markup.sub(/^\s*h1\.\s+.*$\r?\n(\r?\n)?/, '')
       RedCloth.new(body_text).to_html
     end
   end

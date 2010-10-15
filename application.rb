@@ -79,7 +79,7 @@ module Nesta
       end
 
       def format_date(date)
-        date.strftime("%d %B %Y")
+        date.strftime("%B %e, %Y")
       end
 
       def haml(template, options = {}, locals = {})

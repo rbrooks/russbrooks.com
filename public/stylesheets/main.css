@@ -417,9 +417,11 @@ html>body p.feature {
 .entry {
 	margin-bottom: 3em;
 }
-
 .entrymeta {
 	font-size: 0.9em;
+}
+.read_more {
+  margin: 6px 0 20px 0 !important;
 }
 .postedby, .filedto, .commentslink {
 	margin-left: 10px;
