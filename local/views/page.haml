@@ -6,7 +6,7 @@
   = haml :summary, :layout => false, :locals => { :article => page, :heading => :h3 }
 
 - unless @page.categories.empty?
-  .categories
+  %p.categories
     Filed under
     - @page.categories.each do |category|
       %a{ :href => category.abspath }= category.heading
