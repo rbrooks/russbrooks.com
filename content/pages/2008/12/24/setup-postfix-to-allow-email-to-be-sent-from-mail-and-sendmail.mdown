@@ -7,7 +7,7 @@ summary: This article outlines how to configure Ubuntu Linux to allow the comman
 
 Having done it before, I know that setting up a full-on local SMTP server at home is a fairly involved operation.  Furthermore, many consumer ISP&#8217;s block home SMTP servers to deter spammers from setting up bulk-email operations over their connections.  Rather than go through all that, we&#8217;re going to  configure a scaled-back install of Postfix to send all email to your ISP&#8217;s SMTP server, in essence, making your server appear to your ISP as &#8220;just another&#8221; client email application \[Mac Mail, Outlook, Thunderbird, etc.\]  Because server-side languages (Ruby, Python, PHP) and Web frameworks almost always leverage Sendmail or Mail, email sent programmatically via these languages will also route through your ISP's servers.
 
-Tested on Kubuntu 8.04.  <acronym title="Your Mileage May Vary">YMMV</acronym>.
+Tested on Kubuntu 8.04.  YMMV.
 
 ## Install Postfix and Mail Utilities
 
@@ -112,6 +112,9 @@ tail -f /var/log/mail.log
 
 ## Notes
 
-* The `*_security_options` settings allow postfix to use plain text passwords during authentication (albeit over <abbr title="Transport Layer Security">TLS</abbr>).
+* The `*_security_options` settings allow postfix to use plain text passwords during authentication (albeit over TLS).
 * The `MUST_NOPEERMATCH` in the `smtp_tls_sites` file ignores certificate mismatches when negotiating TLS. This, generally, is not a good idea, but I didn&#8217;t have time to play with it yet and configure the CA. Other options are NONE, MAY, and MUST, but some will require configuration of the CA so that a trust can be established with the server. This, I believe, is configured with `smtp_tls_CAfile`
 * The `chmod go-rx smtp_sasl_passwords` removes the group and other/world read/execute permissions on the password files. Only the root user should be able to read it.
+
+*[TLS]: Transport Layer Security
+*[YMMV]: Your Mileage May Vary

@@ -30,7 +30,7 @@ Page content is written using [Markdown](http://daringfireball.net/projects/mark
 
 ####XHTML & CSS
 
-In spite of HAML and Markdown, there still is some old-fashioned markup around.  Hypertext is hand-authored to the <abbr title="Extensible Hypertext Markup Language">XHTML</abbr> 1.0 standard. Cascading Style Sheets were also hand-authored and contain a combination of 1.0, 2.0, and 3.0 properties.
+In spite of HAML and Markdown, there still is some old-fashioned markup around.  Hypertext is hand-authored to the XHTML 1.0 standard. Cascading Style Sheets were also hand-authored and contain a combination of 1.0, 2.0, and 3.0 properties.
 
 ### Photography
 
@@ -67,7 +67,7 @@ All photography throughout the site is mine.
 
 ### Coda
 
-[Coda](http://www.panic.com/coda/) is my current Mac <abbr title="Integrated Development Environment">IDE</abbr> of choice at home and at work. Coda has grown into quite a piece of software, with excellent Subversion integration, Auto-Complete, one-click deployment features, a plethora of supported languages, and it is a Mac-native Cocoa app so integration with the OS is tight.
+[Coda](http://www.panic.com/coda/) is my current Mac IDE of choice at home and at work. Coda has grown into quite a piece of software, with excellent Subversion integration, Auto-Complete, one-click deployment features, a plethora of supported languages, and it is a Mac-native Cocoa app so integration with the OS is tight.
 
 ### TextMate
 
@@ -91,7 +91,7 @@ That being said, a DB-less solution is aptly suited to a personal blog, but hard
 
 This site is really two sites: the Photo Gallery and "the rest".
 
-The Gallery is a PHP application called [Gallery](http://gallery.menalto.com/), hosted at home on a <abbr title="Small Form Factor">SFF</abbr> Acer box over a residential, Verizon FiOS, 20Mb, fiber connection. I&#8217;m using Verizon’s questionable ActionTec router. I’m using [DynDns.org](http://www.dyndns.com) as my dynamic DNS provider.
+The Gallery is a PHP application called [Gallery](http://gallery.menalto.com/), hosted at home on a SFF Acer box over a residential, Verizon FiOS, 20Mb, fiber connection. I&#8217;m using Verizon’s questionable ActionTec router. I’m using [DynDns.org](http://www.dyndns.com) as my dynamic DNS provider.
 
 The rest of the site is at [Heroku](http://www.heroku.com), the greatest Ruby-app host in the world.
 
@@ -108,3 +108,7 @@ My photo gallery is running on [Ubuntu](http://www.ubuntu.com/) Server Edition, 
 For two years I was using an [nginx](http://nginx.net/) reverse proxy and a cluster of [Mongrel](http://github.com/fauna/mongrel) instances behind it. This setup was very fast and ran flawlessly.
 
 From there, it was Apache and [Phusion Passenger](http://phusion.nl) so that I could host PHP and Rails sites in tandem while minimizing maintenance.  Apache is slower and more resource intensive than nginx, but funneling everything through Apache is less to manage.  I am curious to try the forthcoming Passenger 3 Nginx version.
+
+*[XHTML]: Extensible Hypertext Markup Language
+*[IDE]: Integrated Development Environment
+*[SFF]: Small Form Factor

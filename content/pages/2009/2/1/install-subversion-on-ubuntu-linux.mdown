@@ -5,11 +5,11 @@ summary: The following article outlines how to install the [Subversion](http://s
 
 # Install Subversion on Ubuntu Linux
 
-If you plan to expose your <abbr title="Subversion">SVN</abbr> repository through your firewall, I would use only HTTPS or SVN+SSH (never straight HTTP or SVN).  I prefer SVN+SSH because there is no Apache or SSL setup required, so it is easier to get going (but a little less convenient because you can&#8217;t access your repository in a web browser).  Second, if you are a home-hoster like me, the SVN protocol serves up over a non-80 port, which is good because some ISP&#8217;s (\*cough\* Verizon) block port 80.
+If you plan to expose your Subversion (SVN) repository through your firewall, I would use only HTTPS or SVN+SSH (never straight HTTP or SVN).  I prefer SVN+SSH because there is no Apache or SSL setup required, so it is easier to get going (but a little less convenient because you can&#8217;t access your repository in a web browser).  Second, if you are a home-hoster like me, the SVN protocol serves up over a non-80 port, which is good because some ISP&#8217;s (\*cough\* Verizon) block port 80.
 
-These instructions assume <span class="caps">SSH</span> is already active on the server.
+These instructions assume SSH is already active on the server.
 
-Tested on Kubuntu 8.04.  <abbr title="Your Mileage May Vary">YMMV</abbr>.
+Tested on Kubuntu 8.04. YMMV.
 
 ## Install Subversion
 
@@ -140,3 +140,6 @@ svn rm -m 'Deleted Test directory' svn+ssh://hostname/home/svn/myproject/test
 ## Firewall
 
 If you want to expose your repository to the Internet, forward port 3690 to your SVN server.  Port forwarding and firewall configuration are beyond the scope of this article.
+
+*[SSH]: Secure Shell
+*[YMMV]: Your Mileage May Vary

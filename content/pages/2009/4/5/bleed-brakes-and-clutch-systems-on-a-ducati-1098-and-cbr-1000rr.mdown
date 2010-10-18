@@ -1,0 +1,43 @@
+date: 5 April 2009 15:10pm
+categories: Motorbikes
+read more: More&#8230;
+summary: How to bleed the front and rear brakes and clutches on a CBR-1000RR and a Ducati 1098
+
+# Bleed Brakes and Clutch Systems on a Ducati 1098 and CBR-1000RR
+
+**Lesson #1 learned.** The pump that many recommend ([Actron](http://www.actron.com/product_detail.php?pid=16177), [Mityvac](http://www.mityvac.com/pages/products_bcbe.asp), etc.) isn&#8217;t necessary for motorcycle bleeding.  I bought the $60 Actron pump with bleed kit.  A number of online tutorials and blog posts say to use the pump.  I got a much better bleed without using the pump, once you know how to do it.  I really believe the pump was designed for cars &#8211; where you can&#8217;t reach the brake pedal from underneath the car, so you have no choice but to pump the fluid out.  With bikes, of course you *can* reach the brake lever and pedal, so when I got the pump out of the equation, I would get a perfect, bubble-less stream of fluid out the bleed valve.  The pump introduced air into the system.  All you need is a coil of clear nylon tubing from The Home Depot (3/16&#8221; ID, 5/16&#8221; OD) and you can bleed your brakes and clutch for about $5.
+
+Sorry I didn&#8217;t take pics.  Next time.
+
+## Tools
+
+* **Nylon Tubing** &#8211; 3/16&#8221; ID, 5/16&#8221; OD
+* **Metric Wrenches** &#8211; Ducati was an 8mm on the front and clutch and 11mm rear.  I believe the <span class="caps">CBR</span> had an 8mm and a 10mm.
+* **Paper Shop Towels**
+* **Utility Knife**
+* **Vaseline**
+* **Tupperware Containers (2)** &#8211; 3 or 4 inches deep X 8 inches in diameter.
+* **Brake Fluid** &#8211; The best brake fluid money can buy, [Castrol SRF](http://www.castrol.com/castrol/sectiongenericarticle.do?categoryId=9021702&contentId=7040556).  $75 for 1 liter.  Designed for DOT 4 systems, which is what the Ducati and CBR both have.  **Do not ever put DOT 5 in a DOT 4 system.**  You will turn your brake fluid to gelatin.  You can, technically, use DOT 5.1 [not 5] in a DOT 4 system.  Regardless, if your bike came from the factory with DOT 4 in it, you must remain with DOT 4 for the life of the motorcycle.
+
+## Process
+
+1. Put some vaseline on the caliper&#8217;s bleed-valve nipple to ensure a tight seal.
+2. Cut a piece of nylon tubing to about 12&#8221; to 16&#8221;, enough so it makes it from bleed valve on your caliper to the ground with a little extra.
+3. Put the nylon tubing onto the caliper&#8217;s nipple.  Lay the other end of the tubing into a collection bin of some sort (Tupperware).
+4. Lay some towels around and underneath the brake fluid reservoir, especially your instrument panel and paint.  I&#8217;ve heard all kinds of horror stories about brake fluid corroding paint jobs, but haven&#8217;t experienced it myself.  Better safe than sorry.  (It&#8217;s probably not a good idea to get it on your tires either.)
+5. Open the top of your brake fluid reservoir.  Remove the rubber stopper.  It lifts out easily.  The CBR had a little white floaty thing that I believe the Ducati didn&#8217;t have.  Remove that too, if applicable.  Dab the dirty fluid off them as best you can with something that doesn&#8217;t leave lint.  Don&#8217;t use water.  Clean it with a little of the new fluid if you want.  Place them in another tupperware container.  I would cover it, snap it shut, and set it aside so you don&#8217;t knock it over.  The idea is to avoid any dirt in your breaking system.
+6. Soak up the dirty fluid in the reservoir with paper towels or a turkey baster. This will save you some bleed time. Clean out any gunk in the bottom.  Again, don&#8217;t use water or solvents of any kind.  Just wipe with the towels.  The only substance that should ever touch your brake reservoir and lines is brake fluid.
+7. Fill the reservoir up with new fluid, stopping about 1/4&#8221; from the top.
+8. Sit on a chair on the side of the bike, with the caliper in front of you.  Get the brake fluid bottle and shop towels ready beside you.  This is a two-handed operation.  Place a wrench on the bleed valve nut and get your hand ready to squeeze the brake lever.  Squeeze the brake firmly &#8211; not gorilla grip, but not lightly either.  While squeezing the brake, turn the bleed nut only enough until fluid begins flow steadily, filling the entire tube with no bubbles [an 8th of a turn is usually all it takes].  If you turn it too far, bubbles will appear, so back it off a little until they go away.  You&#8217;ll notice the brake lever will suddenly get loose as you squeeze it all the way in to the hand grip.  Shut the bleed valve immediately as the brake lever hits your hand grip &#8211; even better, a little before it hits your grip.  Check the level in the reservoir.  Pump the brake a little.  Repeat this process again.  Squeeze the brake.  Open bleed valve.  Shut bleed valve when brake lever is almost all the way in.  Check reservoir.  Repeat.  Again, you will likely have to pump the lever a few times between bleeds to get pressure back in the system.  When the reservoir is low, fill it up again.  Keep bleeding until no more brown or tan fluid is coming out.  On your final bleed, make sure you have a nice clean stream with no bubbles, then shut the valve quickly for good.
+9. Pop your bleed hose off.
+10. Fill your reservoir with fluid until it&#8217;s between the fill marks, and you&#8217;re done.  I went through 2 full reservoirs of new fluid to bleed each side of the front.  Same with the rear and clutch &#8211; two reservoirs full of fluid each [the clutch maybe a little more because the reservoir is so small].
+11. Be sure to do both sides of the front.
+12. In between switching the nylon tube to another nipple, cut a 1/4&#8221; piece off of it with a utility knife.  That will remove the stretched portion, so you get a tight seal on the next one.
+
+The clutch process and the fluid are exactly the same.  On the Ducati and the CBR, the bleed valve is down by your shift lever.  I hear the new 08/09 CBR&#8217;s have no hydraulic clutch so this process doesn&#8217;t apply to them.
+
+The Ducati was more time-consuming to do than the CBR.  On the Ducati, you have to remove either the windscreen or the entire front fairing to get at the reservoirs.  The fairing is a 30 to 45 minute operation each way.  The windscreen has some very tiny Torx bolts.  I didn&#8217;t have tiny Torx wrenches, so I had to go the fairing route.
+
+Secondly, the rear bleed valve is on the opposite side from the rear brake, so you have to do some gymnastics underneath your bike to grab the rear brake lever with your left hand while opening the valve with your right, but it worked out.  Also, a standard wrench is difficult to get at the rear-bleed valve.  You have to angle it sideways or it hits the inside of the rim.  Tricky, but again, it fortunately worked out.
+
+Now that I know how to do it, I could bleed my CBR, both brakes and clutch, in under an hour.  If I had the proper windscreen hex-bolt, the Ducati would only take maybe 15 minutes longer than that.
