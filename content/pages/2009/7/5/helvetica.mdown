@@ -5,7 +5,7 @@ summary: I finally caught up with the [Helvetica film](http://www.helveticafilm.
 
 # Helvetica
 
-![Helvetica](/attachments/2009/7/5/Helvetica.gif "Helvetica")
+[![Helvetica](/attachments/2009/7/5/Helvetica.gif "Helvetica")](http://www.helveticafilm.com/ "Helvetica")
 
 ## Massimo [Vignelli](http://vignelli.com/)
 
