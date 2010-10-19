@@ -147,7 +147,7 @@ module Nesta
 
     get '/css/:sheet.css' do
       content_type 'text/css', :charset => 'utf-8'
-      # cache(:proxy => 'public', :etag => params[:sheet])
+      cache(:proxy => 'public', :etag => params[:sheet])
       sass(params[:sheet].to_sym)
     end
 
@@ -159,7 +159,7 @@ module Nesta
       @articles = Page.find_articles[0..7]
       @body_class = 'home'
       @banner_img = '/images/banner.jpg'
-      @banner_title = 'Russell Brooks'
+      @banner_title = 'Autumn Sycamore, by Russell Brooks'
       cache(:proxy => 'public', :max_age => 'index')
       haml(:index)
     end
