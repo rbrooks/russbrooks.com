@@ -5,7 +5,7 @@ summary: This article describes how to flush the cooling system on a CBR-1000RR.
 
 # Flush the Cooling System on a Honda CBR-1000RR
 
-This process represents a **first-time** replacement of factory antifreeze with straight distilled water and coolant, as required by many track-day and racing organizations.  Because this is a complete changeover from one type of coolant to another, the number of times you flush the system is going to be greater than it will be during subsequent yearly maintenance flushes.
+This process represents a **first-time** replacement of factory antifreeze with straight distilled water and coolant, as required by many track-day and racing organizations. Because this is a complete changeover from one type of coolant to another, the number of times you flush the system is going to be greater than it will be during subsequent yearly maintenance flushes.
 
 **Only do this when the engine is cool.**
 

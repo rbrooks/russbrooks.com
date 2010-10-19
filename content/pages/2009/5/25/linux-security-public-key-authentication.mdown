@@ -11,7 +11,7 @@ We are going to do three primary things:
 * **Disable Password Authentication**
 * **Disable Root Logins**
 
-This is far more secure and highly recommended, especially on boxes that are exposed to the Internet.  With this model in place, there is no way someone can compromise your server via a brute-force attack (automated username and password guessing).  In addition, there is no way anyone can access your server via SSH without your Private Key (which you will keep private and guard with your cat&#8217;s life).
+This is far more secure and highly recommended, especially on boxes that are exposed to the Internet. With this model in place, there is no way someone can compromise your server via a brute-force attack (automated username and password guessing).  In addition, there is no way anyone can access your server via SSH without your Private Key (which you will keep private and guard with your cat&#8217;s life).
 
 From this point on, your login process will be to log in as yourself, then gain Root from there on an as-needed basis.  This adds another layer of security.
 

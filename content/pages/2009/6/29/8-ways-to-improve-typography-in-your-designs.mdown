@@ -7,7 +7,7 @@ summary: Nice summary of the core typography fundamentals that everyone should k
 
 I found a good overview of eight critical typography rules at Smashing, [8 Simple Ways to Improve Typography in Your Designs](http://www.smashingmagazine.com/2009/04/03/8-simple-ways-to-improve-typography-in-your-designs/).
 
-Ever find yourself interacting with a non-designer making design decisions about typography?  We've all been on the receiving end of unfortunate decisions such as these:
+Ever find yourself interacting with a non-designer making design decisions about typography? We've all been on the receiving end of unfortunate decisions such as these:
 
 * &#8220;Tighten it up&#8221;, while pointing at the &#8220;line spacing&#8221;.
 * &#8220;A website should fill the screen&#8221;, as Measure stretches to unreadable levels.

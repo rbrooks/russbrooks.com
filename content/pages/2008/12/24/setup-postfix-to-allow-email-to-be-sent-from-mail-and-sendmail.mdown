@@ -15,7 +15,7 @@ Tested on Kubuntu 8.04.  YMMV.
 apt-get install postfix
 </pre>
 
-Answer &#8220;Yes&#8221; to any prompts.  When it&#8217;s complete, you will see an installation screen ask about what type of Postfix Configuration you would like.  Select &#8220;**Satellite System**&#8221;.  This means that we don&#8217;t plan on using the system for full SMTP services.  We will be relaying mail to an external SMTP server.  Leave the defaults for the remaining questions.  We are going to change some of those via the config file anyway.
+Answer &#8220;Yes&#8221; to any prompts.  When it&#8217;s complete, you will see an installation screen ask about what type of Postfix Configuration you would like.  Select &#8220;**Satellite System**&#8221;.  This means that we don&#8217;t plan on using the system for full SMTP services.  We will be relaying mail to an external SMTP server.  Leave the defaults for the remaining questions. We are going to change some of those via the config file anyway.
 
 <pre>:::shell-unix-generic
 apt-get install mailutils

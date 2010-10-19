@@ -12,7 +12,7 @@ keywords: russ brooks, ruby, rails, sinatra, linux, mac, os x, motorcycles, supe
 author:
   name: Russell Brooks
   uri: http://russbrooks.com
-  email: me@russbrooks.com
+#  email: me@russbrooks.com
 
 # You can stick with the default look and feel, or use a theme. Themes are
 # easy to create or install, and live inside the themes directory. You
@@ -34,7 +34,7 @@ disqus_short_name: russbrooks
 #     deploying Nesta to Heroku.
 #
 cache: false
-# We use Sinatra Cache now. No need for Nesta's home-grown one. [RHB]
+# We use Sinatra Cache now which uses Rack Cache. No need for Nesta's home-grown one. [RHB]
 
 # max_age
 #     These settings determine the max-age value for the Cache-Control

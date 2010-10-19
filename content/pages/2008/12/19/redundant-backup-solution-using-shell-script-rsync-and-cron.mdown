@@ -82,7 +82,7 @@ chmod 755 /usr/bin/backup-sites.sh
 
 ## Sync Drives
 
-Ensure you have Rsync installed.  You may have to get it from the package manager.
+Ensure you have Rsync installed. You may have to get it from the package manager.
 
 Create a `sync-ext-drives.sh` file in the same directory:
 

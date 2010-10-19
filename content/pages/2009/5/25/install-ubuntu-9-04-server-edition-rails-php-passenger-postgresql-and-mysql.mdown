@@ -1,7 +1,7 @@
 date: 25 May 2009 21:32pm
 categories: linux
 read more: More&#8230;
-summary: What follows are my notes while installing [Ubuntu](http://www.ubuntu.com/) 9.04 Server Edition and the full Rails/PHP/SQL stack: Rails, Passenger, PHP, PostgreSQL, and MySQL.  Hopefully it will be of some value to the community.
+summary: What follows are my notes while installing [Ubuntu](http://www.ubuntu.com/) 9.04 Server Edition and the full Rails/PHP/SQL stack: Rails, Passenger, PHP, PostgreSQL, and MySQL. Hopefully it will be of some value to the community.
 
 # Install Ubuntu Server Edition, Rails, PHP, Passenger, PostgreSQL, and MySQL
 	

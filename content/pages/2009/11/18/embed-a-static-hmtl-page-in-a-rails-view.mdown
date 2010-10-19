@@ -5,7 +5,7 @@ summary: During a recent Rails project, I had the need to embed some static HTML
 
 # Embed a Static HTML Page in a Rails View
 	
-During a recent Rails project, I had the need to embed some static HTML pages within a View that were wrapped in the application&#8217;s default Layout.  I found it interesting that there was no apparent simple way to do this, for example SSI.
+During a recent Rails project, I had the need to embed some static HTML pages within a View that were wrapped in the application&#8217;s default Layout. I found it interesting that there was no apparent simple way to do this, for example SSI.
 
 Things that didn&#8217;t work:
 

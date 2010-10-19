@@ -7,7 +7,7 @@ summary: In these examples, we are replacing the &#8220;abc_&#8221; prefix with 
 
 In these examples, we are replacing the &#8220;abc_&#8221; prefix with a &#8220;def_&#8221; on a number of files.
 
-Choose either method.  Whatever works on your OS.
+Choose either method. Whatever works on your OS.
 
 ## Ruby
 

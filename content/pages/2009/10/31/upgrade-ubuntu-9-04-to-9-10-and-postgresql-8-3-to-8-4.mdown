@@ -9,7 +9,7 @@ What follows are my notes on upgrading [Ubuntu 9.04](http://www.ubuntu.com/) Ser
 
 ## OS
 
-Upgrading the operating system itself could not have been simpler and more seamless.  As Root, simply type:
+Upgrading the operating system itself could not have been simpler and more seamless. As Root, simply type:
 
 <pre>:::shell-unix-generic
 apt-get update

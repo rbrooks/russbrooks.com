@@ -11,7 +11,7 @@ OS X 10.6 now has the ability to show and hide hidden files in Open and Save dia
 
 If your decimal separator is a comma, you may have to use **Command-Shift-, (comma)**.
 
-This has been needed for quite some time.  Shame it doesn&#8217;t work in Finder.  Although, you can enable them in Finder system-wide.  Open Terminal and type:
+This has been needed for quite some time. Shame it doesn&#8217;t work in Finder.  Although, you can enable them in Finder system-wide.  Open Terminal and type:
 
 <pre>:::shell-unix-generic
 defaults write com.apple.Finder AppleShowAllFiles TRUE
