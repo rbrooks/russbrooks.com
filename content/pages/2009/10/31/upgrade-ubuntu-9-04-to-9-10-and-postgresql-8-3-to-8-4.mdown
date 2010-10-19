@@ -1,0 +1,68 @@
+date: 31 Oct 2009 22:00pm
+categories: linux
+read more: More&#8230;
+summary: Just some notes on upgrading Ubuntu to 9.10 and PostgreSQL to 8.4 using do-release-upgrade.
+
+# Upgrading Ubuntu and PostgreSQL Using do-release-upgrade
+	
+What follows are my notes on upgrading [Ubuntu 9.04](http://www.ubuntu.com/) Server Edition from 9.04 to 9.10 which included a PostgreSQL migration from 8.3 to 8.4.	
+
+## OS
+
+Upgrading the operating system itself could not have been simpler and more seamless.  As Root, simply type:
+
+<pre>:::shell-unix-generic
+apt-get update
+do-release-upgrade
+</pre>
+
+According to [Ubuntu&#8217;s Upgrade Notes](http://www.ubuntu.com/getubuntu/upgrading), you cannot use this method if you are running any version earlier than 9.04.
+
+This first time I tried it was the night that Ubuntu 9.10 was released, and it failed.  Throughput was fine at first, but degraded to essentially nothing an timeouts occurred.  This installer rolled the system back to its pre-install state.  Clearly the entire planet was attempting to upgrade at the same time.  I tried again two morning&#8217;s later at 8 AM and it was zippy and trouble-free.
+
+At a few points during the install, you will be prompted about changes to certain config files due to installed software also being upgraded.  For example, I was prompted about MySQL and PHP.  You can choose to accept the installer&#8217;s new config file \[which I believe backs up your existing one\], leave your existing, or see a DIFF first of what lines will actually be changing \[very nice\].  In each case, I looked at the DIFF first, made sure the lines looked OK to change, then accepted the new config files and overwrite my old.  In PHP&#8217;s case, there were 3 lines I needed to correct after the fact, so that my PHP sites would continue to support larger uploads.
+
+<pre>:::shell-unix-generic
+nano /etc/php5/apache2/php.ini
+</pre>
+
+Change these lines to:
+
+<pre>:::shell-unix-generic
+upload_max_filesize = 25M
+post_max_size = 25M
+memory_limit = 64M
+</pre>
+
+## PostgreSQL
+
+Upgrading PostgreSQL from 8.3 or 8.4 and migrating all databases also could not be any easier or more seamless.
+
+A concise screen appeared during the install about what was being done with regard to PostgreSQL.  It informed me that a new 8.4 instance would be installed \[on the next port in sequence: 5433\], leaving my 8.3 instance untouched and running in tandem on its existing port \[5432, the PostgreS default\].  It directed me to the Postgres-bundled tools involved in migrating my 8.3 data as well as a README file on the drive I could check after the install was complete.
+
+When the install was complete, I checked my sites in a browser and checked the DB&#8217;s via pgAdmin III and everything was fully functioning as it was before.
+
+### Migrating 8.3 Databases to 8.4
+
+Between the install screen and the README on the drive, I determined that the correct migration steps were to first get the empty 8.4 instance out of the way \[completely delete it\], then run Postgres&#8217;s Upgrade Cluster utility on the 8.3 instance.  Again, as Root:\
+
+<pre>:::shell-unix-generic
+pg_dropcluster 8.4 main --stop
+pg_upgradecluster 8.3 main
+</pre>
+
+The `--stop` param forces a server shutdown before the files are removed.  It asks for the password to your postgres user, and that was that!  It migrated all the databases and config files \[including authentication\] to 8.4.1, placed the 8.4.1 instance on the default port \[5432\], and moved 8.3 out of the way to the higher port \[5433\].
+
+Once the new database was tested, I could safely drop the old cluster:
+
+<pre>:::shell-unix-generic
+pg_dropcluster 8.3 main
+</pre>
+
+Be sure to restart Apache.  I experienced some weirdness with my PHP before doing so:
+
+<pre>:::shell-unix-generic
+apache2ctl restart
+</pre>
+
+All of the above including the OS install took about 30 minutes.  Effortless.  Nice job, Ubuntu and Postgres teams.  My entire web server infrastructure was intact and running after the install, some or all of which was upgraded too: Apache, Phusion Passenger, Ruby, the entire Rails stack, Gems, PHP \[and its supplemental libraries\], PostgreSQL, MySQL \[upgraded to 5.1\], and so on.

@@ -147,7 +147,7 @@ module Nesta
 
     get '/css/:sheet.css' do
       content_type 'text/css', :charset => 'utf-8'
-      cache(:proxy => 'public', :etag => params[:sheet])
+      # cache(:proxy => 'public', :etag => params[:sheet])
       sass(params[:sheet].to_sym)
     end
 
@@ -160,13 +160,13 @@ module Nesta
       @body_class = 'home'
       @banner_img = '/images/banner.jpg'
       @banner_title = 'Russell Brooks'
-      cache(:proxy => 'public', :max_age => 'index')
+      # cache(:proxy => 'public', :max_age => 'index')
       haml(:index)
     end
 
     get %r{/attachments/([\w/.-]+)} do
       file = File.join(Nesta::Config.attachment_path, params[:captures].first)
-      cache(:proxy => 'public', :max_age => 'asset')
+      # cache(:proxy => 'public', :max_age => 'asset')
       send_file(file, :disposition => nil)
     end
 
@@ -174,7 +174,7 @@ module Nesta
       content_type :xml, :charset => 'utf-8'
       set_from_config(:title, :subtitle, :author)
       @articles = Page.find_articles.select { |a| a.date }[0..9]
-      cache(:proxy => 'public', :max_age => 'feed')
+      # cache(:proxy => 'public', :max_age => 'feed')
       builder(:atom, :cache => false)
     end
 
@@ -184,7 +184,7 @@ module Nesta
       @last = @pages.map { |page| page.last_modified }.inject do |latest, page|
         (page > latest) ? page : latest
       end
-      cache(:proxy => 'public', :max_age => 'sitemap')
+      # cache(:proxy => 'public', :max_age => 'sitemap')
       builder(:sitemap, :cache => false)
     end
 
@@ -195,7 +195,7 @@ module Nesta
       raise Sinatra::NotFound if @page.nil?
       set_title(@page)
       set_from_page(:description, :keywords, :banner_img, :banner_title, :comments)
-      cache(:proxy => 'public', :max_age => 'page', :etag => @page.etag)
+      # cache(:proxy => 'public', :max_age => 'page', :etag => @page.etag)
       haml(:page)
     end
   end

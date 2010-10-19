@@ -1,5 +1,5 @@
 date: 24 Dec 2008 20:01pm
-categories: Linux
+categories: linux
 read more: More&#8230;
 summary: This article outlines how to configure Ubuntu Linux to allow the command-line applications, Mail and Sendmail, and likewise programming languages, to send email through your ISP&#8217;s mail server (eg, Gmail).
 

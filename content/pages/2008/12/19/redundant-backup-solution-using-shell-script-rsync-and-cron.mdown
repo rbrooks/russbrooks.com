@@ -1,5 +1,5 @@
 date: 19 Dec 2008 22:00pm
-categories: Linux
+categories: linux
 read more: More&#8230;
 summary: How to create a recurring nightly backup with native Linux tools.
 

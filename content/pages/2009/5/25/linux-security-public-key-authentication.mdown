@@ -1,5 +1,5 @@
 date: 25 May 2009 19:15pm
-categories: Linux
+categories: linux
 read more: More&#8230;
 summary: How to tighten security and use passwordless logins on a Linux box using Public-Key Authentication. This article was tested on Ubuntu 9.04 Server Edition. It should be similar on most Linux dists and UNIX variants.
 

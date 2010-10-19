@@ -1,5 +1,5 @@
 date: 5 April 2009 17:40pm
-categories: Motorbikes
+categories: motorbikes
 read more: More&#8230;
 summary: This article describes how to flush the cooling system on a CBR-1000RR.
 
@@ -30,7 +30,7 @@ With your 5mm hex wrench, remove the middle fairing from the right, and the lowe
 
 Place the Tupperware container beneath the bike. Place some paper towels behind the fill cap in case any antifreeze escapes the overflow hose when removing it. Don&#8217;t worry. It won&#8217;t spray all over the place. A drop or two might come out.
 
-There is a small spring clasp holding the radiator siphon hose. Pinch the clasp with pliers and move it back away from the fill cap. Pull the siphon hose from the fill cap. Fish it out from behind the fill cap. Cap the end of the siphon hose with your finger and snake it down through the fairing so it is enters the Tupperware container. You have to cap it with your finger because the instant the hose opening passes below the water level in the radiator reserve tank, antifreeze will begin draining out. (Science) Once you get the end safely in the container, release your finger and antifreeze will flow out.
+There is a small spring clasp holding the radiator siphon hose. Pinch the clasp with pliers and move it back away from the fill cap. Pull the siphon hose from the fill cap. Fish it out from behind the fill cap. Cap the end of the siphon hose with your finger and snake it down through the fairing so it is enters the Tupperware container. You have to cap it with your finger because the instant the hose opening passes below the water level in the radiator reserve tank, antifreeze will begin draining out. (Science!) Once you get the end safely in the container, release your finger and antifreeze will flow out.
 
 <img src="/attachments/2009/4/5/flush_coolant_cbr1.jpg" width="496" height="331" class="photo" alt="Drain Overflow Tank" title="Drain Overflow Tank" />
 
@@ -72,7 +72,7 @@ It is important to understand that after all the antifreeze stops flowing from t
 
 This means that, after each fill, you must get the bike up to at least 176 &deg;F, but preferably over 194 &deg;F.  That will cause the valve to open and mix the undrained antifreeze with the water you added.  I&#8217;ve seen many reports of people simply draining their system several times without running the engine to operating temp between fills.  A year later when they flush their system again, they wonder, &#8220;Why is my coolant still green?&#8221;
 
-##Flush the System
+##  Flush the System
 
 **Important: Only use distilled water.  Never let ordinary tap water or even bottled spring water touch your cooling system.**
 

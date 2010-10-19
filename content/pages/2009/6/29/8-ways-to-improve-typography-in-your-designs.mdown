@@ -1,5 +1,5 @@
 date: 29 Jun 2009 18:31pm
-categories: Design
+categories: design
 read more: More&#8230;
 summary: Nice summary of the core typography fundamentals that everyone should know.
 

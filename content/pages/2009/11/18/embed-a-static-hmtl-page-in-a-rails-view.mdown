@@ -1,0 +1,58 @@
+date: 18 Nov 2009 22:00pm
+categories: rails
+read more: More&#8230;
+summary: During a recent Rails project, I had the need to embed some static HTML pages within a View that were wrapped in the application&#8217;s default Layout.  I found it interesting that there was no apparent simple way to do this, for example SSI, so I&#8217;m blogging about the solution.
+
+# Embed a Static HTML Page in a Rails View
+	
+During a recent Rails project, I had the need to embed some static HTML pages within a View that were wrapped in the application&#8217;s default Layout.  I found it interesting that there was no apparent simple way to do this, for example SSI.
+
+Things that didn&#8217;t work:
+
+* `render :file` in the Controller. It worked, but you cannot wrap it in a Layout.
+* `render :file` in the View
+* `render :partial`
+* `render :inline`
+* `render :text`
+* `render :action`
+
+I discovered a loosely documented method called [render_to_string()](http://apidock.com/rails/ActionController/Base/render_to_string), but it did not work directly in the View because `render_to_string()` has a visibility of &#8220;Protected&#8221; in `ActionController::Base`.  In other words, it is only accessible in `ActionController::Base` and subclasses thereof.  The Controller is a subclass of ActionController but the View is not.
+
+## Questionable
+
+One egregious way around this, that I&#8217;ve seen online, is to simply make `render_to_string()` public in your Controller:
+
+<pre>:::ruby
+class MyController &lt; ApplicationController
+  public :render_to_string
+end
+</pre>
+
+Then access it in the View using the `controller.` reference:
+
+<pre>:::ruby
+&lt;%= controller.render_to_string :file =&gt; '/aboslute/path/to/file.html' %&gt;
+</pre>
+
+Note that what is being shown above, in the MyController class, you cannot do in other OOP languages like C#, Java, and PHP.  We are effortlessly overriding a method&#8217;s Protected visibility and making it Public.
+
+This raises the question, &#8220;Why even have visibility modifiers in Ruby?&#8221;
+
+Ruby is very open and trusting of the client-code programmer.  In Ruby, marking a member as Private or Protected essentially means, &#8220;If you try to access this member in a way that violates its visibility, we will certainly let you know \[by throwing an error\], but if you ***really*** want to, you can still access it \[by adding a line of code\].&#8221;
+
+The object masters will cry, &#8220;But this breaks Encapsulation, an OOP fundamental!  What happens if the implementation changes?&#8221;
+
+True, but by the same token, it allows you to do some powerful and flexible things in Ruby that you can&#8217;t do in other languages.  \[Plenty of examples online.\]
+
+## Correct Solution
+
+I opted to store the contents of `render_to_string` in an attribute in the Controller:
+
+<pre>:::ruby
+@file = render_to_string :file =&gt; '/aboslute/path/to/file.html'
+</pre>
+
+Then output the `@file` attribute in the View.
+		
+*[OOP]: Object-Oriented Programming
+*[SSI]: Server-Side Includes

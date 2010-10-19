@@ -1,5 +1,5 @@
 date: 5 Jun 2009 18:48pm
-categories: Linux
+categories: linux
 read more: More&#8230;
 summary: In these examples, we are replacing the &#8220;abc_&#8221; prefix with a &#8220;def_&#8221; on a number of files.
 

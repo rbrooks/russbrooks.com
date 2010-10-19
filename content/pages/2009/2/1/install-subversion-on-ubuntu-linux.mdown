@@ -1,5 +1,5 @@
 date: 2 Feb 2009 21:09pm
-categories: Linux
+categories: linux
 read more: More&#8230;
 summary: The following article outlines how to install the [Subversion](http://subversion.tigris.org/) source-control system on [Ubuntu](http://www.ubuntu.com/) Linux and expose it over the SVN+SSH protocols.
 
