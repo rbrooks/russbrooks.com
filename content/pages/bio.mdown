@@ -48,7 +48,7 @@ banner title: Medieval Garden, by Russell Brooks
     <td class="row" valign="top">
         Hobbies:</td>
     <td class="row">
-        Fast motorcycles, skiing, music (performing and appreciating), guitar, bass,
+        Fast motorcycles, skiing, music [performing and appreciating], guitar, bass,
         <a href="http://www.stick.com/">Chapman Stick</a>,
         piano, synthesizers, scuba diving, aviation, racquetball, skating [ice &#38;
         in-line], photography, videography, &#38; computers [duh]</td>

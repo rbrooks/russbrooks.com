@@ -81,8 +81,6 @@ banner title: Pennsylvania Sunset, by Russell Brooks
 
 ### PHP
 
-Yes, I coded PHP for four years.  PHP is a great web language... for beginners.
-
 * [CakePHP](http://cakephp.org/) &#8211; Rails-like MVC ORM framework for PHP
 * [CodeIgniter](http://codeigniter.com/) &#8211; A fast and popular PHP frameworks. Small footprint.
 * [DooPHP](http://doophp.com/) &#8211; Claims to be the fastest PHP framework.
@@ -110,9 +108,9 @@ Yes, I coded PHP for four years.  PHP is a great web language... for beginners.
 * [Russell Underwood](http://www.russellunderwood.com/) &#8211; Russ&#8217;s work is beyond amazing.
 * [Adam Wallacavage](http://www.adamwallacavage.com/) &#8211; Adam&#8217;s hand-sculpted chandeliers [and photography] are like nothing you&#8217;ve ever seen.
 
-*[API]: Application Programming Interface
-*[HTTP]: Hypertext Transfer Protocol
+*[API]: Application-Programming Interface
+*[HTTP]: Hypertext-Transfer Protocol
 *[IIS]: Internet Information Services
-*[ORM]: Object Relational Mapping
+*[ORM]: Object-Relational Mapping
 *[MVC]: Model, View, Controller
 *[PHP]: PHP Hypertext Preprocessor
