@@ -1,0 +1,44 @@
+date: 20 Oct 2010 22:15pm
+categories: rails
+read more: More&#8230;
+summary: How to get Rails Cache with MemCache working on Passenger with Smart Spawning active.
+
+# Rails Cache and MemCache on Passenger with Smart Spawning
+
+This article applies to Passenger 2.3.x.  Passenger 3 was released today, so I'm not certain if this issue applies to that yet.
+
+## Smart Spawning
+
+Passenger's "Smart Spawning" is enabled by default, but does not play nice with MemCacheD.
+
+If you recall from the Mongrel days, Mongrel_Cluster loads an entire copy of of your app and the Rails framework into each Mongrel.  Mongrel is analogous to an "app process" in Passenger.  For efficiency reasons, when Smart Spawning is active, Passenger shares your app code and Rails framework between app processes.  Unfortunately, this can seriously confuse MemCacheD.  Different app processes can contend for the same item in MemCache, unbeknownst to MemCache, causing one of those two MemCache connections to drop mid-stride.  If you have Rails.cache configured to use MemCache as its store, this can cause periodic incomplete cache reads.  Since everything in Rails.cache is marshaled on its way in, if a MemCache connection is interrupted, a cache read can be truncated, which causes demarshaling to fail, yielding a cryptic "Marshal data too small" error.  You may encounter other errors such as MemCache IO errors and timeouts.
+
+## Lazy Solution
+
+To solve this, some developers back Passenger off to "Conservative Spawning".  But that, like Mongrel_Cluster, stores a copy of your app and the Rails framework in each app process.  This wastes memory and app-process \[re\]spawn time.  I refuse to concede to that.
+
+## Correct Solution
+
+I found a clue in the Phusion Passenger User's Guide under [Spawning Methods Explained](http://www.modrails.com/documentation/Users%20guide.html#spawning_methods_explained).  If you scroll a little further, there's a section called "11.3.1. Example 1: Memcached connection sharing (harmful)".  It provides a small code snippet for your `environment.rb` file.  This code resets the connection to MemCache when an app process is \[re\]started.  But, unfortunately their code snippet contains a some psuedo-code, `reestablish_connection_to_memcached`, instead of actual code for the solution.  I see some solutions online that use a CACHE constant which would mean a global replace of "`Rails.cache`" throughout your app.  We were already using the standard `Rails.cache` application-wide, so I wanted to stick with that.  So, I call the `reset()` method on `Rails.cache` instead \[but only if `Rails.cache`'s store is set to MemCache\].
+
+<pre>:::ruby
+if defined?(PhusionPassenger)
+ PhusionPassenger.on_event(:starting_worker_process) do |forked|
+   if forked
+     Rails.cache.instance_variable_get(:@data).reset if Rails.cache.class == ActiveSupport::Cache::MemCacheStore
+   end
+ end
+end
+</pre>
+
+Restart MemCacheD:
+
+<pre>:::shell-unix-generic
+service memcached restart
+</pre>
+
+...and Passenger \[from the root of your app\]:
+
+<pre>:::shell-unix-generic
+touch tmp/restart.txt  
+</pre>
