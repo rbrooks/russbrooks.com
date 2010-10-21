@@ -31,7 +31,9 @@ if defined?(PhusionPassenger)
 end
 </pre>
 
-Restart MemCacheD:A
+Also update MemCacheD and your memcache-client gem to latest.  They're faster and better.
+
+Restart MemCacheD:
 
 <pre>:::shell-unix-generic
 service memcached restart
