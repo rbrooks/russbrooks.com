@@ -31,7 +31,7 @@ if defined?(PhusionPassenger)
 end
 </pre>
 
-Also update MemCacheD and your memcache-client gem to latest.  They're faster and better.
+Also update MemCacheD and your memcache-client gem to latest.  They're faster and better.  And add a `require 'memcache'` to environment.rb, so Rails use the new gem and not its bundled old one.
 
 Restart MemCacheD:
 
@@ -44,3 +44,5 @@ service memcached restart
 <pre>:::shell-unix-generic
 touch tmp/restart.txt  
 </pre>
+
+`Rails.cache.write` and `Rails.cache.fetch` should now be shuttling data in and out of MemCacheD unscathed.
