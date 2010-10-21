@@ -5,7 +5,7 @@ summary: How to get Rails Cache with MemCache working on Passenger with Smart Sp
 
 # Rails Cache and MemCache on Passenger with Smart Spawning
 
-This article applies to Passenger 2.3.x.  Passenger 3 was released today, so I'm not certain if this issue applies to that yet.
+This article applies to Passenger 2.2.x.  Passenger 3 was released today, so I'm not certain if this issue applies to that yet.
 
 ## Smart Spawning
 
@@ -31,7 +31,7 @@ if defined?(PhusionPassenger)
 end
 </pre>
 
-Restart MemCacheD:
+Restart MemCacheD:A
 
 <pre>:::shell-unix-generic
 service memcached restart
