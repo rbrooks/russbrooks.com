@@ -15,13 +15,13 @@ If you recall from the Mongrel days, Mongrel_Cluster loads an entire copy of of 
 
 ## Lazy Solution
 
-To solve this, some developers back Passenger off to "Conservative Spawning".  But that, like Mongrel_Cluster, stores a copy of your app and the Rails framework in each app process.  This wastes memory and app-process \[re\]spawn time.  I refuse to concede to that.
+To solve this, some developers back Passenger off to "Conservative Spawning".  But that, like Mongrel_Cluster, stores a copy of your app and the Rails framework in each app process.  This wastes memory and app-process \[re\]spawn time.  I didn't want to concede to that.
 
 ## Correct Solution
 
 I found a clue in the Phusion Passenger User's Guide under [Spawning Methods Explained](http://www.modrails.com/documentation/Users%20guide.html#spawning_methods_explained).  If you scroll a little further, there's a section called "11.3.1. Example 1: Memcached connection sharing (harmful)".  It provides a small code snippet for your `environment.rb` file.  This code resets the connection to MemCache when an app process is \[re\]started.  But, unfortunately their code snippet contains a some psuedo-code, `reestablish_connection_to_memcached`, instead of actual code for the solution.  I see some solutions online that use a CACHE constant which would mean a global replace of "`Rails.cache`" throughout your app.  We were already using the standard `Rails.cache` application-wide, so I wanted to stick with that.  So, I call the `reset()` method on `Rails.cache` instead \[but only if `Rails.cache`'s store is set to MemCache\].
 
-<pre style="width: 675px;">:::ruby
+<pre>:::ruby
 if defined?(PhusionPassenger)
  PhusionPassenger.on_event(:starting_worker_process) do |forked|
    if forked
