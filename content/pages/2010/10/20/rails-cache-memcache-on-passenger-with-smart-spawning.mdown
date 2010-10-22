@@ -21,7 +21,7 @@ To solve this, some developers back Passenger off to "Conservative Spawning".  B
 
 I found a clue in the Phusion Passenger User's Guide under [Spawning Methods Explained](http://www.modrails.com/documentation/Users%20guide.html#spawning_methods_explained).  If you scroll a little further, there's a section called "11.3.1. Example 1: Memcached connection sharing (harmful)".  It provides a small code snippet for your `environment.rb` file.  This code resets the connection to MemCache when an app process is \[re\]started.  But, unfortunately their code snippet contains a some psuedo-code, `reestablish_connection_to_memcached`, instead of actual code for the solution.  I see some solutions online that use a CACHE constant which would mean a global replace of "`Rails.cache`" throughout your app.  We were already using the standard `Rails.cache` application-wide, so I wanted to stick with that.  So, I call the `reset()` method on `Rails.cache` instead \[but only if `Rails.cache`'s store is set to MemCache\].
 
-<pre>:::ruby
+<pre style="width: 675px;">:::ruby
 if defined?(PhusionPassenger)
  PhusionPassenger.on_event(:starting_worker_process) do |forked|
    if forked
