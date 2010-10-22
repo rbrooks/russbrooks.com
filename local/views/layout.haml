@@ -12,7 +12,8 @@
     - if local_stylesheet?
       %link{ :href => "/css/local.css", :media => "screen", :rel => "stylesheet", :type => "text/css" }
     %link{ :href => "/articles.xml", :rel => "alternate", :type => "application/atom+xml" }
-    %script{ :type => 'text/javascript', :src  => '/javascripts/lifespan.js' }
+    - if @page && @page.heading == 'Bio'
+      %script{ :type => 'text/javascript', :src  => '/javascripts/lifespan.js' }
     / :javascript
     /   var disqus_iframe_css = 'http://www2.russbrooks.com:8000/stylesheets/main.css';
     = haml :analytics, :layout => false
