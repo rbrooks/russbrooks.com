@@ -1,0 +1,24 @@
+date: 30 Dec 2009 21:22pm
+categories: mac
+read more: More&#8230;
+summary: Have you ever noticed that your Mac leaves small .DS_Store files on network shares and wished you could shut that off?
+
+# Disable .DS_Store Files on Mac OS X
+
+Have you ever noticed that your Mac leaves small .DS_Store files on network shares and wished you could shut that off?
+
+To disabled them, enter or paste these commands into a Terminal window:
+
+<pre>:::shell-unix-generic
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+su -
+defaults write com.apple.desktopservices DSDontWriteNetworkStores true
+</pre>
+
+Log out of your Mac from the Apple Menu, then log back in again.
+
+The second command \[`su -`\] logs us in as Root, then we perform the command again as Root.  It is unlikely you will be browsing network shares as Root, but we do it just in case.
+
+The above command does not prevent these .DS_Store files from being created locally, which is a good thing.  The OS needs them locally.
+
+The only thing stored in these files is some unnecessary things like scrollbar positions, icon size, and window dimensions.  Trust me, you can safely live without them.  I prefer that my Mac be a good citizen and not leave a trail of liter strewn throughout the network.  \[I should mention that Windows does the same thing with its thumbnail cache files.\]
