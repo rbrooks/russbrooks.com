@@ -176,7 +176,7 @@ class Page < FileModel
   end
 
   def comments
-    metadata('comments') == 'true'
+    metadata('comments').nil? || metadata('comments') == 'true'
   end
 
   def atom_id
@@ -245,8 +245,7 @@ class Page < FileModel
     def valid_paths(paths)
       paths.select do |path|
         FORMATS.detect do |format|
-          File.exist?(
-              File.join(Nesta::Config.page_path, "#{path}.#{format}"))
+          File.exist?(File.join(Nesta::Config.page_path, "#{path}.#{format}"))
         end
       end
     end

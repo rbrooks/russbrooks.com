@@ -4,7 +4,7 @@ module Nesta
   class Config
     @settings = %w[
       title subtitle description keywords theme disqus_short_name
-      cache content google_analytics_code
+      cache sinatra_cache content google_analytics_code
     ]
     @yaml = nil
 
