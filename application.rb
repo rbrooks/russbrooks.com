@@ -10,16 +10,12 @@ require './lib/nesta/models'
 require './lib/nesta/overrides'
 require './lib/nesta/path'
 
-# Dir['extensions/*.rb'].each do |extension_file|
-#   require File.join('./extensions', File.basename(extension_file))
-# end
-
 module Nesta
   class Application < Sinatra::Base
     register Sinatra::Cache
 
     set :root, File.expand_path(File.dirname(__FILE__))
-#    set :cache_enabled, Nesta::Config.cache
+#    set :sinatra_cache_enabled, Nesta::Config.sinatra_cache
 
     helpers do
       def set_from_config(*variables)

@@ -33,8 +33,9 @@ disqus_short_name: russbrooks
 #     but not in the least bit helpful if your pages are dynamic, or you're
 #     deploying Nesta to Heroku.
 #
-cache: false
-# We use Sinatra Cache now which uses Rack Cache. No need for Nesta's home-grown one. [RHB]
+cache: false # Ignored
+# We use Sinatra Cache now which uses Rack Cache. No need for Nesta's home-grown one.
+sinatra_cache: true
 
 # max_age
 #     These settings determine the max-age value for the Cache-Control

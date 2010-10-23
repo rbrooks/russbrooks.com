@@ -53,28 +53,28 @@ module Nesta
     end
 
     private
-    def self.from_environment(setting)
-      value = ENV["NESTA_#{setting.upcase}"]
-      overrides = { 'true' => true, 'false' => false }
-      overrides.has_key?(value) ? overrides[value] : value
-    end
-
-    def self.can_use_yaml?
-      ENV.keys.grep(/^NESTA/).empty?
-    end
-
-    def self.from_yaml(setting)
-      return nil unless can_use_yaml?
-      if self.yaml_conf.nil?
-        file = File.join(File.dirname(__FILE__), *%w[.. .. config config.yml])
-        self.yaml_conf = YAML::load(IO.read(file))
+      def self.from_environment(setting)
+        value = ENV["NESTA_#{setting.upcase}"]
+        overrides = { 'true' => true, 'false' => false }
+        overrides.has_key?(value) ? overrides[value] : value
       end
-      rack_env_conf = self.yaml_conf[Nesta::Application.environment.to_s]
-      (rack_env_conf && rack_env_conf[setting]) || self.yaml_conf[setting]
-    end
 
-    def self.get_path(dirname, basename)
-      basename.nil? ? dirname : File.join(dirname, basename)
-    end
+      def self.can_use_yaml?
+        ENV.keys.grep(/^NESTA/).empty?
+      end
+
+      def self.from_yaml(setting)
+        return nil unless can_use_yaml?
+        if self.yaml_conf.nil?
+          file = File.join(File.dirname(__FILE__), *%w[.. .. config config.yml])
+          self.yaml_conf = YAML::load(IO.read(file))
+        end
+        rack_env_conf = self.yaml_conf[Nesta::Application.environment.to_s]
+        (rack_env_conf && rack_env_conf[setting]) || self.yaml_conf[setting]
+      end
+
+      def self.get_path(dirname, basename)
+        basename.nil? ? dirname : File.join(dirname, basename)
+      end
   end
 end
