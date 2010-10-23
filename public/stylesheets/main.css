@@ -524,6 +524,7 @@ div.comment p {
 img.photo {
 	background: #968c63;
 	border: 6px solid #676044;
+	margin: 9px 0;
 	padding: 1px;
 }
 .nodeSelected {
