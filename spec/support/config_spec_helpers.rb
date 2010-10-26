@@ -14,15 +14,15 @@ module ConfigSpecHelper
 
   def stub_env_config_key(key, value)
     initialise_config if @config.nil?
-    @config["test"] ||= {}
-    @config["test"][key] = value
+    @config['test'] ||= {}
+    @config['test'][key] = value
   end
 
   def stub_configuration
-    stub_config_key("title", "My blog")
-    stub_config_key("subtitle", "about stuff")
-    stub_config_key("description", "great web site")
-    stub_config_key("keywords", "home, page")
-    stub_env_config_key("content", ConfigSpecHelper::FIXTURE_DIR)
+    stub_config_key('title', 'My blog')
+    stub_config_key('subtitle', 'about stuff')
+    stub_config_key('description', 'great web site')
+    stub_config_key('keywords', 'home, page')
+    stub_env_config_key('content', ConfigSpecHelper::FIXTURE_DIR)
   end
 end

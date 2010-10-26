@@ -19,7 +19,7 @@ end
 group :test do
   gem 'hpricot', '0.8.2'
   gem 'rack-test', '0.5.3', :require => 'rack/test'
-  gem 'rspec', '1.3.0'
-  gem 'rspec_hpricot_matchers', '1.0'
+  gem 'rspec', '>= 2.0'
+  gem 'rspec_hpricot_matchers', '>=1.0'
   gem 'test-unit', '1.2.3'
 end

@@ -1,4 +1,4 @@
-require File.join(File.dirname(__FILE__), "config_spec_helpers")
+require File.join(File.dirname(__FILE__), 'config_spec_helpers')
 
 module ModelFactory
   include ConfigSpecHelper
@@ -13,11 +13,11 @@ module ModelFactory
 
   def create_article(options = {}, &block)
     o = {
-      :path => "article-prefix/my-article",
-      :heading => "My article",
-      :content => "Content goes here",
+      :path => 'article-prefix/my-article',
+      :heading => 'My article',
+      :content => 'Content goes here',
       :metadata => {
-        "date" => "29 December 2008"
+        'date' => '29 December 2008'
       }.merge(options.delete(:metadata) || {})
     }.merge(options)
     create_page(o, &block)
@@ -25,16 +25,16 @@ module ModelFactory
 
   def create_category(options = {}, &block)
     o = {
-      :path => "category-prefix/my-category",
-      :heading => "My category",
-      :content => "Content goes here"
+      :path => 'category-prefix/my-category',
+      :heading => 'My category',
+      :content => 'Content goes here'
     }.merge(options)
     create_page(o, &block)
   end
 
   def create_menu(*paths)
-    menu_file = filename(Nesta::Config.content_path, "menu", :txt)
-    File.open(menu_file, "w") do |file|
+    menu_file = filename(Nesta::Config.content_path, 'menu', :txt)
+    File.open(menu_file, 'w') do |file|
       paths.each { |p| file.write("#{p}\n") }
     end
   end
@@ -82,6 +82,6 @@ module ModelFactory
 #{heading}#{options[:content]}
     EOF
     FileUtils.mkdir_p(File.dirname(path))
-    File.open(path, "w") { |file| file.write(contents) }
+    File.open(path, 'w') { |file| file.write(contents) }
   end
 end

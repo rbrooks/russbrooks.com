@@ -1,21 +1,23 @@
-require "rubygems"
-require "spec/rake/spectask"
+require 'rubygems'
+require 'rspec/core/rake_task'
 
 $:.unshift './lib'
-require "./application"
+require './application'
 begin
-  require "vlad"
+  require 'vlad'
   Vlad.load(:scm => :git, :app => nil, :web => nil)
 rescue LoadError
 end
 
-desc "Run all specs in spec directory"
-Spec::Rake::SpecTask.new(:spec)
+namespace :spec do
+  desc 'Run all specs.'
+  RSpec::Core::RakeTask.new('all')
+end
 
 namespace :heroku do
-  desc "Set Heroku config vars from config.yml"
+  desc 'Set Heroku config vars from config.yml'
   task :config do
-    Nesta::Application.environment = ENV["RACK_ENV"] || "production"
+    Nesta::Application.environment = ENV['RACK_ENV'] || 'production'
     settings = {}
     Nesta::Config.settings.map do |variable|
       value = Nesta::Config.send(variable)
@@ -38,22 +40,25 @@ class Factory
 end
 
 namespace :setup do
-  desc "Create the content directory"
+  desc 'Create the content directory'
   task :content_dir do
     FileUtils.mkdir_p(Nesta::Config.content_path)
   end
 
-  desc "Create some sample pages"
+  desc 'Create some sample pages'
   task :sample_content => :content_dir do
     factory = Factory.new
 
-    File.open(Nesta::Config.content_path("menu.txt"), "w") do |file|
-      file.puts("fruit")
+    File.open(Nesta::Config.content_path('menu.txt'), 'w') do |file|
+      file.puts('fruit')
     end
 
     factory.create_category(
-      :heading => "Fruit",
-      :path => "fruit",
+      :heading => 'Fruit',
+      :path => 'fruit',
+      :metadata => {
+        'comments' => 'false',
+      },
       :content => <<-EOF
 This is a category page about Fruit. You can find it here: `#{File.join(Nesta::Config.page_path, 'fruit.mdown')}`.
 
@@ -62,6 +67,8 @@ The general idea of category pages is that you assign articles to categories (in
 The articles assigned to the Fruit category are listed below, typically with a short summary of the article and a link inviting you to "read more". If you'd rather show the entire text of your article inline you can just omit the summary from your article.
 
 Have a look at the files that define the articles that follow, and you should find that you can get the hang of it very quickly.
+
+This Category page has the Comments section hidden using the 'comments: false' in the header.  To show Comments, just remove 'comments: false'.  You can also do this on Pages.
       EOF
     )
 
