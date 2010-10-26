@@ -1,5 +1,5 @@
 date: 19 Mar 2009 18:00pm
-categories: linux
+categories: mac
 read more: More&#8230;
 summary: OS X&#8217;s default install of PHP and Apache does not come bundled with some key libraries like GD2 or PostgreSQL. This is the best way I have found to install or upgrade OS X with the latest versions of Apache, PHP, and PostgreSQL.
 
