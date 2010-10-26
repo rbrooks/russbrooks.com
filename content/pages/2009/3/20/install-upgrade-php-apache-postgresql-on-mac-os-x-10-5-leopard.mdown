@@ -126,7 +126,7 @@ make install
 The PHP executable is built as php.dSYM, I suppose so it doesn&#8217;t overwrite your old PHP.  Let&#8217;s back up the old one, and leave the new one there but symlink to it so future compiles will work correctly:
 
 <pre>:::shell-unix-generic
-if ( test -e /usr/bin/php && ! test -h /usr/bin/php) ; then mv /usr/bin/php /usr/bin/php.old; fi
+if ( test -e /usr/bin/php &amp;&amp; ! test -h /usr/bin/php) ; then mv /usr/bin/php /usr/bin/php.old; fi
 ln -s /usr/bin/php.dSYM /usr/bin/php
 </pre>
 
