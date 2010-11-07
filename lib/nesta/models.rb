@@ -1,8 +1,8 @@
-require "time"
-require "digest/sha1"
+require 'time'
+require 'digest/sha1'
 
-require "maruku"
-require "redcloth"
+require 'maruku'
+require 'redcloth'
 
 class FileModel
   FORMATS = [:mdown, :haml, :textile]
@@ -21,10 +21,6 @@ class FileModel
       load(relative.sub(/\.(#{FORMATS.join('|')})/, ''))
     end
   end
-
-  # def self.needs_loading?(path, filename)
-  #   @@cache[path].nil? || File.mtime(filename) > @@cache[path].mtime
-  # end
 
   def self.load(path)
     FORMATS.each do |format|
@@ -172,7 +168,7 @@ class Page < FileModel
   end
 
   def banner_title
-    metadata('banner title') || 'Russell H. Brooks'
+    metadata('banner title') || 'Default Banner Title'
   end
 
   def comments
@@ -245,7 +241,8 @@ class Page < FileModel
     def valid_paths(paths)
       paths.select do |path|
         FORMATS.detect do |format|
-          File.exist?(File.join(Nesta::Config.page_path, "#{path}.#{format}"))
+          File.exist?(
+              File.join(Nesta::Config.page_path, "#{path}.#{format}"))
         end
       end
     end

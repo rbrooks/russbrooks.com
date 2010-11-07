@@ -155,7 +155,7 @@ module Nesta
       @articles = Page.find_articles[0..7]
       @body_class = 'home'
       @banner_img = '/images/banner.jpg'
-      @banner_title = 'Autumn Sycamore, by Russell Brooks'
+      @banner_title = 'Default Alt and Title text.'
       cache(:proxy => 'public', :max_age => 'index') if options.sinatra_cache_enabled
       haml(:index)
     end

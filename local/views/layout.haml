@@ -14,8 +14,6 @@
     %link{ :href => "/articles.xml", :rel => "alternate", :type => "application/atom+xml" }
     - if @page && @page.heading == 'Bio'
       %script{ :type => 'text/javascript', :src  => '/javascripts/lifespan.js' }
-    :javascript
-       var disqus_iframe_css = '/stylesheets/main.css';
     = haml :analytics, :layout => false
   %body{ :class => @body_class }
     #wrap
