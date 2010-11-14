@@ -81,11 +81,11 @@ All source code is held in [Git](http://git-scm.com/), the version-control syste
 
 ## Database
 
-Proudly, **NONE**!
+**NONE!**
 
-Perpetual reassessment is critical in life.  One day, you wake up and ponder, "Why, on a personal blog, am I crafting markup/down in an editor, saving that file on the drive, then pasting that markup into textboxes of a CMS, which shuttles that markup into a database, that stores it back onto the drive into a different file?  Then the CMS shuttles this all back out of the file system, through the database, and displays it to your visitors?  Isn't the file system already the fastest, leanest database in the world?"  In the air of the building the [simplest thing that works](http://www.c2.com/cgi/wiki?DoTheSimplestThingThatCouldPossiblyWork), I decided to eliminate that cumbersome and unnecessary component called &#8220;the database&#8221;.  I found [Nesta](http://effectif.com/nesta), a popular database-less blogging option.  I forked it, refactored it for Ruby 1.9.2, Sinatra-Cache, and syntax highlighting using Ultraviolet.  **Hint if running Ruby 1.9.2**: Use [Spox's Ultraviolet](http://github.com/spox/ultraviolet) gem (`gem install spox-ultraviolet`) which also installs spox-textpow and spox-plist.
+Perpetual reassessment is critical in life.  One day, you wake up and wonder, "Why, on a personal blog, am I crafting markup in an editor, saving that file on the drive, then pasting that markup into textboxes of a CMS, which shuttles it into a database, that stores it back onto the drive into a different file?  Then the CMS shuttles this all back out of the file system, through the database, and displays it to your visitors?  Isn't the file system already the fastest, leanest database in the world?"  In the air of the building the [simplest thing that works](http://www.c2.com/cgi/wiki?DoTheSimplestThingThatCouldPossiblyWork), I decided to eliminate that cumbersome and unnecessary component called &#8220;the database&#8221;.  I found [Nesta](http://effectif.com/nesta), a popular database-less blogging option.  I forked it, refactored it for Ruby 1.9.2, Sinatra-Cache, and syntax highlighting using Ultraviolet.  **Hint if running Ruby 1.9.2**: Use [Spox's Ultraviolet](http://github.com/spox/ultraviolet) gem (`gem install spox-ultraviolet`) which also installs spox-textpow and spox-plist.
 
-That being said, a DB-less solution is aptly suited to a personal blog, but hardly to a Enterprise-class solution.  Databases have their rightful place, for example, when there are grander requirements like scalability, performance, reporting, etc.  I am a fan of the [NoSQL](http://en.wikipedia.org/wiki/NoSQL) movement, and have built countless Web-based systems on [PostgreSQL](http://www.postgresql.org) (personal favorite), MySQL, SQLite, and MS SQL Server.
+That being said, a DB-less solution is aptly suited to a personal blog, but hardly to a Enterprise-class solution.  Databases have their rightful place, for example, when there are grander requirements like scalability, performance, durability, reporting, etc.  I am closely monitoring the [NoSQL](http://en.wikipedia.org/wiki/NoSQL) movement, and have built countless Web-based systems on [PostgreSQL](http://www.postgresql.org) (personal favorite), MySQL, SQLite, and MS SQL Server.
 
 ## Hosting
 
@@ -105,9 +105,9 @@ My photo gallery is running on [Ubuntu](http://www.ubuntu.com/) Server Edition, 
 
 ### Apache and Phusion Passenger
 
-For two years I was using an [nginx](http://nginx.net/) reverse proxy and a cluster of [Mongrel](http://github.com/fauna/mongrel) instances behind it. This setup was very fast and ran flawlessly.
+For two years I was using an [nginx](http://nginx.net/) reverse proxy and a cluster of [Mongrel](http://github.com/fauna/mongrel) instances behind it. This setup was lightening fast and ran flawlessly.
 
-From there, it was Apache and [Phusion Passenger](http://phusion.nl) so that I could host PHP and Rails sites in tandem while minimizing maintenance.  Apache is slower and more resource intensive than nginx, but funneling everything through Apache is less to manage.  I am curious to try the forthcoming Passenger 3 Nginx version.
+From there, it was Apache and [Phusion Passenger 2](http://phusion.nl) so that I could host PHP and Rails sites in tandem while minimizing maintenance.  Apache is slower and more resource intensive than nginx, but funneling everything through Apache is less to manage.  True, you can serve PHP via nginx, but there is some manual processes involved \[PHP recompiles, etc.\]  My goal was plug-and-play.
 
 *[XHTML]: Extensible Hypertext Markup Language
 *[IDE]: Integrated Development Environment
