@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
 gem 'builder', '2.1.2'
-gem 'haml', '3.0.18'
+gem 'haml', '3.0.23'
 gem 'maruku', '0.6.0'
 gem 'RedCloth', '4.2.3'
-gem 'sinatra', '1.0'
+gem 'sinatra', '1.1'
 gem 'sinatra-cache', '0.3.4'
 gem 'nokogiri', '1.4.3.1'
 gem 'spox-ultraviolet'
@@ -17,9 +17,9 @@ group :development do
 end
 
 group :test do
-  gem 'hpricot', '0.8.2'
-  gem 'rack-test', '0.5.3', :require => 'rack/test'
-  gem 'rspec', '>= 2.0'
+  gem 'hpricot', '0.8.3'
+  gem 'rack-test', '0.5.6', :require => 'rack/test'
+  gem 'rspec', '>= 2.1'
   gem 'rspec_hpricot_matchers', '>=1.0'
-  gem 'test-unit', '1.2.3'
+  gem 'test-unit', '2.1.1'
 end
