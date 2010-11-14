@@ -53,7 +53,7 @@ All photography throughout the site is mine.
 
 ## Framework
 
-### Sinatra 1.0
+### Sinatra 1.1
 
 [Sinatra](http://www.sinatrarb.com/) is a game-changing, very lightweight Ruby framework that makes scripting up web pages a sinch.
 
