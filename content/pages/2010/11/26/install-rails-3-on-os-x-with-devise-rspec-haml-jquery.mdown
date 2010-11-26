@@ -1,0 +1,146 @@
+date: 26 Nov 2010 18:20pm
+categories: mac
+read more: More&#8230;
+summary: My notes while installing Rails 3 on OS X, with support for Devise, RSpec, HAML, and jQuery.
+
+# Install Rails 3 on OS X with Devise, RSpec, HAML, and jQuery Support
+
+## Goals
+
+ * **[PostgreSQL](http://postgresql.org/)** - Instead of MySQL
+ * **[Devise](http://github.com/plataformatec/devise/)** - Instead of AuthLogic or Restful Authentication
+ * **[HAML](http://haml-lang.com/)** - Instead of ERB
+ * **[jQuery](http://jquery.com/)** - Instead of Prototype
+ * **[RSpec](http://github.com/rspec/rspec/)** - Instead of Test-Unit
+
+## Prerequisites
+
+ * **Ruby 1.9.2** - Installed via Homebrew. These instructions not tested with RVM.
+ * **Rails 3.0.3** - `gem install rails`
+ * **PostgreSQL** - See my notes on [installing PostgreSQL 9 on OS X](/2010/11/25/install-postgresql-9-on-os-x) via Homebrew.
+
+## Create App
+
+<pre>:::shell-unix-generic
+rails new myapp
+cd myapp
+</pre>
+
+## Create Database
+
+Change `config/database.yml` accordingly to point to your dev DB, then:
+
+<pre>:::shell-unix-generic
+rake db:create
+</pre>
+
+## Gems
+
+Add to Gemfile in the root of your app:
+
+<pre>:::ruby
+gem 'haml-rails' # Not 'haml'
+gem 'pg'
+gem 'devise'
+group :development, :test do
+  gem 'rspec-rails', '~> 2.1'
+end
+gem 'autotest'
+</pre>
+
+Run `sudo bundle install` to install all gems.  Note `haml-rails` instead of `haml`.  `haml-rails` is newer and includes Rails 3 generators.
+
+## Devise
+
+Follow the Devise instructions at the end.  There are a couple of manual steps.  If you missed it, those steps are:
+
+Add to `config/environments/development.rb`:
+
+<pre>:::ruby
+config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+</pre>
+
+Add to `config/environments/production.rb`:
+
+<pre>:::ruby
+config.action_mailer.default_url_options = { :host => 'russbrooks.com:3000' }
+</pre>
+
+Add to `config/routes.rb`:
+
+<pre>:::ruby
+root :to => "home#index"
+</pre>
+
+Since we are going to use HAML templates, rename `app/views/layouts/application.html.erb` to `application.html.haml`, then paste:
+
+<pre>:::ruby
+!!!
+%html{ :lang => 'en', 'xml:lang' => 'en', :xmlns => 'http://www.w3.org/1999/xhtml' }
+  %head
+    %title
+      My New Site
+    = stylesheet_link_tag :all
+    = javascript_include_tag :defaults
+    = csrf_meta_tag
+  %body{ :class => @body_class }
+    #wrap
+      #header
+      #body
+        %p{ :class => :notice }
+          = notice
+        %p{ :class => :alert }
+          = alert
+        = yield
+      #footer
+</pre>
+
+Remove Rails' welcome page or it will render instead of home#index:
+
+<pre>:::shell-unix-generic
+rm public/index.html
+</pre>
+
+## Use HAML Instead of ERB
+
+Add this to `config/application.rb` anywhere inside the Application class:
+
+<pre>:::ruby
+# Default template engine for Rails Generators. Use HAML instead of ERB.
+config.generators do |g|
+  g.template_engine :haml
+end
+</pre>
+
+The generators are now built in to the HAML-Rails gem. There is no need to add the `rails3-generators` gem.
+
+## Use RSpec Instead of Test-Unit
+
+We already added the necessary gems to Gemfile and did a `bundle install` above, so just run the RSpec installation generator:
+
+<pre>:::shell-unix-generic
+rails g rspec:install
+</pre>
+
+This makes Rails generators produce RSpec tests instead of Test-Unit tests.
+
+## Use jQuery Instead of Prototype
+
+<pre>:::shell-unix-generic
+rake rails:template LOCATION=http://github.com/lleger/Rails-3-jQuery/raw/master/jquery.rb
+</pre>
+
+## Generate User Model and DB Table
+
+<pre>:::shell-unix-generic
+rails g devise User
+rake db:migrate
+</pre>
+
+Use `rake routes` to see the routes Devise created for sign_up, sign_in, sign_out, etc.  You should be able to access those in a browser to test them at this point.  See the Devise docs for more info.
+
+From there, you might want to start with some scaffolding to ensure everything worked right, for example, that it generates HAML, RSpec tests, and is using jQuery.  For example, maybe create a "Post" resource if you are creating a blog:
+
+<pre>:::shell-unix-generic
+rails generate scaffold Post title:string teaser:string body:text
+</pre>
