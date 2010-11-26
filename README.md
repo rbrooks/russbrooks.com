@@ -1,3 +1,5 @@
+Russbrooks.com is found on:
+
 # Nesta - a CMS for Ruby Developers
 
 A CMS for small web sites and blogs, written in
@@ -12,8 +14,11 @@ pushing to a git repository.
 
 ## This Fork Supports
 
+I enhanced Nesta to support:
+
 * Ruby 1.9.2 [MRI]
 * [Heroku](http://heroku.com/) hosting
+* Sinatra 1.1
 * Sinatra Cache, which uses Rack Cache.  Nesta's previous custom caching removed / disabled.  Cached pages will no longer appear in your /public dir.
 * Syntax highlighting with Ultraviolet.  Hyphenated languages fixed, such as 'shell-unix-generic'.
 * App is a Sinatra subclass [the "new way" of doing it].

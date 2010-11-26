@@ -1,4 +1,4 @@
-date: 26 Nov 2010 15:27pm
+date: 25 Nov 2010 18:27pm
 categories: mac
 read more: More&#8230;
 summary: The easiest way to install PostgreSQL on Mac OS X using Homebrew.
