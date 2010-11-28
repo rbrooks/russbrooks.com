@@ -39,16 +39,18 @@ rake db:create
 Add to Gemfile in the root of your app:
 
 <pre>:::ruby
-gem 'haml-rails' # Not 'haml'
-gem 'pg'
-gem 'devise'
-group :development, :test do
-  gem 'rspec-rails', '~> 2.1'
-end
-gem 'autotest'
+  gem 'autotest'
+  gem 'devise'
+  gem 'haml-rails' # Not haml
+  gem 'hpricot'
+  gem 'pg'
+  group :development, :test do
+    gem 'rspec-rails', '~> 2.1'
+  end
+  gem 'ruby_parser'
 </pre>
 
-Run `sudo bundle install` to install all gems.  Note `haml-rails` instead of `haml`.  `haml-rails` is newer and includes Rails 3 generators.
+Run `sudo bundle install` to install all gems.  Note `haml-rails` instead of `haml`.  `haml-rails` is newer and includes Rails 3 generators.  Also, `hpricot` and `ruby_parser` are necessary or Devise's generators fail.
 
 ## Devise
 
