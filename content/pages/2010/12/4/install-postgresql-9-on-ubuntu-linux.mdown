@@ -1,0 +1,70 @@
+date: 4 Dec 2010 20:10pm
+categories: linux
+read more: More&#8230;
+summary: My notes installing PostgreSQL 9 on Ubuntu Linux.
+
+# Install PostgreSQL 9 on Ubuntu Linux
+
+Tested on: Ubuntu 10.04
+
+## Add Repo
+
+<pre>:::shell-unix-generic
+sudo nano /etc/apt/sources.list
+</pre>
+
+Append lines:
+
+<pre>:::shell-unix-generic
+## Postgres 9 hasn't been backported yet.  Manually added repos.
+deb http://ppa.launchpad.net/pitti/postgresql/ubuntu lucid main 
+deb-src http://ppa.launchpad.net/pitti/postgresql/ubuntu lucid main
+</pre>
+
+Go to [this site](https://launchpad.net/~pitti/+archive/postgresql) and expand the "Technical details about this PPA" panel.  Under Signing Key, copy everything to the right of the slash \[/\], and paste into the command below.  In this example, it is "8683D8A2".
+
+<pre>:::shell-unix-generic
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8683D8A2
+apt-get update
+</pre>
+
+## Remove Old Versions
+
+Careful!  These commands completely remove your old PostgreSQL version.  Back up data first.
+
+<pre>:::shell-unix-generic
+sudo service postgresql-8.4 stop
+sudo apt-get purge postgresql*
+</pre>
+
+## Install
+
+<pre>:::shell-unix-generic
+sudo apt-get install postgresql-9.0
+</pre>
+
+Verify you can log in:
+
+<pre>:::shell-unix-generic
+sudo -u postgres psql
+</pre>
+
+You probably want to create a user for your web app while you're in there:
+
+<pre>:::sql
+CREATE USER www_db WITH PASSWORD 'jw8s0F49eQ';
+</pre>
+
+## Open External Access
+
+If you plan to access Postgres externally, modify conf file to make Postgres listen on * instead of localhost.  Modify Host-Based Authentication file to make Postgres respond to more IP ranges than solely 127.0.0.1.  See my [other article](/2009/5/25/install-ubuntu-9-04-server-edition-rails-php-passenger-postgresql-and-mysql) on this.
+
+## Instrumentation
+
+So pgAdmin doesn't complain:
+
+<pre>:::shell-unix-generic
+apt-get install postgresql-contrib-9.0
+sudo -u postgres psql -U postgres -d postgres &lt; /usr/share/postgresql/9.0/contrib/adminpack.sql
+</pre>
+
