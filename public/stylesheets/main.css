@@ -138,7 +138,9 @@ h1, h2, h3, h4 {
 	font-weight: normal;
 	margin-top: 12px;
 }
-
+h1 a, h2 a, h3 a, h4 a {
+  text-decoration: none;
+}
 h1, h2 {
 	font-variant: small-caps;
 	margin-bottom: 5px;
