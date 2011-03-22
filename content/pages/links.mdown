@@ -60,7 +60,7 @@ banner title: Pennsylvania Sunset, by Russell Brooks
 * [Loud Thinking](http://www.loudthinking.com/) &#8211; Blog from the chap who wrote Rails, David Heinemeier Hansson
 * [New Relic](http://www.newrelic.com/) - Superior Rails app monitoring and analysis.
 * [Nuby on Rails](http://www.nubyonrails.com/) &#8211; Rails tips and tutorials
-* [O’Reilly Ruby](http://oreillynet.com/ruby/) &#8211; Ruby on Rails site from the great and powerful, O&#8217;Reilly
+* [O&#8217;Reilly Ruby](http://oreillynet.com/ruby/) &#8211; Ruby on Rails site from the great and powerful, O&#8217;Reilly
 * [Phusion](http://www.phusion.nl/) &#8211; Makers of &#8220;Passenger&#8221;, easy-deployment, all-in-one Rails web server (Apache or Nginx).
 * [Rack](http://rack.rubyforge.org/) &#8211; Light and fast bridge between any HTTP web server and Ruby framework. Or, a super-simply way to serve Ruby **off** Rails.
 * [Rails Documentation](http://api.rubyonrails.com/) &#8211; Official Rails documentation
