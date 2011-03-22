@@ -1,4 +1,4 @@
-Russbrooks.com is found on:
+Russbrooks.com is founded upon a forked and enhanced version of Nesta.
 
 # Nesta - a CMS for Ruby Developers
 
