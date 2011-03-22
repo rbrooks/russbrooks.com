@@ -78,7 +78,7 @@ banner title: Pennsylvania Sunset, by Russell Brooks
 * [Ruby on Rails](http://www.rubyonrails.com/) &#8211; Official Rails site
 * [Ruby on Rails: Talk](http://groups.google.com/group/rubyonrails-talk/) &#8211; Official mailing list for the Ruby on Rails project
 * [Ruby on Rails: Core](http://groups.google.com/group/rubyonrails-core/) &#8211; Discussion list for Ruby on Rails core development
-* [The Ruby Show](http://5by5.tv/rubyshow) &#8211; Great podcast from two smart kids.
+* [The Ruby Show](http://rubyshow.com/) &#8211; Great podcast from two smart kids.
 * [Thoughtbot](http://thoughtbot.com/) &#8211; Hi-end, Ruby/Rails-based web-development.
 * [Sinatra](http://www.sinatrarb.com/) &#8211; Awesome, ultra-lightweight Ruby framework. For when you just need to script up some quick pages. Choose any ORM layer.
 
