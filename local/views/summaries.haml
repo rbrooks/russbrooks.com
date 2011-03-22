@@ -1,8 +1,7 @@
 - unless pages.empty?
   - pages.each do |page|
-    - haml_tag heading do
-      %h2
-        %a{ :href => page.abspath }= page.heading
+    %h2
+      %a{ :href => page.abspath }= page.heading
 
     - if page.date
       .date= format_date(page.date)
