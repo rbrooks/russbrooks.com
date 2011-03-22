@@ -549,6 +549,9 @@ pre.twilight {
 	padding: 6px;
 }
 
+img.divider {
+  margin: 0 auto;
+}
 div[style=position: fixed; display: inline-block; bottom: 0px; right: 0px; ] {
   display: none !important; 
 }
