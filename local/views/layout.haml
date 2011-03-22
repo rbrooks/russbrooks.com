@@ -14,9 +14,12 @@
       %link{ :href => '/css/local.css', :media => 'screen', :rel => 'stylesheet', :type => 'text/css' }
     %link{ :href => '/articles.xml', :rel => 'alternate', :type => 'application/atom+xml' }
     %script{ :type => 'text/javascript', :src  => 'http://fast.fonts.com/jsapi/cd16bffa-5f99-4c64-856b-b94428e13a6c.js' }
+    %script{ :type => 'text/javascript', :src  => '/javascripts/jquery-1.5.1.min.js' }
     - if @page && @page.heading == 'Bio'
       %script{ :type => 'text/javascript', :src  => '/javascripts/lifespan.js' }
     = haml :analytics, :layout => false
+    :javascript
+      $('div[style="position: fixed; display: inline-block; bottom: 0px; right: 0px;"]').hide();
   %body{ :class => @body_class }
     #wrap
       #nav
