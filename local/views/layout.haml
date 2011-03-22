@@ -19,7 +19,7 @@
       %script{ :type => 'text/javascript', :src  => '/javascripts/lifespan.js' }
     = haml :analytics, :layout => false
     :javascript
-      $('div[style="position: fixed; display: inline-block; bottom: 0px; right: 0px;"]').hide();
+      $('div#wrap + div').hide();
   %body{ :class => @body_class }
     #wrap
       #nav

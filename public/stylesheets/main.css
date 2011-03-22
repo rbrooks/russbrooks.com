@@ -553,6 +553,7 @@ img.divider {
   display: block;
   margin: 0 auto;
 }
-div[style=position: fixed; display: inline-block; bottom: 0px; right: 0px; ] {
-  display: none !important; 
+div#wrap + div {
+  display: none !important;
+  visibility: hidden !important;
 }
