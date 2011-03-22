@@ -8,3 +8,5 @@ config/deploy.rb
 Gemfile.lock
 db/*.db
 public/cache
+
+/.DS_Store

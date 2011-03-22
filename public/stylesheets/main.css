@@ -548,3 +548,7 @@ pre.twilight {
 	border: 1px solid #504836;
 	padding: 6px;
 }
+
+div[style=position: fixed; display: inline-block; bottom: 0px; right: 0px; ] {
+  display: none !important; 
+}
