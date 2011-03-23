@@ -1,12 +1,12 @@
 source 'http://rubygems.org'
 
-gem 'builder', '2.1.2'
-gem 'haml', '3.0.23'
-gem 'maruku', '0.6.0'
-gem 'RedCloth', '4.2.3'
-gem 'sinatra', '1.1'
-gem 'sinatra-cache', '0.3.4'
-gem 'nokogiri', '1.4.3.1'
+gem 'builder'
+gem 'haml'
+gem 'maruku'
+gem 'RedCloth'
+gem 'sinatra'
+gem 'sinatra-cache'
+gem 'nokogiri'
 gem 'spox-ultraviolet'
 # "Spox" version is Ruby 1.9-tweaked.  Also auto-installs 'spox-textpow' which installs 'spox-plist'.
 # No need to specify those dependencies here.

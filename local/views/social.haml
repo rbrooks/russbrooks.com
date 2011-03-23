@@ -1,4 +1,4 @@
-%img{ :src => "/images/title_social.gif", :width => "41", :height => "9", :alt => "Social", :title => "Social", :class => "sidebar_subhead" }
+%img{ :src => "/images/title_share.gif", :width => "55", :height => "9", :alt => "Share To", :title => "Share To", :class => "sidebar_subhead" }
 
 - url = @page.nil? ? base_url : url_for(@page)
 - heading = @page.nil? ? @heading : @page.heading
@@ -12,20 +12,29 @@
       Digg
     %img{ :src => "/images/digg.png", :align => 'absmiddle', :alt => "Digg it!", :style => "margin-left: 6px;" }
   %li
-    %a{ :href => 'http://github.com/iq9/', :title => 'GitHub' }
-      GitHub
-    %img{ :src => "/images/icon_git.gif", :align => 'absmiddle', :alt => 'GitHub', :style => 'margin-left: 6px;' }
+    %a{ :href => "http://reddit.com/submit?url=#{url}&title=#{heading}", :title => "Reddit!" }
+      Reddit
+    %img{ :src => "/images/reddit.gif", :align => 'absmiddle', :alt => "Reddit!", :style => "margin-left: 6px;" }
+  %li
+    %a{ :href => "http://twitter.com/home?status=#{heading} #{url}", :title => "Tweet" }
+      Twitter
+    %img{ :src => "/images/icon_twitter.png", :width => "16", :height => "16", :align => 'absmiddle', :alt => "Tweet", :style => "margin-left: 6px;" }
+
+%img{ :src => "/images/title_visitme.gif", :width => "69", :height => "9", :alt => "Visit Me On", :title => "Visit Me On", :class => "sidebar_subhead" }
+
   %li
     %a{ :href => 'http://facebook.com/ducati1098', :title => 'Facebook' }
       Facebook
     %img{ :src => "/images/icon_facebook.png", :align => 'absmiddle', :alt => 'Facebook', :style => 'margin-left: 6px;' }
   %li
+    %a{ :href => 'http://github.com/iq9/', :title => 'GitHub' }
+      GitHub
+    %img{ :src => "/images/icon_git.gif", :align => 'absmiddle', :alt => 'GitHub', :style => 'margin-left: 6px;' }
+  %li
     %a{ :href => 'http://www.linkedin.com/profile/view?id=50604390', :title => 'LinkedIn' }
       LinkedIn
     %img{ :src => "/images/icon_linkedin.png", :align => 'absmiddle', :alt => 'LinkedIn', :style => 'margin-left: 6px;' }
   %li
-    %a{ :href => "http://reddit.com/submit?url=#{url}&title=#{heading}", :title => "Reddit!" }
-      Reddit
-    %img{ :src => "/images/reddit.gif", :align => 'absmiddle', :alt => "Reddit!", :style => "margin-left: 6px;" }
-
-    
+    %a{ :href => "http://twitter.com/iq_9", :title => "Twitter" }
+      Twitter
+    %img{ :src => "/images/icon_twitter.png", :width => "16", :height => "16", :align => 'absmiddle', :alt => "Twitter", :style => "margin-left: 6px;" }
