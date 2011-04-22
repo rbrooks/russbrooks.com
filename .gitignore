@@ -1,7 +1,7 @@
 ._*
 .bundle
 .rvmrc
-*.DS_Store
+.DS_Store
 config/config.yml
 config/deploy.rb
 #content

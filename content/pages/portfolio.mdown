@@ -1,6 +1,47 @@
+layout: portfolio
+lemplate: portfolio
 comments: false
 banner: banner_portfolio.jpg
 banner title: Vice, by Russell Brooks
 
-# Portfolio
+<div id="feature">
+  <img src="/images/ss_hdnet.gif" id="featurepic" width="218" height="200" alt="SAFARI Montage" title="SAFARI Montage" />
+  <div id="maincenter">
+    <h1>SAFARI Montage HD Network</h1>
 
+    <p class="feature">
+      Built almost entirely by me, SAFARI
+      Montage HD Network is my former employer&#8217;s foray into
+      Web 2.0 marketing. Community features such as Blogs,
+      Forums, and Playlist sharing provide for an open system
+      whereby customers can easily collaborate on the
+      effective use of SAFARI Montage in their school district.
+      <a href="http://www.safarimontagehdnetwork.com">Visit Site &raquo;</a>
+    </p>
+  </div>
+  <div id="mainright">
+    <img id="vert_div_photo" src="/images/div_vitals.gif" alt="Vitals" />
+    <table width="213" id="portfolio_table">
+      <tr class="row">
+        <td><strong>Launch:</strong></td>
+        <td>6/26/2009</td>
+      </tr>
+      <tr class="altrow">
+        <td><strong>Language:</strong></td>
+        <td><span class="caps">PHP</span></td>
+      </tr>
+      <tr class="row">
+        <td><strong>Framework:</strong></td>
+        <td>Drupal</td>
+      </tr>
+      <tr class="altrow">
+        <td><strong>Database:</strong></td>
+        <td>PostgreSQL</td>
+      </tr>
+    </table>
+    <p style="margin-top: 10px;">
+      <a href="/portfolio/safari-montage"><img src="/images/but_next.gif" alt="Next &gt;" title ="Next &gt;" style="margin-left: 31px;" /></a>
+    </p>
+  </div>
+</div>
+<img src="/images/div_shadow_hdnet.gif" width="904" height="33" />

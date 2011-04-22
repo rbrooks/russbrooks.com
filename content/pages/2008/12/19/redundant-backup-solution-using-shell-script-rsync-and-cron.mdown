@@ -7,9 +7,7 @@ summary: How to create a recurring nightly backup with native Linux tools.
 
 The first script backs up two websites and their PostgreSQL databases to a single gZip archive on an external hard drive.  It also maintains a backup history of 10 days.  The second script mirrors the one drive to the other using Rsync.  Lastly, we schedule these jobs to occur every night &#8211; backup first, drive-sync second.
 
-This script is tested on Ubuntu 8.04+.  You may have to adjust it for other Linux distributions.  It assumes you have two external USB drives.  You may have to change the drive ID's accordingly.
-
-You will also need to change the paths, URLs, and names at the top of the script to match your environment.  Add elements to the arrays to backup more sites.  The number of elements must match across all arrays.  The script assumes that you have a database with each site you are backing up.  In this example, it happens to be a PostgreSQL database.
+This script is tested on Ubuntu 8.04+.  You may have to adjust it for other Linux distributions.  It assumes you have two external USB drives.  You will need to change the paths, URLs, etc., in these scripts to match your environment.  Add elements to the arrays to backup more sites.  The number of elements must match across all arrays.  The script assumes that you have a database with each site you are backing up.  In this example, it happens to be a PostgreSQL database.
 
 ## Backup Script
 
@@ -88,27 +86,26 @@ Create a `sync-ext-drives.sh` file in the same directory:
 
 <pre>:::shell-unix-generic
 #!/bin/bash
+#
 # Sync external drives.
 # by: Russell Brooks (www.russbrooks.com)
+
 export PATH=/usr/local/bin:/usr/bin:/bin
-drive_source='/dev/sdb1'
-drive_source_mount='/media/disk'
-drive_destination='/dev/sdc1'
-drive_destination_mount='/media/disk-1'
+
+source='/media/disk/' # Trailing slash
+destination='/media/disk-1' # No trailing slash
+
 datetime=`date +'%x %X'`
-echo "**** External Drive Sync Started at $datetime ****"
-echo 'Making directories.'
-# These fail gracefully if directories exist.
-mkdir $drive_source_mount
-mkdir $drive_destination_mount
-echo "Mounting drive, $drive_source."
-mount -o nosuid,nodev,uhelper=hal $drive_source $drive_source_mount
-echo "Mounting drive, $drive_destination."
-mount -o nosuid,nodev,uhelper=hal $drive_destination $drive_destination_mount
-echo "Copying drive, $drive_source, to drive, $drive_destination."
-rsync -ax --exclude fstab --delete $drive_source_mount $drive_destination_mount
+echo "**** External drive sync started at $datetime ****"
+
+# Assumes drives are mounted. Hopefully you have drives automounting on boot.
+
+echo "Copying drive, $source, to drive, $destination."
+rsync -av --delete $source $destination
+# The trailing slash in Source Mount is critical.
+
 datetime=`date +'%x %X'`
-echo "**** External Drive Sync Finished at $datetime ****"
+echo "**** External drive sync finished at $datetime ****"
 echo ''
 </pre>
   

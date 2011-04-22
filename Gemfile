@@ -8,7 +8,7 @@ gem 'sinatra'
 gem 'sinatra-cache'
 gem 'nokogiri'
 gem 'spox-ultraviolet'
-# "Spox" version is Ruby 1.9-tweaked.  Also auto-installs 'spox-textpow' which installs 'spox-plist'.
+# "Spox" version is Ruby 1.9-tweaked. It also auto-installs 'spox-textpow' which installs 'spox-plist'.
 # No need to specify those dependencies here.
 gem 'rack-codehighlighter'
 
