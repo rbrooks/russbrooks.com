@@ -1,6 +1,5 @@
 source 'http://rubygems.org'
 
-ruby '1.9.3'
 gem 'nesta', '0.9.13'
 gem 'coderay'
 gem 'coderay_bash'
