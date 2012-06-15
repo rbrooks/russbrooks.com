@@ -1,0 +1,43 @@
+Layout: portfolio
+Comments: false
+Banner Img: banner_portfolio.jpg
+Banner Title: Vice, by Russell Brooks
+Screenshot Img: ss_aqua.jpg
+Divider Img: div_shadow_aqua.gif
+Project: Aqua Beach Resort
+Description: My first website. Likely the first website on the entire Jersey Shore. It was 1996/97 and no one had heard of the World Wide Web, let alone websites. I was Front Desk Manager at the Aqua Beach, so I volunteered my time in the off-season and created this site.  It held up for nearly 5 years.  Many of the graphics I hand drew with colored pencils and scanned.
+URL: http://www.aquabeach.com/
+Launch: 4/1/1997
+Language: HTML 4
+Design: Corel PhotoPaint
+Prev: /portfolio/el-coronado-resort
+Next: /portfolio/
+
+* [SAFARI Montage Video Network](/portfolio/)
+* [SAFARI Montage](/portfolio/safari-montage)
+* [Millville Harley-Davidson](/portfolio/millville-harley-davidson)
+* [Wildwood Harley-Davidson](/portfolio/wildwood-harley-davidson)
+* [The Skelly Group](/portfolio/the-skelly-group)
+* [Adventurer Inn](/portfolio/adventurer-inn)
+* [Biomol](/portfolio/biomol)
+* [Pepper Hamilton Law](/portfolio/pepper-hamilton-law)
+* [Philadelphia Eagles](/portfolio/philadelphia-eagles)
+* [BP Solutions](/portfolio/bp-solutions)
+* [The Wildwoods](/portfolio/the-wildwoods)
+* [NetReach](/portfolio/netreach)
+* [Togo's](/portfolio/togos)
+* [Chemical.net](/portfolio/chemical-net)
+* [Chamber Orchestra of Philadelphia](/portfolio/chamber-orchestra-of-philadelphia)
+* [Seagull Motel](/portfolio/seagull-motel)
+* [My Bambino](/portfolio/my-bambino)
+* [Loungin' Lizzard](/portfolio/loungin-lizzard)
+* [Heart of Wildwood Hotel](/portfolio/heart-of-wildwood-hotel)
+* [Seashore Gardens Living Center](/portfolio/seashore-gardens-living-center)
+* [Ocean Holiday Motor Inn](/portfolio/ocean-holiday-motor-inn)
+* [St. John's Wellness](/portfolio/st-john-s-wellness)
+* [Crusader Resort](/portfolio/crusader-resort)
+* [Madison House Hotel](/portfolio/madison-house-hotel)
+* [Autotech Collision Service](/portfolio/autotech-collision-service)
+* [Lotus Inn](/portfolio/lotus-inn)
+* [El Coronado Resort](/portfolio/el-coronado-resort)
+* Aqua Beach Resort

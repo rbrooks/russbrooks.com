@@ -1,0 +1,44 @@
+Layout: portfolio
+Comments: false
+Banner Img: banner_portfolio.jpg
+Banner Title: Vice, by Russell Brooks
+Screenshot Img: ss_bps.jpg
+Divider Img: div_shadow_bps.gif
+Project: BP Solutions
+Description: An entry-level web presence for a financial consulting start-up. Design, programming, copy writing, and animation by Russ Brooks.
+URL: http://www.bpsolutionsinc.com
+Launch: 9/30/2001
+Language: C#
+Database: ASP.NET
+Design: Adobe Photoshop, Flash, Lightwave
+Prev: /portfolio/philadelphia-eagles
+Next: /portfolio/the-wildwoods
+
+* [SAFARI Montage Video Network](/portfolio/)
+* [SAFARI Montage](/portfolio/safari-montage)
+* [Millville Harley-Davidson](/portfolio/millville-harley-davidson)
+* [Wildwood Harley-Davidson](/portfolio/wildwood-harley-davidson)
+* [The Skelly Group](/portfolio/the-skelly-group)
+* [Adventurer Inn](/portfolio/adventurer-inn)
+* [Biomol](/portfolio/biomol)
+* [Pepper Hamilton Law](/portfolio/pepper-hamilton-law)
+* [Philadelphia Eagles](/portfolio/philadelphia-eagles)
+* BP Solutions
+* [The Wildwoods](/portfolio/the-wildwoods)
+* [NetReach](/portfolio/netreach)
+* [Togo's](/portfolio/togos)
+* [Chemical.net](/portfolio/chemical-net)
+* [Chamber Orchestra of Philadelphia](/portfolio/chamber-orchestra-of-philadelphia)
+* [Seagull Motel](/portfolio/seagull-motel)
+* [My Bambino](/portfolio/my-bambino)
+* [Loungin' Lizzard](/portfolio/loungin-lizzard)
+* [Heart of Wildwood Hotel](/portfolio/heart-of-wildwood-hotel)
+* [Seashore Gardens Living Center](/portfolio/seashore-gardens-living-center)
+* [Ocean Holiday Motor Inn](/portfolio/ocean-holiday-motor-inn)
+* [St. John's Wellness](/portfolio/st-john-s-wellness)
+* [Crusader Resort](/portfolio/crusader-resort)
+* [Madison House Hotel](/portfolio/madison-house-hotel)
+* [Autotech Collision Service](/portfolio/autotech-collision-service)
+* [Lotus Inn](/portfolio/lotus-inn)
+* [El Coronado Resort](/portfolio/el-coronado-resort)
+* [Aqua Beach Resort](/portfolio/aqua-beach-resort)

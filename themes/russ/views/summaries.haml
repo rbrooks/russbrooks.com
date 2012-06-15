@@ -1,0 +1,17 @@
+- unless pages.empty?
+  - pages.each do |page|
+    %h2
+      %a{ :href => page.abspath }= page.heading
+
+    - if page.date
+      .date= format_date(page.date)
+
+    - if page.summary.nil? || page.summary.empty?
+      ~ page.body
+    - else
+      ~ page.summary
+
+      %p.read_more
+        %a{ :href => page.abspath }= page.read_more
+
+      %img{ :src => '/russ/images/divider.gif', :height => '1', :width => '175', :class => 'divider' }
