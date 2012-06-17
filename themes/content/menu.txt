@@ -1,5 +1,0 @@
-design
-linux
-mac
-motorbikes
-rails
