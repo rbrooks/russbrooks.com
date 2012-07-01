@@ -2,18 +2,19 @@ Layout: portfolio
 Comments: false
 Banner Img: banner_portfolio.jpg
 Banner Title: Vice, by Russell Brooks
-Screenshot Img: ss_hdnet.gif
-Divider Img: div_shadow_hdnet.gif
-Project: SAFARI Montage HD Network
-Description: Built almost entirely by me, SAFARI Montage HD Network is my former employer's foray into Web 2.0 marketing. Community features such as Blogs, Forums, and Playlist sharing provide for an open system whereby customers can easily collaborate on the effective use of SAFARI Montage in their school district.
-URL: http://www.safarimontagehdnetwork.com
-Launch: 6/26/2009
-Language: PHP
-Framework: Drupal
+Screenshot Img: ss_connect.gif
+Divider Img: div_shadow_connect.gif
+Project: TelVue Connect
+Description: Cloud-based video transcoding, scheduling, and content management for Cable companies. Core codebase was constructed entirely by me, as well as all UI design. One particularly innovative component I wrote was a browser-native, multi-file, drag-and-drop uploader with progress bars, very-large-file support, and resumable-upload capabilities. That hadn't been done before.
+URL: http://connect.telvue.com
+Launch: 6/1/2012
+Language: Ruby 1.9.3
+Framework: Rails 3.0
 Database: PostgreSQL
-Next: /portfolio/safari-montage
+Next: /portfolio/safari-montage-video-network
 
-* SAFARI Montage Video Network
+* TelVue Connect
+* [SAFARI Montage Video Network](/portfolio/safari-montage-video-network)
 * [SAFARI Montage](/portfolio/safari-montage)
 * [Millville Harley-Davidson](/portfolio/millville-harley-davidson)
 * [Wildwood Harley-Davidson](/portfolio/wildwood-harley-davidson)

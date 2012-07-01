@@ -2,19 +2,20 @@ Layout: portfolio
 Comments: false
 Banner Img: banner_portfolio.jpg
 Banner Title: Vice, by Russell Brooks
-Screenshot Img: ss_oh.jpg
-Divider Img: div_shadow_oh.gif
-Project: Ocean Holiday
-Description: Had I not moved to Philadelphia in 1999, I'd imagine I would have built a website for just about every hotel on the island of Wildwood.
-URL: http://www.oceanholiday.com/
-Launch: 4/25/1998
-Language: HTML 4
-Design: Corel PhotoPaint
-Prev: /portfolio/seashore-gardens-living-center
-Next: /portfolio/st-john-s-wellness
+Screenshot Img: ss_hdnet.gif
+Divider Img: div_shadow_hdnet.gif
+Project: SAFARI Montage HD Network
+Description: Built almost entirely by me, SAFARI Montage HD Network is my former employer's foray into Web 2.0 marketing. Community features such as Blogs, Forums, and Playlist sharing provide for an open system whereby customers can easily collaborate on the effective use of SAFARI Montage in their school district.
+URL: http://www.safarimontagehdnetwork.com
+Launch: 6/26/2009
+Language: PHP
+Framework: Drupal
+Database: PostgreSQL
+Prev: /portfolio/
+Next: /portfolio/safari-montage
 
 * [TelVue Connect](/portfolio/)
-* [SAFARI Montage Video Network](/portfolio/safari-montage-video-network)
+* SAFARI Montage Video Network
 * [SAFARI Montage](/portfolio/safari-montage)
 * [Millville Harley-Davidson](/portfolio/millville-harley-davidson)
 * [Wildwood Harley-Davidson](/portfolio/wildwood-harley-davidson)
@@ -34,7 +35,7 @@ Next: /portfolio/st-john-s-wellness
 * [Loungin' Lizzard](/portfolio/loungin-lizzard)
 * [Heart of Wildwood Hotel](/portfolio/heart-of-wildwood-hotel)
 * [Seashore Gardens Living Center](/portfolio/seashore-gardens-living-center)
-* Ocean Holiday Motor Inn
+* [Ocean Holiday Motor Inn](/portfolio/ocean-holiday-motor-inn)
 * [St. John's Wellness](/portfolio/st-john-s-wellness)
 * [Crusader Resort](/portfolio/crusader-resort)
 * [Madison House Hotel](/portfolio/madison-house-hotel)

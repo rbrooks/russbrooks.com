@@ -13,7 +13,8 @@ Design: Corel PhotoPaint
 Prev: /portfolio/heart-of-wildwood-hotel
 Next: /portfolio/ocean-holiday-motor-inn
 
-* [SAFARI Montage Video Network](/portfolio/)
+* [TelVue Connect](/portfolio/)
+* [SAFARI Montage Video Network](/portfolio/safari-montage-video-network)
 * [SAFARI Montage](/portfolio/safari-montage)
 * [Millville Harley-Davidson](/portfolio/millville-harley-davidson)
 * [Wildwood Harley-Davidson](/portfolio/wildwood-harley-davidson)

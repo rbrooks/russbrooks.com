@@ -14,6 +14,10 @@ module Nesta
       # Add new helpers here.
     end
 
-    # Add new routes here.
+    get '/photographs' do
+      haml :photographs
+      'Hello world!'
+
+    end
   end
 end

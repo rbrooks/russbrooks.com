@@ -13,7 +13,8 @@ Database: PostgreSQL
 Prev: /portfolio/
 Next: /portfolio/millville-harley-davidson
 
-* [SAFARI Montage Video Network](/portfolio/)
+* [TelVue Connect](/portfolio/)
+* [SAFARI Montage Video Network](/portfolio/safari-montage-video-network)
 * SAFARI Montage
 * [Millville Harley-Davidson](/portfolio/millville-harley-davidson)
 * [Wildwood Harley-Davidson](/portfolio/wildwood-harley-davidson)

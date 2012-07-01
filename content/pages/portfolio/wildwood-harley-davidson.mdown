@@ -14,7 +14,8 @@ Design: Adobe Photoshop, Illustrator
 Prev: /portfolio/millville-harley-davidson
 Next: /portfolio/the-skelly-group
 
-* [SAFARI Montage Video Network](/portfolio/)
+* [TelVue Connect](/portfolio/)
+* [SAFARI Montage Video Network](/portfolio/safari-montage-video-network)
 * [SAFARI Montage](/portfolio/safari-montage)
 * [Millville Harley-Davidson](/portfolio/millville-harley-davidson)
 * Wildwood Harley-Davidson
