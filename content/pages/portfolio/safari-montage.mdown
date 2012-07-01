@@ -10,7 +10,7 @@ URL: http://www.safarimontage.com/Products/safarimontage.aspx
 Launch: 8/1/2006
 Language: PHP
 Database: PostgreSQL
-Prev: /portfolio/
+Prev: /portfolio/safari-montage-video-network
 Next: /portfolio/millville-harley-davidson
 
 * [TelVue Connect](/portfolio/)
