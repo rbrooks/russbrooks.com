@@ -66,7 +66,7 @@ The Homebrew formula does not create a "postgres" user, as was common up to this
 Install Instrumentation so pgAdmin doesn't yell at you.  Run this as the same user under which you installed Postgres.
 
     :::bash
-    psql -d postgres < /usr/local/Cellar/postgresql/9.1.4/share/contrib/adminpack.sql
+    psql postgres -c 'CREATE EXTENSION "adminpack";'
 
 ## Test
 
