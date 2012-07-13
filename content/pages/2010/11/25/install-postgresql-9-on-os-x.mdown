@@ -5,8 +5,6 @@ summary: The easiest way to install PostgreSQL on Mac OS X using Homebrew.
 
 # Install PostgreSQL 9 on OS X
 
-Tested on OS X 10.6.5.
-
 ## Homebrew
 
 You're not still using MacPorts, are you?  Please go get [Homebrew](http://mxcl.github.com/homebrew/ "Homebrew") immediately, the new-hotness package manager for OS X written in Ruby.  It amazing how simple Homebrew makes this process in comparison to my [old instructions on this topic](/2009/3/20/install-upgrade-php-apache-postgresql-on-mac-os-x-10-5-leopard "Install / Upgrade PHP, Apache, PostgreSQL on Mac OS X 10.5 Leopard").  It's also nice to be able to [peer into friendly-Ruby Homebrew Formulae](https://github.com/mxcl/homebrew/blob/master/Library/Formula/postgresql.rb) to see the exact build commands.
@@ -55,8 +53,8 @@ Follow the instructions at the end of the install to initialize the DB, add star
 
     :::bash
     initdb /usr/local/var/postgres
-    cp /usr/local/Cellar/postgresql/9.0.1/org.postgresql.postgres.plist ~/Library/LaunchAgents
-    launchctl load -w ~/Library/LaunchAgents/org.postgresql.postgres.plist
+    cp /usr/local/Cellar/postgresql/9.1.4/homebrew.mxcl.postgresql.plist ~/Library/LaunchAgents/
+    launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist
     pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
 
 ## Important Note About Authentication
@@ -68,7 +66,7 @@ The Homebrew formula does not create a "postgres" user, as was common up to this
 Install Instrumentation so pgAdmin doesn't yell at you.  Run this as the same user under which you installed Postgres.
 
     :::bash
-    psql -d postgres &lt; /usr/local/Cellar/postgresql/9.0.1/share/contrib/adminpack.sql
+    psql -d postgres < /usr/local/Cellar/postgresql/9.1.4/share/contrib/adminpack.sql
 
 ## Test
 
@@ -76,7 +74,7 @@ Launch [pgAdmin](http://pgadmin.org/), add a DB for "localhost", and use your us
 
 ## Install the PG Gem
 
-This installs the "pg" gem that [Matz](http://en.wikipedia.org/wiki/Yukihiro_Matsumoto "Yukihiro Matsumoto") himself wrote.  It is recommended over the old "postgres" gem.
+This installs the "pg" gem that [Matz](http://en.wikipedia.org/wiki/Yukihiro_Matsumoto "Yukihiro Matsumoto") himself wrote.  It is recommended over the old "postgres" gem.  I do not believe you need to give it Architecture Flags anymore (`env ARCHFLAGS="-arch x86_64" gem install pg`), so just do:
 
     :::bash
-    env ARCHFLAGS="-arch x86_64" gem install pg
+    gem install pg
