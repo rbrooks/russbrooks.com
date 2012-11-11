@@ -1,0 +1,110 @@
+date: 10 Nov 2012 20:09pm
+categories: mac
+read more: More&#8230;
+summary: You can get just about any video into Apple TV; you just have to know the rules and proper conversion techniques so that no quality is lost in conversion, the 5.1 soundtrack survives, and the conversion takes 2 minutes rather than 2 hours.
+
+# How To Get Just About Any Video Into Apple TV Fast With No Quality Loss While Maintaining the 5.1 Soundtrack
+
+##Myths
+
+Myths I am busting with this post:
+
+1. "I can't get some videos into iTunes & Apple TV."
+2. "Conversion takes forever."
+3. "Quality is lost with converting."
+4. "Apple TV doesn't do 5.1 soundtracks."
+
+## Glossary
+
+Some vocabulary first:
+
+* **Container** - Sometimes "Format" or "Container Format". The file itself. Examples of container formats: AVI, MPG, MP4, MKV, WebM
+* **Streams** - A container file can have essentially 3 types of streams inside it: Video, Audio, and Subtitles.
+* **Channel** - Audio streams can be further broken up into channels. Stereo audio uses 2 channels. 5.1 audio uses 6 channels.
+* **Codec** - Sometimes "Compression Format". The method by which the video or audio streams are compressed.
+  * Video Codecs: mp2v, h264, vp8
+  * Audio Codecs: DTS, AAC, AC3
+
+It's very important to understand the difference between the two types of conversion methods, Transcoding and Remuxing:
+
+* **Transcoding** - Sometimes called "re-encoding". Converting a stream to a different codec, bitrate (compression), or resolution. This means taking a fresh sample of every single frame. Transcoding is time-consuming and, with lossy codecs, causes generation-loss.
+* **Demuxing** - Breaking a container into its component streams. Example: A video called `somevideo.mp4` might contain an h264 video and an AAC audio stream. Demuxing it would create two files, one containing only video, one only audio. Both of these files would be exact copies of the stream in the container (no generation loss):
+  * `somevideo.h264` - Only video
+  * `somevideo.aac` - Only audio
+* **Muxing** - Combining individual stream files into a single container file. In the example above, `somevideo.h264` and `somevideo.aac` would be combined together into a file called `somevideo.mp4`. That file would contain full video and audio tracks. Again, because there is no transcoding happening, there is no loss in quality when doing this.
+* **Remuxing** - Sometimes referred to as "converting container format". This means passing an exact copy of the streams through to a new container. Because nothing was transcoded, there is no loss in quality, and remuxing a 2-hour movie takes minutes not hours.
+
+**So remuxing is always preferred to transcoding.**  It's an order of magnitude faster, you leave the streams untouched, and avoid the generation-loss associated with transcoding.
+
+## What Apple TV Supports
+
+There are some others, but the core ones we care about are:
+
+* **Containers** - MP4
+* **Video Codecs** - h264
+* **Audio Codecs** - AAC, AC3 (via passthrough)
+
+## Container
+
+Most downloaded videos come in an MP4 container or perhaps AVI, MOV, or MKV (Metroska).  MP4's can sometimes have an M4V file extension.  If the file is MP4, M4V, or MOV, it can be dropped directly into iTunes, **provided its audio stream is AAC or AC3**.  More on that very important point in a sec.
+
+## Video Stream
+
+Nearly every video you download from the Internet, not matter what the container, has an h264 video stream in it.  h264 is fully compatible with Apple TV.  99% of the time, you can simply remux to MP4 very quickly without incurring a massively long transcode of the video stream.  If it came as an MP4, you can leave it MP4, again provided the audio stream is compatible.
+
+## Audio Stream
+
+Audio is the area from which the majority of problems arise.  People often report problems importing h264 video into iTunes for Apple TV playback and, in most cases, **it is because of an incompatible audio stream**.  You'll see reports such as, "I imported an h264 MOV into iTunes and it's not working on Apple TV! I don't get any sound!  I thought Apple TV supported h264.  And MOV is Apple's own format!"
+
+Correct, MOV _is_ Apple's own format, and h264 is very much supported on Apple TV.  It's not the MOV that is incompatible, nor is it the h264 video stream.  **It is the audio stream inside the MOV that is incompatible.**
+
+### The DTS Problem
+
+I see many videos, especially MKVs (Metroska video), coming with a DTS 5.1 soundtrack.  DTS is not compatible with Apple TV because the MP4 container does not support DTS, and therefore Apple TV doesn't support it.  Most conversion (remuxing) software will display an error when you try to remux a video with DTS to MP4.
+
+### The AAC Problem
+
+Apple made a large commitment to AAC on the music side of things.  Songs downloaded from iTunes are all AAC in an M4A container.  One would naturally think the same applied to video, but that's not the case.  Apple TV will play a video with an AAC 5.1 soundtrack, but it will only play 2 channels, or will not play audio at all.  (Explanation in a sec.)
+
+## Why?
+
+Why would Apply eschew their own favored audio codec (AAC), one that is technically and sonically superior, and go with the older AC-3 codec for 5.1 audio?  Here's my semi-educated guess:
+
+It's no secret that the hardware specs on the Apple TV aren't wildly powerful. It has a tiny CPU and some light RAM.  Apple had to be careful where they allocated computing cycles.  5.1 soundtracks can be intensive to decode, especially higher bitrate ones.  Apple probably arrived at a point where they said, "Decoding any kind of 5.1 is going rob this box of too many resources. Let's not decode any 5.1 audio."
+
+**Then why does AC-3 5.1 work?**  Because Apple TV is not decoding the AC-3 5.1.  It is passing that audio stream through to your receiver or preamp for decoding.  If you look on the [Apple TV specs page](http://www.apple.com/appletv/specs.html) under "Audio Formats", the only mention of "5.1" is where they list "Dolby Digital 5.1 surround sound pass-through".  AC-3 is a backcronym for "Dolby Digital".  Note the phrase "pass-through".  That means the stream is not decoded into its 6 individual channels within Apple TV.  It is handed verbatim to your receiver - a far less taxing operation for ATV.
+
+### The AC-3 Solution
+
+**The only way to get a 5.1 soundtrack into Apple TV is to ensure it is AC-3 (Dolby Digital).**
+
+## Tools
+
+### Seeing the Streams
+
+A great way to see the streams and codecs inside a video is by using the free [VLC video player](http://www.videolan.org/).  Just open a video with it, and hit Command-I for "Video Information".  Go into the "Codec Details" tab and you'll see the Video, Audio, and Subtitle streams.  Expand the arrow next to each of the streams to see more info, including the codec of each one.
+
+### Conversion
+
+I've had the best success with [MP4 Tools](http://www.emmgunn.com/mp4tools/mp4toolshome.html). It focuses on Apple TV and remuxing, although it will transcode too. It's free if you are OK with nag screens, or $5 to make those go away (which I did). A very small price for a great, easy-to-use tool that works.
+
+1. Open your video with MP4 Tools. Go into the MP4 tab. (I don't use the "Quick" tab because I'm not familiar with what decisions it makes.)
+2. Choose the "Apple TV" device in the lower right.  It will gray out settings that aren't compatible with Apple TV.
+3. Check off the streams you want to include: Audio, Video, Subtitles.  
+4. Choose "Pass Thru" for Video. That will copy the h264 stream the new format. No quality loss.
+5. Choose "Pass Thru" for Audio if it's already AC-3 or 2-channel AAC. If not, choose AC-3.
+6. Choose "Mux (soft)" for subtitles.
+7. Leave everything else as is. Click "Convert".
+
+Because we're remuxing, a 2-hour movie only take maybe 2 or 3 minutes. If the audio had to transcode to AC-3, then only a few minutes more.
+
+MP4 Tools leaves the individual video and audio stream files on your drive after it's done, and log files, in addition to the remuxed video.  I turn this feature off in Preferences so the software cleans up after itself, leaving only the remuxed video.
+
+Soft subtitles sometimes don't work in ATV. Sometimes you have to burn them in. When you burn them in, "Pass Thru" video grays out. Of course, you have to transcode video to burn in subtitles (a several-hour process).  Tip: To see the Subtitles menu in Apple TV, hold down the Select button on the remote (the big round one in the middle). A subtitle-selection menu appears.
+
+### Other Tools
+
+* **[FFmpeg](http://ffmpeg.org/)** - FFmpeg is an enormously powerful command-line tool, and is one of my favorites.  It is absolutely capable of remuxing to Apple TV-compatible formats, but my goal with this article was to show a simple GUI-based conversion tool, geared toward remuxing and Apple TV, that I could recommend to non-nerds.
+* **[iFFmpeg](http://www.iffmpeg.com/)** - A nice GUI wrapper for FFmpeg. Of course, FFmpeg's overwhelming array of settings and options bubbles up to this app. Great for learning FFmpeg, though, and discovering its secrets.
+* **[HandBrake](http://handbrake.fr/)** - Handbrake is a great tool, but is strictly a transcoding app, i.e., lossy conversion. Unfortunately, it doesn't do straight remuxing. I often see folks recommending HandBrake to get things into iTunes. That is unfortunate because they are imposing unnecessary, 2-hour-long, quality-reducing transcodes on all of their videos.
+* **[VLC](http://www.videolan.org/vlc/)** - VLC does have some admirable transcoding and remuxing features, but being a media player, that's not its focus. It doesn't always succeed.
