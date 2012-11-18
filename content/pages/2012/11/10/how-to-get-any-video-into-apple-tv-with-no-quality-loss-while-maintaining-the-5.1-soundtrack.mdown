@@ -75,7 +75,7 @@ Correct, MOV _is_ Apple's own format, and h264 is very much supported on Apple T
 
 ### The DTS Problem
 
-I see many videos, especially MKVs (Metroska video), coming with a DTS 5.1 soundtrack.  DTS is not compatible with Apple TV because the MP4 container does not support DTS, and therefore Apple TV doesn't support it.  Most conversion (remuxing) software will display an error when you try to remux a video with DTS to MP4.  To get video with DTS into iTunes and Apple TV, its audio stream must be transcoded to AC-3 or AAC.
+I see many videos, especially MKVs (Metroska video), coming with a DTS 5.1 soundtrack.  DTS is not compatible with Apple TV because the MP4 container does not support DTS.  Most conversion (remuxing) software will display an error when you try to remux a video with DTS to MP4.  To get video with DTS into iTunes and Apple TV, its audio stream must be transcoded to AC-3 or AAC.
 
 ### The AAC Problem
 
@@ -83,9 +83,9 @@ If you are like me, you connected Apple TV to your reciever using solely an HDMI
 
 My second logical thought was, "I'll see if I can center my movie library around 5.1 AAC audio, it being the newer codec than AC-3."
 
-With 5.1 AAC videos over HDMI, I quicky discovered that only had 2 audio channels coming out of my 7.1 surround system.  (*gasp!*)
+With 5.1 AAC videos over HDMI, I quicky discovered that only had 2 audio channels were coming out of my 7.1 surround system.  (*gasp!*)
 
-Though trial and error, I found that I could get 5.1 sound to play if I:
+Through trial and error, I found that I could get 5.1 sound to play if I:
 
 1. Transcoded to AC-3 5.1 audio (Dolby Digital).
 2. Used a TOSLINK cable between my Apple TV and my receiver.
@@ -95,7 +95,7 @@ Number 2 wasn't an option for me because my receiver does not allow you to selec
 In summary, Apple TV comes pre-configured like this:
 
 * **AAC 5.1** - Decoded in the Apple TV:
-  * **HDMI** - Only 2 channels sent to reciever.
+  * **HDMI** - Only 2 channels sent to reciever (by default).
   * **TOSLINK** - Full 5.1 sent to receiver.
 * **AC-3 5.1** - NOT decoded in the Apple TV:
   * **HDMI** - Full 5.1 sent to receiver via "Pass Thru".
@@ -107,15 +107,15 @@ The Apple TV, by default, will only send 2 of the 6 channels of a video's AAC au
 
 ### The Solution: The Magic Setting
 
-1. Turn "Dolby Digital" to On.  In other words, the setting mentioned in this [Apple TV support article](http://support.apple.com/kb/TS3518).
+1. Turn "**Dolby Digital**" to On.  The setting mentioned in this [Apple TV support article](http://support.apple.com/kb/TS3518).
 
-Now the 5.1 soundtracks in my AAC videos were finally audible!  And so are AC-3!
+Now the 5.1 soundtracks in my AAC videos were finally audible!
 
 Right now, you're thinking, "Why would a setting called 'Dolby Digital' have anything to do with the non-Dolby codec, AAC?"
 
-I now know that this setting's _actual_ function is, "It's OK to send 5.1 over HDMI," despite its Dolby Digital name.  During testing, there could have been some fringe issues with 5.1 AAC over some older HDMI setups or versions, like static or no sound as the above support article indicates.  Apple probably opted for the safer 2-channel default because "audio not coming out my back speakers is better than static coming out of all of them".
+I now know that this setting's _actual_ function is, "It's OK to send decoded 5.1 over HDMI," despite its Dolby Digital name.  During testing, there could have been some fringe issues with 5.1 AAC over some older HDMI setups or versions, like static or no sound as the above support article indicates.  Apple probably opted for the safer 2-channel default because "audio not coming out my back speakers is better than static coming out of all of them".
 
-To us audio geeks, the option is probably better called, "Send 5.1 audio over HDMI", but that is far more cryptic to the average user.  The average user simply knows the "Dolby Digital" brand to mean "good sound" or "surround sound".  Apple, following the rules of good User Experience design, eschews as best they can acronyms and abbreviations.  They mean nothing to most users, so in using them, you communicate nothing to most of your audience.  I can see why this decision was made.
+To us audio geeks, the option is probably better called, "Send decoded 5.1 audio over HDMI", but that is far more cryptic to the average user.  The average user simply knows the "Dolby Digital" brand to mean "good sound" or "surround sound".  Apple, following the rules of good User Experience design, eschews as best they can acronyms and abbreviations.  They mean nothing to most users, so in using them, you communicate nothing to most of your audience.  I can see why this decision was made.
 
 ## Tools
 
@@ -130,7 +130,7 @@ I've had the best success with [MP4 Tools](http://www.emmgunn.com/mp4tools/mp4to
 3. Check off the streams you want to include: Audio, Video, Subtitles.
 4. Choose "Pass Thru" for Video. That will copy the h264 stream the new format. No quality loss.
 5. Choose "Pass Thru" for Audio if it's already 5.1 AC-3 or AAC.
-  * If "Pass Thru" is grayed out, choose AAC 5.1.
+    * If "Pass Thru" is grayed out, choose AAC 5.1.
 6. Choose "Mux (soft)" for subtitles. "Hard" will burn them in to the frames and cause a 2-hour-long transcode.
 7. Leave everything else as is. Click "Convert".
 
