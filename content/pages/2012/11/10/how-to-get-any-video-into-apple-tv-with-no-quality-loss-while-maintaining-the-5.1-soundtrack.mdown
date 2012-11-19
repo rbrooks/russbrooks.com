@@ -18,7 +18,7 @@ summary: You can get just about any video into Apple TV; you just have to know t
 
 That will _remux_ the video in mere minutes, which causes zero quality loss. It causes no lengthy, 2-hour-long, quality-reducing transcode (like HandBrake does).
 
-Now that you have weeks of work summarized into three steps, what follows is the research leading up to the above steps. The process above succeeds for me 98% of the time.
+Now that you have weeks of work summarized into three steps, what follows is the research leading up to the above steps, as well as some tips on other tools.
 
 ## Myths
 
