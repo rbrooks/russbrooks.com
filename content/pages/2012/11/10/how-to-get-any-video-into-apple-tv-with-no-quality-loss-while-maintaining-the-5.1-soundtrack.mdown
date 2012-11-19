@@ -85,14 +85,14 @@ My second logical thought was, "I'll see if I can center my movie library around
 
 With 5.1 AAC videos over HDMI, I quicky discovered that only had 2 audio channels were coming out of my 7.1 surround system.  (*gasp!*)
 
-Through trial and error, I found that I could get 5.1 sound to play if I:
+Through trial and error, I found that I could get 5.1 sound to play if I did either of these:
 
-1. Transcoded to AC-3 5.1 audio (Dolby Digital).
-2. Used a TOSLINK cable between my Apple TV and my receiver.
+* Transcoded to AC-3 5.1 audio (Dolby Digital).
+* Used a TOSLINK cable between my Apple TV and my receiver.
 
-Number 2 wasn't an option for me because my receiver does not allow you to select a different, non-HDMI audio source while watching HDMI.
+TOSLINK wasn't an option for me because my receiver does not allow you to select a different, non-HDMI audio source while watching HDMI.
 
-In summary, Apple TV comes pre-configured like this:
+To summarize, Apple TV comes configured like this:
 
 * **AAC 5.1** - Decoded in the Apple TV:
   * **HDMI** - Only 2 channels sent to reciever (by default).
@@ -109,13 +109,13 @@ The Apple TV, by default, will only send 2 of the 6 channels of a video's AAC au
 
 1. Turn "**Dolby Digital**" to On.  The setting mentioned in this [Apple TV support article](http://support.apple.com/kb/TS3518).
 
-Now the 5.1 soundtracks in my AAC videos were finally audible!
+Now the 5.1 soundtracks in my AAC videos are finally audible!
 
 Right now, you're thinking, "Why would a setting called 'Dolby Digital' have anything to do with the non-Dolby codec, AAC?"
 
-I now know that this setting's _actual_ function is, "It's OK to send decoded 5.1 over HDMI," despite its Dolby Digital name.  During testing, there could have been some fringe issues with 5.1 AAC over some older HDMI setups or versions, like static or no sound as the above support article indicates.  Apple probably opted for the safer 2-channel default because "audio not coming out my back speakers is better than static coming out of all of them".
+This setting's _actual_ function is, "It's OK to send decoded 5.1 over HDMI," despite its Dolby Digital name.  During Apple's testing, there could have been some fringe issues with 5.1 AAC over some older HDMI setups or versions, like static or no sound as the above support article indicates.  Apple probably opted for the safer 2-channel default because "audio not coming out my back speakers is better than static coming out of all of them".
 
-To us audio geeks, the option is probably better called, "Send decoded 5.1 audio over HDMI", but that is far more cryptic to the average user.  The average user simply knows the "Dolby Digital" brand to mean "good sound" or "surround sound".  Apple, following the rules of good User Experience design, eschews as best they can acronyms and abbreviations.  They mean nothing to most users, so in using them, you communicate nothing to most of your audience.  I can see why this decision was made.
+To us audio geeks, the option is probably better called, "Send decoded 5.1 audio over HDMI", but that is far more cryptic to the average user.  The average user simply knows the "Dolby Digital" brand to mean "good sound" or "surround sound".  Apple, following the rules of good User Experience design eschews, as best they can, acronyms and abbreviations.  They mean nothing to most users, so in using them, you communicate nothing to most of your audience.  I can see why this decision was made.
 
 ## Tools
 
@@ -125,14 +125,17 @@ To us audio geeks, the option is probably better called, "Send decoded 5.1 audio
 
 I've had the best success with [MP4 Tools](http://www.emmgunn.com/mp4tools/mp4toolshome.html). It focuses on Apple TV and remuxing, although it will transcode too. It's free if you are OK with nag screens, or $5 to make those go away (which I did). A very small price for a great, easy-to-use tool that works.
 
-1. Open your video with MP4 Tools. Go into the MP4 tab. (I don't use the "Quick" tab because I'm not familiar with what decisions it makes.)
-2. Choose the "Apple TV" device in the lower right.  It will gray out settings that aren't compatible with Apple TV.
+1. Open your video with **MP4 Tools**. Go into the **MP4** tab.
+2. Choose the "**Apple TV**" device in the lower right.
+    * It will gray out settings that aren't compatible with Apple TV.
 3. Check off the streams you want to include: Audio, Video, Subtitles.
-4. Choose "Pass Thru" for Video. That will copy the h264 stream the new format. No quality loss.
-5. Choose "Pass Thru" for Audio if it's already 5.1 AC-3 or AAC.
+4. Choose "**Pass Thru**" for Video.
+    * This copies the h264 stream to the new container. No quality loss.
+5. Choose "**Pass Thru**" for Audio if it's already 5.1 AC-3 or AAC.
     * If "Pass Thru" is grayed out, choose AAC 5.1.
-6. Choose "Mux (soft)" for subtitles. "Hard" will burn them in to the frames and cause a 2-hour-long transcode.
-7. Leave everything else as is. Click "Convert".
+6. Choose "**Mux (soft)**" for subtitles.
+    * "Hard" will burn them in to the frames and cause a 2-hour-long transcode.
+7. Leave everything else as is. Click "**Convert**".
 
 Because we're remuxing, a 2-hour movie only take maybe 2 or 3 minutes. If the audio had to transcode, then only a few minutes more.
 
