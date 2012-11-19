@@ -111,11 +111,16 @@ The Apple TV, by default, will only send 2 of the 6 channels of a video's AAC au
 
 Now the 5.1 soundtracks in my AAC videos are finally audible!
 
-Right now, you're thinking, "Why would a setting called 'Dolby Digital' have anything to do with the non-Dolby codec, AAC?"
+Right now you're thinking, "**Why would a setting called 'Dolby Digital' have anything to do with the non-Dolby codec, AAC?**"
 
-This setting's _actual_ function is, "It's OK to send decoded 5.1 over HDMI," despite its Dolby Digital name.  During Apple's testing, there could have been some fringe issues with 5.1 AAC over some older HDMI setups or versions, like static or no sound as the above support article indicates.  Apple probably opted for the safer 2-channel default because "audio not coming out my back speakers is better than static coming out of all of them".
+My guess:  The verbose way of saying what this setting's _actual_ function is, would be, "It's OK to send decoded 5.1 over HDMI."  To us audio geeks, the option is probably better called, "Bitstream 5.1 over HDMI", but that is far more cryptic to the average user.  The average user simply knows the "Dolby Digital" brand to mean "good sound" or "surround sound".  Apple, following the rules of good User-Interface Design, usually avoid as best they can, acronyms and abbreviations.  They mean nothing to most users, so in using them, you communicate nothing to most of your audience.
 
-To us audio geeks, the option is probably better called, "Send decoded 5.1 audio over HDMI", but that is far more cryptic to the average user.  The average user simply knows the "Dolby Digital" brand to mean "good sound" or "surround sound".  Apple, following the rules of good User Experience design eschews, as best they can, acronyms and abbreviations.  They mean nothing to most users, so in using them, you communicate nothing to most of your audience.  I can see why this decision was made.
+**Why would '2 channels' be the default over HDMI?**  Two possible answers I can see:
+
+1. Perhaps during Apple's testing, there could have been some fringe issues with 5.1 AAC over some older HDMI setups or versions, like static or no sound as the above support article indicates.  Apple probably opted for the safer 2-channel default because "audio not coming out my rear speakers is better than static coming out of all of them".
+2. I saw "HDMI negotiation" as another possible cause. I haven't dug deeper into this, but I saw one person speculating that there is a HDMI-negotiation process that occurs between your receiver and your Apple TV to determine the # of simultaneous bitstream channels that your receiver can handle. If that type of negotiation is not a feature of your receiver, or this process fails in some way, perhaps it defaults back to 2 channels.
+
+The Apple TV Setup Guide says something like, "If you have a Dolby Digital receiver, set this to On."
 
 ## Tools
 
