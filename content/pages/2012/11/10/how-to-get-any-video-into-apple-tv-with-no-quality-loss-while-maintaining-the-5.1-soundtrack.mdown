@@ -28,6 +28,7 @@ Myths I am busting with this post:
 2. "Conversion takes forever."
 3. "Quality is lost with converting."
 4. "Apple TV doesn't do 5.1 soundtracks."
+5. "To play 5.1, Apple TV requires 2 audio streams per container: AC-3 5.1 and a 2-channel AAC."
 
 ## Glossary
 
