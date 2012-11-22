@@ -84,7 +84,7 @@ If you are like me, you connected Apple TV to your reciever using solely an HDMI
 
 My second logical thought was, "I'll see if I can center my movie library around 5.1 AAC audio, it being the newer codec than AC-3."
 
-With 5.1 AAC videos over HDMI, I quicky discovered that only had 2 audio channels were coming out of my 7.1 surround system.  (*gasp!*)
+With 5.1 AAC videos over HDMI, I quicky discovered that only 2 audio channels were coming out of my 7.1 surround system.  [***gasp!***]
 
 Through trial and error, I found that I could get 5.1 sound to play if I did either of these:
 
