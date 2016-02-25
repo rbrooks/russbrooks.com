@@ -1,0 +1,221 @@
+date: 25 Feb 2016 18:14pm
+categories: rails
+read more: More&#8230;
+summary: A recap of 7 years of Web Development with Ruby on Rails, in the hopes this may benefit other Devs.
+
+# What I Learned (or Confirmed) After Seven Years With Rails
+
+## Language Families : "Compiled" vs "Scripting"
+
+To get some terminology clarified first... This is old hat, but I see many young Devs plodding forward without considering this difference.
+
+In the same way that all beer can be divided into two families, Lagers and Ales, all computing languages can be divided into "Compiled" and "Interpreted" families.  When it comes to performance and scalability, we can't rightfully compare the two.  It isn't fair to compare some benchmarks for Google Go against Ruby, for example, which I see some folks doing.  Go is a Compiled language; Ruby is a Scripting language interpreted at runtime.  Each has their tradeoffs and appropriate use cases.  A Scripting Language will never stand up to the performance and scalability of a Compiled one.
+
+I have both Compiled and Scripting-language background. I shelved developing on Compiled languages professionally, a decade ago, to learn Ruby. I wanted to share my conclusions after 7 years in the Rails trenches.
+
+Note that I used "Scripting Language" and "Interpreted Language" synonymously below.
+
+## ISSUE 1 : Scaling
+
+### Myths When Rails Was 1.x
+
+These aren't exact quotes, but thoughts I recall encountering 10 years ago:
+
+* "It doesn't matter that it's a slow, single-threaded Scripting Language with large RAM demands, and we've written an inefficient ORM with it.  Hardware is fast and cheap enough now."
+* "Magic is cool."
+* "Never have to touch raw SQL code again."
+
+### Realities Now: Scaling Interpreted Languages and ORMs
+
+I worked at three companies that experienced significant scaling issues from Interpreted-at-Runtime technology: PHP, Python, and Ruby on Rails.  At the two Rails firms, we had no choice but to refactor away ActiveRecord, in some areas, and use pure SQL queries.  Nothing is faster than a raw SQL query.  Both firms had what I would consider ActiveRecord experts, folks very knowledgable in how to coerce ActiveRecord into minimizing N+1's, and folks who would always exhaust their efforts remaining in ActiveRecord land.  But even with those optimizations, we had some pages taking upwards of 40 to 60 seconds to return, on pages where multi-table JOIN complexity was high combined with high data-volume for a particular customer.  I had to replace those ActiveRecord calls with a single SQL query, and Page-Response Time came down to under 2 seconds.  This is just one example, among several dozen, that we went through over the years.
+
+This is not to say "all Rails apps having scaling problems".  I *have* seen many Rails apps that do not suffer from scaling problems.  For example, I've spoken to a successful Philadelphia-based Rails consulting shop that has an e-commerce platform with many large clients.  They report having zero scaling issues whatsoever for any of their clients.  Granted, e-commerce sites are generally fairly undemanding resource-wise.
+
+The firm I worked for with the PHP flagship app (a social network), in scrambling to scale it, had to refactor all business logic into PostgreSQL Functions wrapped by an API.  The PHP pages essentially became light-duty Thin Clients making calls to the API.  This is the same architectural approach we would use 10 to 15 years ago when I developed C# Web applications with SQL Server backends. It was the accepted pattern to wrap all business logic into SQL Stored Procedures, and create very thin "View-Controllers". This nearly eliminated inefficient N+1 queries. It offloaded the CPU work of the business logic to the Database Server, where it made sense, keeping the Web Server freer to do its I/O more efficiently.
+
+### Conclusions
+
+* If your Interpreted-Language site garners some success, you will have to refactor away some or all of it into faster things, which means:
+  * Microservices - These won't be on Scripting Languages (and especially not Rails).
+  * Faster Database-access libraries or patterns
+  * Raw SQL
+  * Compiled, multi-threaded technology - Erlang/Elixir, Google Go, Rust, or JVM-based options like jRuby, Java, Scala, Closure, etc.
+  * Reducing Abstraction
+* "Explicit over Implicit" (less Magic) is more efficient and improves maintainability.
+* There is no such thing as not learning SQL.
+* NoSQL databases were never intended to replace RDBMS's. They are intended to be used along side. There are appropriate use cases for each.
+
+If replacing Weak-Scaling things with Strong *must* happen eventually anyway, why not have built it on Strong-scaling technology to begin with?
+
+### Use Cases for Rails
+
+By "Rails" I mean "any full-stack Web framework built on a Scripting Language".
+
+1. **Rapid Prototypes** - Getting "Minimum Viable Product" launched quickly to see if it flies. In other words, new sites that you aren't sure are going to succeed.
+2. **Internal Applications** - Intranet Apps guaranteed to never see high traffic.
+
+There is no # 3.  In reality, there isn't another appropriate use case for websites written in Interpreted Languages.  Even the first case above has become questionable, given that on the "fast, compiled, multithreaded" side of the universe, there exists plenty of full-stack frameworks that permit one to get a site up [nearly] as fast as Rails.  Most of those technologies also have features that can make the language behave and look like a Scripting Language (JIT compiling, Type Inference, terse Ruby-like syntax, etc).
+
+### Use Cases for Scripting Languages
+
+Wise use cases for Scripting Languages:
+
+1. **Automated Server Provisioning** - Chef, Ansible, etc.
+1. **Maintenance Work** - Backups, etc.
+1. **Small, Internal Apps** - Intranet
+1. **Prototyping** - But make sure you eliminate the Scripting Language when you are done prototyping, and replace it with something that scales (a Compiled language).
+
+### The "Reduces Time to Market" Argument
+
+The "reduces time to market" argument is thin.  Having a "compile step", in my experience, never slowed my development by any significant amount.  Even 14 years ago in 2002, while working in non-Production mode on C# sites, JIT compiling would occur transparently upon every refresh, and would happen very rapidly.
+
+The second half of the argument is sometimes, "Well, Debugging is easier and faster. I can quickly add debug values directly in page."
+
+Fortunately, you can do in-line debugging on both sides, equally as effortlessly.  But Statically Typed, Compiled languages have the added benefit of having very sophisticated debugging tools and feature-rich IDE's, tools that don't exist in Dynamic Language land (and won't ever, due to the nature of Dynamic Typing).
+
+I agree that "reduces time to market" **is** true in certain cases with Scripting Languages.  But when it *is* true, it is true by a very small margin - maybe 5% or 10% faster to market, in my experience.  But the large pile of Technical Debt you just incurred, that you must pay off if the site succeeds, far outweighs the cost saved in getting to market 10% sooner.  Having to refactor those slow parts significantly eats into "Feature Development" time later.  Feature Development, of course, generally equates to Revenue.  So, yes, you got to market 10% or 15% faster, but now Revenue-generating features are much slower to release, as you are constantly interrupted by having to solve performance issues, or scale the application: adding more App processes, hardware, caching servers, clustering, load-balancing, etc.  Granted this is anecdotal, but with the large Rails 3.2 app I spent 4 years building and maintaining with an awesome team, I genuinely feel like we could have rolled out perhaps 30% to 40% more Revenue-generating features in the 3 years since 1.0, had we just gone with a Strong-scaling technology to begin with.
+
+### You Must Learn SQL Anyway
+
+I concluded the above during my first year of using Rails.  But over the past 3 years, I have heard it confirmed a number of times in the Ruby community.  At the last two RailsConf's I attended, there were talks on scaling Rails, and "**learn SQL**" was always a bullet point as being a widely accepted reality now (a reality I knew well before before my fascination with Ruby pulled me into Rails).
+
+It is near impossible to keep yourself, or your team, forever abstracted away from the native language that queries your database.  That is a non-reality in my experience.  Eventually, someone in the organization will have to learn it when scaling issues arrive.  So why not **all** learn it to begin with, and yield an app that is as scalable as it can be at 1.0?
+
+### What About "Premature Optimization"?
+
+"Wouldn't we be guilty of Premature Optimization if we give all this concern to making the most scalable technological choices now rather than later?"
+
+"Premature Optimization" refers to the code you write, not the architecture and language choices of the systems underneath.  It is our responsibility to make the best, most scalable technology choices for our business or customer, out of the gate.  That is simply "good engineering".  On the other hand, we **would** be guilty of "Premature Optimization" if, say, we burned an extra week, delaying 1.0, Profiling and Benchmarking trying to wring out a 15% improvement in Page Response time.  Those kinds of things are best done later.
+
+### Evidence From the Community
+
+In April 2011, Twitter reported they had to rewrite much of their code to move away from Ruby, due to:
+
+> "...inefficiencies in the platform".
+
+Twitter has moved to mostly Scala, FWIW.
+
+On the Ruby Rogues podcasts, David Brady has said things like:
+
+> "Rails scales. You just have to scale it the instant you launch 1.0."
+
+I would add to that:
+
+> "...and scale it at a cost-prohibitively rapid rate."
+
+Over the years, the Core Ruby Team periodically receives a Pull Request to add a Web-specific feature or optimization to Ruby.  The Core Team often rejects PR's of this sort, giving reasons like, "Ruby was never designed as a Web Application language."
+
+The Core Team has reminded us that Ruby is a "batch language" or "glue language" (like Shell, Perl and Python), intended to be used to string together different system operations in a repeatable way.  Put bluntly, you're not supposed to write large applications with it (or any other Scripting Language, if I'm honest).
+
+> "Any significantly advanced Rails app is indistinguishable from Java Enterprise Edition."
+>
+> -- Guest on Ruby Rogues podcast
+
+Somewhat tongue-in-cheek but true, this statement points toward the fact that you must eventually refactor away Rails for faster things. (Java *does* scale well, it being Statically Typed, Compiled, and able to distribute its load across Cores.)
+
+> "I seriously considered submitting a talk called, “The Case Against Rails,” to the RailsConf CFP.  My wife had to talk me off the ledge."
+>
+> -- Tweet from James Edward Gray, Ruby Rogue, long-time Ruby programmer, author, speaker, and Rails consultant
+
+### Our Responsibility as "Engineers"
+
+WikiPedia defines an [Engineer](https://en.wikipedia.org/wiki/Engineer) as:
+
+> An engineer is a practitioner of engineering, concerned with applying scientific knowledge, mathematics, and ingenuity to develop solutions for technical, societal and commercial problems.  Engineers design materials, structures, and systems while **considering the limitations** imposed by practicality, regulation, safety, and **cost**.
+>
+> ...
+>
+> In due time he will be able to **give authoritative technical advice and to assume responsibility** for the direction of important tasks in his branch.
+
+If we look at the [Software Engineering](https://en.wikipedia.org/wiki/Software_engineering) page, we see this definition:
+
+> The establishment and use of sound engineering principles in order to economically obtain software that is reliable and **works efficiently** on real machines.
+
+Making something "work efficiently" is one part of "cost control" mentioned in the first article.  As experts in our field, customers and employers look to us to provide "authoritative technical advice" to guide them in the direction of the most cost-effective solution possible.  **It's our responsibility to build systems that are as efficient as they can be.**  It doesn't matter how capable hardware is these days.  If we launched a system that incurs ongoing costs at a rate of 4X / year rather than X, then we didn't do our Engineering jobs as well as we could.
+
+"Cost" includes:
+
+* Hardware purchases
+* Software purchases
+* Hosting fees
+* Development labor in:
+  * Replacing weakly scaling things for strong ones
+  * Improving Performance
+  * Improving Reliability
+  * Improving Usability
+  * Improving Maintainability
+  * Improving Security
+
+Every Web Developer must have these things in the forefront of their minds as they develop a Website, or they are not being the best Web Engineer they can be.
+
+## ISSUE 2 : Distributed Computing
+
+This issue has plagued every company I've worked for: Two geographically separated systems needing to reliably exchange information with each other over the Public Internet.  We had RPCs in the late 90's, then SOAP and all of its complexity, and now REST.  None of these technologies have any sort of durability, transactionality, or bulk operations built into them.  One must write custom fault-tollerance routines into both the Client and Server, and hope you get it right the first time, accounting for all the fringe cases.
+
+You always find yourself making multiple calls to the REST API for what should be a single query: I need "all Videos for a given User", so first I must hit the Video API, then make a second HTTP Request to the User API to get their Profile information.
+
+With Write operations, there is always a need to perform more than one and make them transactional: If Update-operation B fails, then back out A.
+
+To make things more durable and tolerant of connectivity problems, you have to write or implement special things like queuing, retries, failing faster (shortened timeouts), trapping the right errors and ignore the wrong ones, and watchers to kill and restart hung processes.
+
+These holes often lead to data inconsistencies on the Client and Server.
+
+Lastly, API versioning was a cost center (read: PITA).  New REST Clients need new data in new ways, and you will eventually have no choice but to add a "V2" version of your API, then a V3, and so on.
+
+## Things That Work Great
+
+To give some credit some credit due, these technologies worked flawlessly in the past decade:
+
+* **Nginx**
+* **Passenger**
+* **PostgreSQL**
+* **Redis**
+* **Ruby** - the language itself. Still a great language when used for the appropriate use cases. I still feel it's the best Scripting Language, having now coded in all the major ones professionally.
+* **Ubuntu Linux**
+
+## Where It's Going
+
+### SOLUTION 1 : The Future is Compiled
+
+It has been interesting witnessing the Scripting Language lunge twice for Web Development and recede again.  VBScript surged with the advent of Active Server Pages in the late 90's.  Then two Compiled Languages took off between 1999 and 2002, C# and Java, and pushed Scripting Languages into the background again.  Then a rogue Danish man wrote Rails and pulled many back into Scripting Languages again circa '06, not to mention Node.js helping in 2000.  Now the Web industry has come full circle back to efficient, Compiled, Multithreaded languages.  Granted, some folks never left them.
+
+Can we all agree to stop using Scripting Languages for Web Application Development?  Back in '05, there were no Compiled options that had beautiful syntax, so there *was* call to use Ruby.  Its beautiful syntax often "trumped" performance and scaling needs.   We didn't have all these great options in terse-syntax, Compiled languages that we have now: Go, Rust, Scala, Groovy, etc.  We have Ruby (and Rails) to thank for raising awareness that a language is more rewarding to code in when it is centered around the Programmer.
+
+### SOLUTION 2 : The Future is Concurrent and Multithreaded
+
+In 2005, CPU Clock Speeds leveled off significantly.  We have not been able to make CPUs any faster.  All we are able to do is add Cores.  These technologies use App Processes that are backed by a single CPU thread: Ruby, Python, PHP, and JavaScript.  12 years ago, you could "vertically scale" single-threaded technology like this, by swapping out CPUs with faster ones.  Your Web pages would do their work more quickly and pages would respond faster.  That's no longer the case because we can't add Clock Speed; only CPUs.  So adding more expensive CPUs to a Ruby, Python, PHP, or JS App Server has little-to-no effect on page-response time.  Because more expensive CPUs only cause you to increase Core quantity, not speed, and these technologies are incapable of distributing their work across Cores.  Yes, they all allow you to "do concurrency" by chucking a piece of work into the background, but each piece of concurrent work is merely a "virtual" construct handled by the VM, taking place within the same CPU thread.  You must scale these Single-Process / Single-Thread technologies an Order of Magnitude faster than their Multithreaded counterparts.  You must add both App Processes **and** more Cores to match.  App Processes are enormous in RAM and require a "configuration change" to add more of them.  This is called Weak-scaling technology.  But even the true-Multithreaded counterparts (Java, C#, C++, jRuby, PHP with pthreads, Jython), allow all sorts of Mutability, whereby one Thread can access another Thread's data in RAM.  True Multithreading in these languages has been very tricky, requiring implementing Mutexes and Semaphores in just the right ways, so most developers avoid it.
+
+The solution to all this comes in new languages like:
+
+* Closure
+* Erlang / Elixir
+* Google Go
+* Rust
+
+Prior to the arrival of these languages, true-Multithreaded Concurrency was very hard.  These technologies do admirable jobs at making Multithreaded Concurrency effortless, and protecting the programmer from the perils of classic Multithreaded Programming.
+
+### SOLUTION 3 : The Future is Functional
+
+Years back, when I was witnessing the rise of Functional Programming, I thought the reasons it was rising were superfluous.  I thought it was due to Language Geeks being Language Geeks and writing things on Functional Languages gratuitously to be "cool" or for bragging rights, "Look at me! Look how clever! I'm capable of writing code in this wacky, esoteric, Functional style!"
+
+I know now that is not the case.  The rise of FP happened because Functional Languages solve real problems that OOP languages don't, specifically when it comes to scaling.
+
+In order for a language to be truly "Thread Safe" (reliably concurrent across CPU cores), it must also be free of Mutable State.  This is why everything has shifted toward Functional technologies like Scala, Closure, and Erlang/Elixir.  Classic OOP languages like Java, C#, C++, and the Scripting languages, are all centered around Mutability, allowing the state of an object to be changed after it has been created. If you've ever tried Multithreading in Java, C#, or C++, you know what I mean. All kinds of Race Conditions and exceptions can arise from one Thread expecting data to be one way, and the other changing it out from under its feet.  With the more "pure" Functional Languages, like Erlang and Elixir, nothing is mutable.  Other FP languages, like Scala, are hybrids between OOP and Functional letting you decide how immutable you want things.  These languages minimize or eliminate "side effects", making true, Multithreaded concurrency easy.  Because we can't improve CPU speed but only add Cores, Immutability is the **only** way forward.
+
+Every Web Developer should be learning a Functional Language right now. Elixir and Scala are my choices.
+
+### SOLUTION 4 : The Future is Distributed
+
+By "Distributed Computing" I mean two geographically separated machines talking to each other reliably over the unreliable, public Internet.  REST has no inherent fault-tolerance,  but Erlang does!  Erlang has been doing this successfully since the 90s.  The Erlang runtime is the only runtime that has "Distributed Computing" built-in, in the most solid, no-brainer way. [Erlang](http://erlang.org/), which means [Elixir](http://elixir-lang.org/) too, is structured entirely around reliable, bulletproof communication of data between remote processes.  Google's Go, Mozilla's Rust, and Scala have excellent, Multithreaded-concurrency features, but none of those languages have "remote communication" steeped into the core of its runtime.  If, using those languages, your goal is getting two remote processes to talk to each other, you still would have to write custom, fault-tolerance routines at either end (Client and Server), or perhaps roll out a third-party message broker, or implement a Distributed Actor library, like Akka in the Scala world.  Play with Elixir's or Erlang's remote message-passing features for 15 minutes, and you'll wonder why you ever used HTTP (REST) or a message broker.  Erlang/Elixir has all the durability and high-availability features built-in whereas HTTP/REST doesn't: queuing, failover, clustering, auto-closing and restarting hung processes, ability to handle massive #'s of concurrent activities, hot upgradable/reconfigurable, and so on.  Erlang is also battle-tested and has existed for 30 years.  We also have nice, terse, approachable syntax with the arrival of Elixir, and Elixir compiles down directly to the same byte code as Erlang.  It doesn't transpile to Erlang code first.  So Elixir's excellent performance is dead-on par with Erlang, and sometimes even beats it at certain things.
+
+### SOLUTION 5 : The Future is GraphQL
+
+REST is Dead.
+
+[GraphQL](http://graphql.org/) has really caught my attention because it solves so many problems with REST.  It eliminates having to "version" your API.  It eliminates having to make multiple HTTP calls from your Client to Server to get several related things.  It eliminates having to burn Dev time adding a Response "type" if a bunch of customers now want API result in some new (or old) format.
+
+With GraphQL, the responsibility for "what data you want" and "how you want it" is moved to the Client. (Stop. Grok. And roll. Because that is HUGE!) Think about that for a minute.
+
+With today's REST API's, what do we do to roll one out? We sit and plan carefully what the API should look like. We whiteboard up every possible way customers may need to leverage that API. We burn time coming up with what parts of our schema we need to expose. We burn more time arriving at which Response Formats we'll need to support. We burn more time building out all the API End Points, ensuring they expose the right bits of data in the right ways. We ensure they are queryable in the correct manners and returning the right things, then we diligently document this whole shebang and publish the docs. Rolling out a good API takes months. Then we get to the end of this long process, and what do we have? This very **fixed**, rigid, static "thing" that exists. We have imposed our beliefs onto our REST Clients (customers, mobile devices, server appliances, etc), really just "best guessing" as to how they would like to use these APIs. Inevitably, like clockwork, shortly after launching your API, the requests arrive to change the API. Come customers need more of the data. Some would like it structured or queryable a little differently, and so on. We scramble to create a Version-2 API, and the costly cycle continues.
+
+GraphQL eliminates all of this. Clients access a single End Point and specify, using Graph QL's query language, exactly what data they would like, and how they would like it structured.  You literally can roll out Graph QL and forget about it.  Any imaginable way a Client would need the data is already supported.
