@@ -95,7 +95,7 @@ In April 2011, Twitter reported they had to rewrite much of their code to move a
 
 > "...inefficiencies in the platform".
 
-Twitter has moved to mostly Scala, FWIW.
+Twitter has moved to mostly Scala, FWIU.
 
 On the Ruby Rogues podcasts, David Brady has said things like:
 
