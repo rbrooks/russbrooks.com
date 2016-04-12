@@ -21,13 +21,13 @@ Note that I used "Scripting Language" and "Interpreted Language" synonymously be
 
 These aren't exact quotes, but thoughts I recall encountering 10 years ago:
 
-* "It doesn't matter that it's a slow, single-threaded Scripting Language with large RAM demands, and we've written an inefficient ORM with it.  Hardware is fast and cheap enough now."
+* "Hardware is fast and cheap enough now." - In other words, it doesn't matter that it's a slow, single-threaded Scripting Language with large RAM demands, and we've written an inefficient ORM with it. We can throw hardware at performance problems.
 * "Magic is cool."
 * "Never have to touch raw SQL code again."
 
 ### Realities Now: Scaling Interpreted Languages and ORMs
 
-I worked at three companies that experienced significant scaling issues from Interpreted-at-Runtime technology: PHP, Python, and Ruby on Rails.  At the two Rails firms, we had no choice but to refactor away ActiveRecord, in some areas, and use pure SQL queries.  Nothing is faster than a raw SQL query.  Both firms had what I would consider ActiveRecord experts, folks very knowledgable in how to coerce ActiveRecord into minimizing N+1's, and folks who would always exhaust their efforts remaining in ActiveRecord land.  But even with those optimizations, we had some pages taking upwards of 40 to 60 seconds to return, on pages where multi-table JOIN complexity was high combined with high data-volume for a particular customer.  I had to replace those ActiveRecord calls with a single SQL query, and Page-Response Time came down to under 2 seconds.  This is just one example, among several dozen, that we went through over the years.
+I worked at three companies that experienced significant scaling issues from Interpreted-at-Runtime technology: PHP, Python, and Ruby on Rails.  At the two Rails firms, we had no choice but to refactor away ActiveRecord, in some areas, and use pure SQL queries.  Nothing is faster than a raw SQL query.  Both firms had what I would consider ActiveRecord experts, folks very knowledgable in how to coerce ActiveRecord into minimizing N+1 problems, and folks who would always exhaust their efforts remaining in ActiveRecord land.  But even with those optimizations, we had some pages taking upwards of 40 to 60 seconds to return, on pages where multi-table JOIN complexity was high combined with high data-volume for a particular customer.  I had to replace those ActiveRecord calls with a single SQL query, and Page-Response Time came down to under 2 seconds.  This is just one example, among several dozen, that we went through over the years.
 
 This is not to say "all Rails apps having scaling problems".  I *have* seen many Rails apps that do not suffer from scaling problems.  For example, I've spoken to a successful Philadelphia-based Rails consulting shop that has an e-commerce platform with many large clients.  They report having zero scaling issues whatsoever for any of their clients.  Granted, e-commerce sites are generally fairly undemanding resource-wise.
 
@@ -35,8 +35,8 @@ The firm I worked for with the PHP flagship app (a social network), in scramblin
 
 ### Conclusions
 
-* If your Interpreted-Language site garners some success, you will have to refactor away some or all of it into faster things, which means:
-  * Microservices - These won't be on Scripting Languages (and especially not Rails).
+* If your Interpreted-Language site reaps significant success, you will have to refactor away some or all of it into faster things, which means:
+  * Microservices - But these raise new issues.
   * Faster Database-access libraries or patterns
   * Raw SQL
   * Compiled, multi-threaded technology - Erlang/Elixir, Google Go, Rust, or JVM-based options like jRuby, Java, Scala, Closure, etc.
@@ -45,7 +45,7 @@ The firm I worked for with the PHP flagship app (a social network), in scramblin
 * There is no such thing as not learning SQL.
 * NoSQL databases were never intended to replace RDBMS's. They are intended to be used along side. There are appropriate use cases for each.
 
-If replacing Weak-Scaling things with Strong *must* happen eventually anyway, why not have built it on Strong-scaling technology to begin with?
+If replacing Weak-Scaling things with Strong *must* happen eventually anyway, and time-to-market is nearly equal, why not have built it on Strong-scaling technology to begin with?
 
 ### Use Cases for Rails
 
@@ -54,7 +54,7 @@ By "Rails" I mean "any full-stack Web framework built on a Scripting Language".
 1. **Rapid Prototypes** - Getting "Minimum Viable Product" launched quickly to see if it flies. In other words, new sites that you aren't sure are going to succeed.
 2. **Internal Applications** - Intranet Apps guaranteed to never see high traffic.
 
-There is no # 3.  In reality, there isn't another appropriate use case for websites written in Interpreted Languages.  Even the first case above has become questionable, given that on the "fast, compiled, multithreaded" side of the universe, there exists plenty of full-stack frameworks that permit one to get a site up [nearly] as fast as Rails.  Most of those technologies also have features that can make the language behave and look like a Scripting Language (JIT compiling, Type Inference, terse Ruby-like syntax, etc).
+There is no # 3.  In reality, there isn't another appropriate use case for websites written in Interpreted Languages.  Even the first case above has grown questionable, given that on the "fast, compiled, multithreaded" side of the universe, there exists plenty of full-stack frameworks that permit one to get a site up [nearly] as fast as Rails.  Most of those technologies also have features that can make the language behave and look like a Scripting Language (JIT compiling, Type Inference, terse Ruby-like syntax, etc).
 
 ### Use Cases for Scripting Languages
 
@@ -67,13 +67,15 @@ Wise use cases for Scripting Languages:
 
 ### The "Reduces Time to Market" Argument
 
-The "reduces time to market" argument is thin.  Having a "compile step", in my experience, never slowed my development by any significant amount.  Even 14 years ago in 2002, while working in non-Production mode on C# sites, JIT compiling would occur transparently upon every refresh, and would happen very rapidly.
+Having a "compile step", in my experience, didn't slow my development by a significant amount.  Even 14 years ago in 2002, while working in non-Production mode on C# sites, JIT compiling would occur transparently upon every refresh, and would happen very rapidly.
 
-The second half of the argument is sometimes, "Well, Debugging is easier and faster. I can quickly add debug values directly in page."
+The second half of the argument is sometimes, "Debugging is easier and faster. I can quickly add debug values directly in page."
 
 Fortunately, you can do in-line debugging on both sides, equally as effortlessly.  But Statically Typed, Compiled languages have the added benefit of having very sophisticated debugging tools and feature-rich IDE's, tools that don't exist in Dynamic Language land (and won't ever, due to the nature of Dynamic Typing).
 
-I agree that "reduces time to market" **is** true in certain cases with Scripting Languages.  But when it *is* true, it is true by a very small margin - maybe 5% or 10% faster to market, in my experience.  But the large pile of Technical Debt you just incurred, that you must pay off if the site succeeds, far outweighs the cost saved in getting to market 10% sooner.  Having to refactor those slow parts significantly eats into "Feature Development" time later.  Feature Development, of course, generally equates to Revenue.  So, yes, you got to market 10% or 15% faster, but now Revenue-generating features are much slower to release, as you are constantly interrupted by having to solve performance issues, or scale the application: adding more App processes, hardware, caching servers, clustering, load-balancing, etc.  Granted this is anecdotal, but with the large Rails 3.2 app I spent 4 years building and maintaining with an awesome team, I genuinely feel like we could have rolled out perhaps 30% to 40% more Revenue-generating features in the 3 years since 1.0, had we just gone with a Strong-scaling technology to begin with.
+I agree that "reduces time to market" **is** true in certain cases with Scripting Languages.  But when it *is* true, it is true by a very small margin - maybe 5% or 10% faster to market, in my experience.  But the mountain of Technical Debt that you must pay off if the site succeeds, outweighs the cost saved in getting to market 10% sooner.  Having to refactor those slow parts significantly eats into "Feature Development" time later.  Feature Development, of course, generally equates to Revenue.  So, yes, you got to market 10% or 15% faster, but now Revenue-generating features are much slower to release, as you are constantly interrupted by having to solve performance issues, or scale the application: adding more App processes, hardware, caching servers, clustering, load-balancing, etc.
+
+What I'm about to say next is entirely anecdotal.  It's unfortunate that there is really no realistic way to measure whether technology X would have delivered Revenue faster than Y.  There are too many variables.  All we can base our decisions on is historical _accounts_ from folks who have lived it.   With the large Rails 3.2 app I spent 4 years building and maintaining with an awesome team, I _can_ say that there were large spans of time (sometimes a month or two) during which _little-to-no_ new features were being added, while the team was scrambling to scale.  I genuinely feel like we could have rolled out perhaps 30% more Revenue-generating features in the 3 years since launch, had we gone with a Strong-scaling technology to begin with. (Just one man's opinion based on a lot of "gut feel".)
 
 ### You Must Learn SQL Anyway
 
@@ -97,7 +99,7 @@ Twitter has moved to mostly Scala, FWIW.
 
 On the Ruby Rogues podcasts, David Brady has said things like:
 
-> "Rails scales. You just have to scale it the instant you launch 1.0."
+> "Rails scales. You just have to scale it the instant you launch your site."
 
 I would add to that:
 
@@ -105,7 +107,7 @@ I would add to that:
 
 Over the years, the Core Ruby Team periodically receives a Pull Request to add a Web-specific feature or optimization to Ruby.  The Core Team often rejects PR's of this sort, giving reasons like, "Ruby was never designed as a Web Application language."
 
-The Core Team has reminded us that Ruby is a "batch language" or "glue language" (like Shell, Perl and Python), intended to be used to string together different system operations in a repeatable way.  Put bluntly, you're not supposed to write large applications with it (or any other Scripting Language, if I'm honest).
+The Core Team has reminded us that Ruby is a "batch language" or "glue language" (like Shell, Perl and Python), intended to be used to string together different system operations in a repeatable way.  Put bluntly, you're not supposed to write large, multi-user applications with it (or any other Scripting Language, if I'm honest).
 
 > "Any significantly advanced Rails app is indistinguishable from Java Enterprise Edition."
 >
@@ -113,7 +115,7 @@ The Core Team has reminded us that Ruby is a "batch language" or "glue language"
 
 Somewhat tongue-in-cheek but true, this statement points toward the fact that you must eventually refactor away Rails for faster things. (Java *does* scale well, it being Statically Typed, Compiled, and able to distribute its load across Cores.)
 
-> "I seriously considered submitting a talk called, “The Case Against Rails,” to the RailsConf CFP.  My wife had to talk me off the ledge."
+> "I seriously considered submitting a talk called, 'The Case Against Rails,' to the RailsConf CFP.  My wife had to talk me off the ledge."
 >
 > -- Tweet from James Edward Gray, Ruby Rogue, long-time Ruby programmer, author, speaker, and Rails consultant
 
@@ -146,7 +148,7 @@ Making something "work efficiently" is one part of "cost control" mentioned in t
   * Improving Maintainability
   * Improving Security
 
-Every Web Developer must have these things in the forefront of their minds as they develop a Website, or they are not being the best Web Engineer they can be.
+Every Web Developer should have these things in the forefront of their minds as they develop, or they are not being the best Engineer they can be.
 
 ## ISSUE 2 : Distributed Computing
 
@@ -179,7 +181,7 @@ To give some credit some credit due, these technologies worked flawlessly in the
 
 It has been interesting witnessing the Scripting Language lunge twice for Web Development and recede again.  VBScript surged with the advent of Active Server Pages in the late 90's.  Then two Compiled Languages took off between 1999 and 2002, C# and Java, and pushed Scripting Languages into the background again.  Then a rogue Danish man wrote Rails and pulled many back into Scripting Languages again circa '06, not to mention Node.js helping in 2000.  Now the Web industry has come full circle back to efficient, Compiled, Multithreaded languages.  Granted, some folks never left them.
 
-Can we all agree to stop using Scripting Languages for Web Application Development?  Back in '05, there were no Compiled options that had beautiful syntax, so there *was* call to use Ruby.  Its beautiful syntax often "trumped" performance and scaling needs.   We didn't have all these great options in terse-syntax, Compiled languages that we have now: Go, Rust, Scala, Groovy, etc.  We have Ruby (and Rails) to thank for raising awareness that a language is more rewarding to code in when it is centered around the Programmer.
+Back in '05, there were no Compiled options that had beautiful syntax, so there *was* call to use Ruby.  Its beautiful syntax often outweighed performance and scaling needs.   We didn't have all these great options in terse-syntax, Compiled languages that we have now: Go, Rust, Scala, Groovy, etc.  We have Ruby (and Rails) to thank for raising awareness that a language is more rewarding to code in when it is centered around the Programmer.
 
 ### SOLUTION 2 : The Future is Concurrent and Multithreaded
 
@@ -188,7 +190,7 @@ In 2005, CPU Clock Speeds leveled off significantly.  We have not been able to m
 The solution to all this comes in new languages like:
 
 * Closure
-* Erlang / Elixir
+* Elixir
 * Google Go
 * Rust
 
