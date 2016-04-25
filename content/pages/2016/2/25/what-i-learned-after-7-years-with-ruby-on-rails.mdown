@@ -95,7 +95,7 @@ In April 2011, Twitter reported they had to rewrite much of their code to move a
 
 > "...inefficiencies in the platform".
 
-Twitter has moved to mostly Scala, FWIU.
+Twitter has moved to mostly Scala, from what I understand.
 
 On the Ruby Rogues podcasts, David Brady has said things like:
 
@@ -107,7 +107,7 @@ I would add to that:
 
 Over the years, the Core Ruby Team periodically receives a Pull Request to add a Web-specific feature or optimization to Ruby.  The Core Team often rejects PR's of this sort, giving reasons like, "Ruby was never designed as a Web Application language."
 
-The Core Team has reminded us that Ruby is a "batch language" or "glue language" (like Shell, Perl and Python), intended to be used to string together different system operations in a repeatable way.  Put bluntly, you're not supposed to write large, multi-user applications with it (or any other Scripting Language, if I'm honest).
+The Core Team has reminded us that Ruby is a "batch language" or "glue language" (like Shell, Perl and Python), intended to be used to string together different system operations in a repeatable way.  Batch languages were not designed to be used for large, mission-critical, multi-user Applications.
 
 > "Any significantly advanced Rails app is indistinguishable from Java Enterprise Edition."
 >
@@ -148,11 +148,11 @@ Making something "work efficiently" is one part of "cost control" mentioned in t
   * Improving Maintainability
   * Improving Security
 
-Every Web Developer should have these things in the forefront of their minds as they develop, or they are not being the best Engineer they can be.
+Every Web Developer should have these things in the forefront of their minds as they develop.
 
 ## ISSUE 2 : Distributed Computing
 
-This issue has plagued every company I've worked for: Two geographically separated systems needing to reliably exchange information with each other over the Public Internet.  We had RPCs in the late 90's, then SOAP and all of its complexity, and now REST.  None of these technologies have any sort of durability, transactionality, or bulk operations built into them.  One must write custom fault-tollerance routines into both the Client and Server, and hope you get it right the first time, accounting for all the fringe cases.
+This issue has plagued every company I've worked for: Two geographically separated systems needing to reliably exchange information with each other over the Public Internet.  We had RPCs in the late 90's, then SOAP and all of its complexity, and now REST.  None of these technologies have any sort of durability, transactionality, or bulk operations built into them.  One must write custom fault-tolerance routines into both the Client and Server, and hope you get it right the first time, accounting for all the fringe cases.
 
 You always find yourself making multiple calls to the REST API for what should be a single query: I need "all Videos for a given User", so first I must hit the Video API, then make a second HTTP Request to the User API to get their Profile information.
 
@@ -212,12 +212,12 @@ By "Distributed Computing" I mean two geographically separated machines talking 
 
 ### SOLUTION 5 : The Future is GraphQL
 
-REST is Dead.
+REST API's are dead. :-)
 
 [GraphQL](http://graphql.org/) has really caught my attention because it solves so many problems with REST.  It eliminates having to "version" your API.  It eliminates having to make multiple HTTP calls from your Client to Server to get several related things.  It eliminates having to burn Dev time adding a Response "type" if a bunch of customers now want API result in some new (or old) format.
 
 With GraphQL, the responsibility for "what data you want" and "how you want it" is moved to the Client. (Stop. Grok. And roll. Because that is HUGE!) Think about that for a minute.
 
-With today's REST API's, what do we do to roll one out? We sit and plan carefully what the API should look like. We whiteboard up every possible way customers may need to leverage that API. We burn time coming up with what parts of our schema we need to expose. We burn more time arriving at which Response Formats we'll need to support. We burn more time building out all the API End Points, ensuring they expose the right bits of data in the right ways. We ensure they are queryable in the correct manners and returning the right things, then we diligently document this whole shebang and publish the docs. Rolling out a good API takes months. Then we get to the end of this long process, and what do we have? This very **fixed**, rigid, static "thing" that exists. We have imposed our beliefs onto our REST Clients (customers, mobile devices, server appliances, etc), really just "best guessing" as to how they would like to use these APIs. Inevitably, like clockwork, shortly after launching your API, the requests arrive to change the API. Come customers need more of the data. Some would like it structured or queryable a little differently, and so on. We scramble to create a Version-2 API, and the costly cycle continues.
+With today's REST API's, what do we do to roll one out? We sit and plan carefully what the API should look like. We whiteboard up every possible way customers may need to leverage that API. We burn time coming up with what parts of our schema we need to expose. We burn more time arriving at which Response Formats we'll need to support. We burn more time building out all the API End Points, ensuring they expose the right bits of data in the right ways. We ensure they are queryable in the correct manners and returning the right things, then we diligently document this whole shebang and publish the docs. Rolling out a good API takes months. Then we get to the end of this long process, and what do we have? This very **fixed**, rigid, static "thing" that exists. We have imposed our beliefs onto our REST Clients (customers, mobile devices, server appliances, etc), really just "best guessing" as to how they would like to use these APIs. Inevitably, like clockwork, shortly after launching your API, the requests arrive to change the API. Some customers need more of the data. Some would like it structured or queryable a little differently, and so on. We scramble to create a Version-2 API, and the costly cycle continues.
 
-GraphQL eliminates all of this. Clients access a single End Point and specify, using Graph QL's query language, exactly what data they would like, and how they would like it structured.  You literally can roll out Graph QL and forget about it.  Any imaginable way a Client would need the data is already supported.
+GraphQL eliminates all of this. Clients access a single End Point and specify, using Graph QL's query language, exactly which data they would like, and how they would like it structured.  You literally can roll out Graph QL and forget about it.  Any imaginable way a Client would need the data is already supported.
